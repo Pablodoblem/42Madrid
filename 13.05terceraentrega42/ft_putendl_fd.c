@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/07 00:47:27 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:09:19 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*str_char;
-	int		counter;
-
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
-	counter = 0;
-	while (*str_char != '\0')
+	while (*s != '\0')
 	{
-		counter++;
-		str_char++;
+		write (fd, s, 1);
+		s++;
 	}
-	return (counter);
+	write (fd, "\n", 1);
 }
-
-/*int	main(void)
-{
-	char	chain[50] = "Hola que tal estás.";
-
-	printf("%d", ft_strlen(chain));
-	return (0);
-}*/

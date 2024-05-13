@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/05/07 02:18:40 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_strlen(const char *str)
 	char	*str_char;
 	int		counter;
 
-	if (str == ((void *)0))
-		return (0);
 	str_char = (char *)str;
 	counter = 0;
 	while (*str_char != '\0')

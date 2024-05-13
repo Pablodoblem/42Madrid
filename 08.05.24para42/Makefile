@@ -1,46 +1,51 @@
-# Nombre de la librería
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/08 15:43:22 by pamarti2          #+#    #+#              #
+#    Updated: 2024/05/08 17:22:57 by pamarti2         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+       ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c \
+       ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c \
+       ft_calloc.c ft_strdup.c ft_toupper.c ft_tolower.c \
+       ft_strchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
+       ft_strnstr.c ft_atoi.c ft_strrchr.c ft_substr.c \
+       ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
+       ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
+       ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+
+OBJS = ${SRCS:.c=.o}
+
 NAME = libft.a
 
-# Compilador
-CC = cc
+LIBC = ar rcs
 
-# Opciones de compilación
+CC = gcc
+
+RM = rm -f
+
 CFLAGS = -Wall -Wextra -Werror
 
-# Directorio de archivos fuente
-SRCDIR = .
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-# Lista de archivos .c
-SRCS = ft_itoa.c ft_split.c ft_strnstr.c ft_memchr.c ft_strchr.c ft_strrchr.c ft_atoi.c \
-ft_memcmp.c ft_strdup.c ft_strtrim.c ft_bzero.c ft_memcpy.c ft_striteri.c ft_substr.c \
-ft_calloc.c ft_memmove.c ft_strjoin.c ft_tolower.c ft_isalnum.c ft_memset.c ft_strlcat.c \
-ft_toupper.c ft_isalpha.c ft_putchar_fd.c ft_strlcpy.c ft_isascii.c ft_putendl_fd.c \
-ft_strlen.c ft_isdigit.c ft_putnbr_fd.c ft_strmapi.c ft_isprint.c ft_putstr_fd.c ft_strncmp.c   # Añade aquí todos los archivos .c necesarios
+${NAME}: ${OBJS}
+	${LIBC} ${NAME} ${OBJS}
 
-# Objetos generados a partir de los archivos fuente
-OBJS = $(SRCS:.c=.o)
+all: ${NAME}
 
-# Regla por defecto
-all: $(NAME)
-
-# Regla para construir la librería estática
-$(NAME): $(OBJS)
-	ar rcs $@ $^
-
-# Regla para compilar los archivos fuente en objetos
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Regla para limpiar archivos generados
 clean:
-	rm -f $(OBJS)
+	${RM} ${OBJS}
 
-# Regla para eliminar todos los archivos generados
 fclean: clean
-	rm -f $(NAME)
+	${RM} ${NAME}
 
-# Regla para reconstruir el proyecto desde cero
 re: fclean all
 
-# Objetivos phony (ficticios) para evitar conflictos con archivos reales
-.PHONY: all clean fclean re
+.PHONY : all bonus clean fclean re

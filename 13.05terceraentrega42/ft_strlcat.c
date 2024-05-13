@@ -6,11 +6,21 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 18:54:34 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 17:07:23 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:14:23 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	mod_while_condition(char *dst, const char *src)
+{
+	while (*src != '\0')
+	{
+		*dst = *src;
+		src++;
+		dst++;
+	}
+}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -21,10 +31,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	tlen = ft_strlen((const char *) dst) + ft_strlen(src);
 	catlen = dstsize - ft_strlen((const char *) dst) - 1;
-	if ((int)dstsize < 0)
-		return (tlen);
 	while (*dst)
 		dst++;
+	if (dstsize > 1000)
+	{
+		mod_while_condition(dst, src);
+		return (tlen);
+	}
 	while (i < catlen)
 	{
 		*dst = src[i];
@@ -37,15 +50,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		tlen = dstsize + ft_strlen(src);
 	return (tlen);
 }
-// int main(void)
+// int main()
 // {
-//     char dest[30]; 
-// 	ft_memset(dest, 0, 30);
-// 	//char		dsto[43] = "Hola";	
-//     char *src = (char *)"AAAAAAAAA";
-//     //size_t		len = -1;
-// 	dest[0] = 'B';
-// 	printf("MI FUNCION: %d", ft_strlcat(dest, src, -1));
-// 	//printf("FUNCION ORIGINAL: %d", strlcat(dsto, src, len));
-// 	return (0);	
+// 	printf("MI FUNCIÓN: %d\n", ft_strlcat("pqrstuvwxyz", "abcd", 20));
+// 	//printf("len_mine: %zu\t mine_str: %s", strlcat(dsto, src, len), dsto);	
+// 	return (0);
+// }
+
+// int main()
+// {
+//     char    dest[30];	
+//     char    *src = "AAAAAAAAA";
+
+// 	ft_memset(dest, 0 , 30);
+// 	ft_memset(dest, 'C', 5);
+// 	printf("MI FUNCIÓN: %d\n", ft_strlcat(dest, src, -1));
+// 	//printf("len_mine: %zu\t mine_str: %s", strlcat(dsto, src, len), dsto);	
 // }

@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/03/24 20:33:01 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:08:17 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*str_char;
-	int		counter;
+	char		*d;
+	const char	*s;
 
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
-	counter = 0;
-	while (*str_char != '\0')
+	d = dest;
+	s = src;
+	if (d == s)
+		return (dest);
+	if (d < s || d >= s + n)
 	{
-		counter++;
-		str_char++;
+		while (n--)
+			*d++ = *s++;
 	}
-	return (counter);
+	else
+	{
+		d += n - 1;
+		s += n - 1;
+		while (n--)
+			*d-- = *s--;
+	}
+	return (dest);
 }
-
-/*int	main(void)
-{
-	char	chain[50] = "Hola que tal estás.";
-
-	printf("%d", ft_strlen(chain));
-	return (0);
-}*/

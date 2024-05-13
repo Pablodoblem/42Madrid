@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/03/23 18:56:33 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:18:15 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	char	*str_char;
-	int		counter;
+	size_t	counter;
 
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
 	counter = 0;
-	while (*str_char != '\0')
+	if (size != 0)
 	{
+		while (*src != '\0' && size > 1)
+		{
+			*dest = *src;
+			dest++;
+			src++;
+			size--;
+			counter += 1;
+		}
+		*dest = '\0';
+	}
+	while (*src != '\0')
+	{
+		src++;
 		counter++;
-		str_char++;
 	}
 	return (counter);
 }
-
-/*int	main(void)
-{
-	char	chain[50] = "Hola que tal estás.";
-
-	printf("%d", ft_strlen(chain));
-	return (0);
-}*/

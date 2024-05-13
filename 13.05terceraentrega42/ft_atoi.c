@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 15:18:14 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:18:55 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/05/13 18:54:18 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/13 18:54:32 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	spaces_sign_and_createnumber(char *str_char, int i, int number, int sign)
+static int	spaces_sign_and_createnumber(char *str_char, int i,
+	int number, int sign)
 {
 	while (str_char[i] == '-' || str_char[i] == '+')
 	{

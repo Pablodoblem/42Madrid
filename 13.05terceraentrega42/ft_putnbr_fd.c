@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/07 00:51:19 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:14:40 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str_char;
-	int		counter;
+	long int	copy;
 
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
-	counter = 0;
-	while (*str_char != '\0')
+	copy = n;
+	if (copy < 0)
 	{
-		counter++;
-		str_char++;
+		copy *= -1;
+		write(fd, "-", 1);
 	}
-	return (counter);
+	if (copy > 9)
+	{
+		ft_putnbr_fd(copy / 10, fd);
+		ft_putchar_fd((copy % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(copy + '0', fd);
 }
 
-/*int	main(void)
-{
-	char	chain[50] = "Hola que tal estás.";
-
-	printf("%d", ft_strlen(chain));
-	return (0);
-}*/
+// int main(void)
+// {
+//   int n = -554;
+//   ft_putnbr_fd(n, 2);
+//   return (0);
+// }

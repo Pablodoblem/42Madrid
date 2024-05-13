@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:44:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 16:41:34 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:43:25 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 char	*ft_strrchr(const char *string, int c);
 char	*ft_strdup(const char *str);
 char	*ft_strchr(const char *string, int c);
-void	*ft_memset(void *s, char c, int n);
+void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		ft_isprint(int c);
@@ -30,7 +30,7 @@ int		ft_isdigit(int c);
 int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
-void	*ft_calloc(size_t n, size_t tamanyo);
+void	*ft_calloc(size_t n, size_t size_of_element);
 void	ft_bzero(void *str, size_t n);
 int		ft_toupper(int n);
 int		ft_tolower(int n);
@@ -39,7 +39,7 @@ int		ft_atoi(const char *str);
 int		ft_strlen(const char *str);
 void	*ft_memchr(const void *ptr, int value, size_t num);
 int		ft_memcmp(const void *ptr1, const void *ptr2, size_t num);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
 int		ft_strncmp(const void *ptr1, const void *ptr2, size_t num);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_substr(const char *s, unsigned int start, size_t len);

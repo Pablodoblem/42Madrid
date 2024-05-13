@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/07 00:20:29 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:16:26 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*str_char;
-	int		counter;
+	unsigned int	i;
 
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
-	counter = 0;
-	while (*str_char != '\0')
+	i = 0;
+	while (s[i] != '\0')
 	{
-		counter++;
-		str_char++;
+		f(i, &s[i]);
+		i++;
 	}
-	return (counter);
 }
 
-/*int	main(void)
+	//for (unsigned int i = 0; s[i] != '\0'; i++) 
+/*
+int main()
 {
-	char	chain[50] = "Hola que tal estás.";
+    char cadena[] = "Hola mundo";
 
-	printf("%d", ft_strlen(chain));
-	return (0);
+    // Llamada a ft_striteri con la función imprimir_con_indice
+    ft_striteri(cadena, imprimir_con_indice);
+
+    return 0;
 }*/

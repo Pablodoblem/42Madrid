@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/05/08 15:24:36 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/03/23 18:17:39 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/05/07 02:23:05 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+int	ft_tolower(int n)
 {
-	char	*str_char;
-	int		counter;
-
-	if (str == ((void *)0))
-		return (0);
-	str_char = (char *)str;
-	counter = 0;
-	while (*str_char != '\0')
+	if (n >= 'A' && n <= 'Z')
 	{
-		counter++;
-		str_char++;
+		n = n + 32;
+		return (n);
 	}
-	return (counter);
+	else
+		return (n);
 }
 
-/*int	main(void)
+/*
+int	main(void)
 {
-	char	chain[50] = "Hola que tal estás.";
+	int	n;
 
-	printf("%d", ft_strlen(chain));
+	n = 'F';
+	printf("%c", ft_tolower(n));
 	return (0);
 }*/

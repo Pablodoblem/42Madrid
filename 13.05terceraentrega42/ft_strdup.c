@@ -25,6 +25,11 @@ char	*ft_strdup(const char *str)
 	while (str[num_elements] != '\0')
 		num_elements++;
 	new_arr = (char *)malloc(data_type_bytes * (num_elements + 1));
+	if (new_arr == NULL)
+	{
+		free(new_arr);
+		return (NULL);
+	}
 	while (num_elements > 0)
 	{
 		new_arr[i] = str[i];
