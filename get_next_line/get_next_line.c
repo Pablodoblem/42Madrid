@@ -6,32 +6,15 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 00:46:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/06/09 12:53:00 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:46:40 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
+#include "get_next_line.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdbool.h>
-#include <ctype.h>
-#include <errno.h>
-#include <float.h>
-#include <math.h>
-#include <limits.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <wchar.h>
-#include <fcntl.h>
-
-typedef struct node
-{
-	char		*string_piece;
-	struct node	*next;
-} node;
 
 int	check_nl_and_null(char *buffer)
 {
