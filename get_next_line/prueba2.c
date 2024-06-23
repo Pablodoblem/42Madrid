@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/06/16 14:51:40 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:33:34 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,12 @@ char    *where_is_the_nl(char *buffer)
     char *ptr;
 
     ptr = buffer;
-    while (*ptr != '\0' && *ptr != '\n')
+    while (*ptr != '\n')
+    {
+        if (*ptr == '\0')
+            return (NULL);
         ptr++;
+    }
     return (ptr);
 }
 
@@ -115,8 +119,6 @@ char    *get_next_linee(int fd)
 
     head = NULL;
     current = NULL;
-    //line = NULL;
-    //line = 1;
     bytes_read = 0;
     if (line)
     {
@@ -127,14 +129,14 @@ char    *get_next_linee(int fd)
 
                 auxchain = malloc(check_nl_or_null(line + 1) * sizeof(char));
                 strncpy(auxchain, line, check_nl_or_null(line));
-                auxchain[check_nl_or_null(line)] = '\0';
+                auxchain[strlen(line)] = '\0';
                 //printf("Check de line: %d\n Strlen de line: %ld\n", check_nl_or_null(line), strlen(line));
                 auxptr = where_is_the_nl(line); //capturar residuo del buffer
                 auxptr++;
-                new_node = create_new_nodes(auxptr, check_nl_or_null(auxptr));
+                new_node = create_new_nodes(auxptr, strlen(auxptr));
                 line = join_strings(new_node); //AQUI ESTA LA SOLUCIÓN
                 //printf("\033[32mString residual excepcion: \033[0m%s\n", line); //este new_node es para encabezar el siguiente
-                //printf("Chain: %s\n", chain);
+                //printf("Chain: %s\n", auxchain);
                 if (!new_node)
                     return (NULL);
                 return(auxchain);
@@ -154,34 +156,28 @@ char    *get_next_linee(int fd)
         //printf("%d\n", BUFFER_SIZE);
         memset(buffer, 0, BUFFER_SIZE + 1);
         bytes_read = read(fd, buffer, BUFFER_SIZE);
-        printf("\033[0mBuffer: %s\n", buffer);
-        //strncpy(buffer, fd, BUFFER_SIZE);
-        //fd += strlen(buffer);
+        //printf("\033[0mBuffer: %s\n", buffer);
+        //printf("Chars_read: %d\n", bytes_read);
         if (bytes_read <= 0)
         {
-            // if (line)
-            // {
-            //     chain = join_strings(head);
-            //     return (chain);
-            // }
-            // while (head) // limpiar
-            // {
-            //     nodes *temp = head;
-            //     head = head->next;
-            //     free(temp->string_piece);
-            //     free(temp);
-            // }
-            // return (chain);
-            // else
-            printf("HOla\n");
-            return (NULL);
+            if (line)
+            {
+                //printf("HOla\n");
+                chain = malloc((strlen(line) + 2) * sizeof(char));
+                chain[strlen(line)] = '\n';
+                chain[strlen(line) + 1] = '\0';
+                strcpy(chain, line);
+                //printf("Esto es chain: %s\n", chain);
+                line = NULL;
+                return (chain);
+            }
+            else
+            {
+                //printf("HOLTRI\n");
+                return (NULL);
+            }
+                
         }
-        // if(bytes_read <= 0)
-        // {
-        //     //printf("STRING: %s\n", new_node->string_piece);
-        //     return (NULL);
-        // }
-        //printf("Valor de checknlornull: %d\n", check_nl_or_null(buffer));
         new_node = create_new_nodes(buffer, check_nl_or_null(buffer));
         if (!new_node)
             return (NULL);
@@ -203,30 +199,23 @@ char    *get_next_linee(int fd)
                 free(temp->string_piece);
                 free(temp);
             }
-            auxptr = where_is_the_nl(buffer); //capturar residuo del buffer
-            auxptr++;
-            new_node = create_new_nodes(auxptr, strlen(auxptr));
-            line = join_strings(new_node); //AQUI ESTA LA SOLUCIÓN
-            printf("\033[32mString residual: \033[0m%s\n", line); //este new_node es para encabezar el siguiente
-            if (!new_node)
-                return (NULL);
-            //head = new_node;
-            //current = new_node;
-            return(chain);
-            // if (line == x)
-            // {
-            //     line++;
-            //     //printf("Valor de x: %d, valor de line: %d\n", x, line);
-            //     while (head)
-            //     {
-            //         nodes *temp = head;
-            //         head = head->next;
-            //         free(temp->string_piece);
-            //         free(temp);
-            //     }
-            //     //close(fd);
-            //     return (chain);
-            // }
+            if (where_is_the_nl(buffer))
+            {
+                auxptr = where_is_the_nl(buffer); //capturar residuo del buffer
+                auxptr++;
+                new_node = create_new_nodes(auxptr, strlen(auxptr));
+                line = join_strings(new_node); //AQUI ESTA LA SOLUCIÓN
+                //printf("\033[32mString residual: \033[0m%s\n", line); //este new_node es para encabezar el siguiente
+                if (!new_node)
+                    return (NULL);
+                return(chain);
+            }
+            else
+            {
+                //printf("AQUÍ\n");
+                line = NULL; /////////////////////////////
+                return(chain);
+            }
         }
         else
             current = new_node;      
