@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/04 01:44:01 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:02:31 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*handle_zero_read(char **line)
 
 	if (*line)
 	{
-		chain = malloc((strlen(*line) + 2) * sizeof(char));
+		chain = malloc((strlen(*line) + 2) * sizeof(char)); //proteger
 		chain[strlen(*line)] = '\n';
 		chain[strlen(*line) + 1] = '\0';
 		strcpy(chain, *line);
@@ -103,7 +103,7 @@ char	*handle_zero_read(char **line)
 		return (NULL);
 }
 
-void manage_nodes(node **head, node **current, node *new_node)
+void	manage_nodes(node **head, node **current, node *new_node)
 {
 	if (!new_node)
 		return ;

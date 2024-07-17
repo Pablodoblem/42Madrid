@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:40 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/06/28 11:16:40 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:10:31 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char    *where_is_the_nl(char *buffer)
+char    *where_is_the_nl(char *buffer) //me la puedo cargar
 {
     char *ptr;
 
@@ -30,18 +30,31 @@ char    *where_is_the_nl(char *buffer)
     return (ptr);
 }
 
-int	totalsize(node *current)
-{
-	int	size;
+// int	totalsize(node *current) //me la puedo cargar de verdad
+// {
+// 	int	size;
 
-	size = 0;
-	while(current)
+// 	size = 0;
+// 	while(current)
+// 	{
+// 		size += strlen(current->string_piece);
+// 		current = current->next;
+// 	}
+// 	size++;
+// 	return (size);
+// }
+
+void	free_all_nodes(node *head)
+{
+	node	*temp;
+
+	while (head) // limpiar
 	{
-		size += strlen(current->string_piece);
-		current = current->next;
+		temp = head;
+		head = head->next;
+		free(temp->string_piece);
+		free(temp);
 	}
-	size++;
-	return (size);
 }
 
 int	check_nl_or_null(char *buffer)
