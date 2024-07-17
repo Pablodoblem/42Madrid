@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/17 18:02:31 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:54:52 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,6 @@
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <unistd.h>
-
-void	free_all_nodes(node *head)
-{
-	node	*temp;
-
-	while (head) // limpiar
-	{
-		temp = head;
-		head = head->next;
-		free(temp->string_piece);
-		free(temp);
-	}
-}
 
 char	*handle_line(char **line)
 {
@@ -41,13 +28,14 @@ char	*handle_line(char **line)
 		return (NULL);
 	strncpy(auxchain, *line, check_nl_or_null(*line));
 	auxchain[strlen(*line)] = '\0';
-	if (!where_is_the_nl(*line))
+	if (check_nl_or_null(*line) == strlen(*line))
 	{
 		line = NULL;
 		return (NULL);
 	}
-	auxptr = where_is_the_nl(*line); //capturar residuo del buffer
-	auxptr++;
+	auxptr = *line;
+	auxptr += check_nl_or_null(*line); //capturar residuo del buffer
+	//auxptr++;
 	new_node = create_new_nodes(auxptr, strlen(auxptr));
 	if (!new_node)
 	{
@@ -68,7 +56,7 @@ char	*handle_buffer(char *buffer, node *head, char **line)
 
 	auxchain = join_strings(head);
 	free_all_nodes(head);
-	if (where_is_the_nl(buffer))
+	if (check_nl_or_null(buffer) != strlen(buffer))
 	{
 		auxptr = where_is_the_nl(buffer); //capturar residuo del buffer
 		auxptr++;
@@ -123,8 +111,7 @@ char	*get_next_line(int fd)
 	node		*head;
 	node		*current;
 
-	head = NULL;
-	current = NULL;
+	head = ((current = NULL), NULL);
 	if (line)
 	{
 		if (strlen(line) != (long unsigned int)check_nl_or_null(line))
@@ -134,8 +121,8 @@ char	*get_next_line(int fd)
 	}
 	while (1)
 	{
-		memset(buffer, 0, BUFFER_SIZE + 1);
-		if (read(fd, buffer, BUFFER_SIZE) <= 0)
+		//memset(buffer, 0, BUFFER_SIZE + 1);
+		if (!memset(buffer, 0, BUFFER_SIZE + 1) || read(fd, buffer, BUFFER_SIZE) <= 0)
 			return (handle_zero_read(&line));
 		new_node = create_new_nodes(buffer, check_nl_or_null(buffer));
 		manage_nodes(&head, &current, new_node);
@@ -144,7 +131,7 @@ char	*get_next_line(int fd)
 		else
 			current = new_node;
 	}
-	return (NULL);
+	//return (NULL);
 }
 
 int	main(void)
