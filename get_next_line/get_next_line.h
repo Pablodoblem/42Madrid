@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 00:53:24 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/17 18:03:01 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/19 20:57:16 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ typedef struct node
 	struct node	*next;
 } node;
 
-int		check_nl_or_null(char *buffer); //
-node	*create_new_nodes(char *buffer, int n_chars_buf); //
-char	*get_next_line(int fd); //
-char    *where_is_the_nl(char *buffer); //
-int		totalsize(node *current); //
-char	*join_strings(node *current); //
+int		check_nl_or_null(char *buffer, int use);
+node	*create_new_nodes(char *buffer, int n_chars_buf);
+char	*get_next_line(int fd);
+void	ft_strncpy(char *dest, const char *src, int size);
+char	*join_strings(node *current);
 void    free_all_nodes(node *head);
 char	*handle_line(char **line);
 char	*handle_buffer(char *buffer, node *head, char **line);

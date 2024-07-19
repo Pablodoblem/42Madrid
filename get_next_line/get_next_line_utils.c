@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:40 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/17 20:55:55 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:06:54 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,29 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char    *where_is_the_nl(char *buffer) //me la puedo cargar
+void	ft_strncpy(char *dest, const char *src, int size)
 {
-    char *ptr;
+	size_t	counter;
 
-    ptr = buffer;
-    while (*ptr != '\n')
-    {
-        if (*ptr == '\0')
-            return (0);
-        ptr++;
-    }
-    return (ptr);
+	counter = 0;
+	if (size != 0)
+	{
+		while (*src != '\0' && size > 0)
+		{
+			*dest = *src;
+			dest++;
+			src++;
+			size--;
+			counter += 1;
+		}
+	}
 }
-
-
 
 void	free_all_nodes(node *head)
 {
 	node	*temp;
 
-	while (head) // limpiar
+	while (head)
 	{
 		temp = head;
 		head = head->next;
@@ -45,16 +47,28 @@ void	free_all_nodes(node *head)
 	}
 }
 
-int	check_nl_or_null(char *buffer)
+int	check_nl_or_null(char *buffer, int use)
 {
 	int	counter;
 
 	counter = 0;
-	while (buffer[counter])
+	if (use == 1)
 	{
-		if (buffer[counter] == '\n' || buffer[counter] == '\0')
-			return counter + 1; // +1 es el útlimo cambio 16/06/2024
-		counter++;
+		while (buffer[counter])
+		{
+			if (buffer[counter] == '\n')
+				return (counter + 1);
+			counter++;
+		}
+	}
+	else if (use == 2)
+	{
+		while (buffer[counter])
+		{
+			if (buffer[counter] == '\0')
+				return (counter + 1);
+			counter++;
+		}
 	}
 	return (counter);
 }
@@ -62,7 +76,7 @@ int	check_nl_or_null(char *buffer)
 node	*create_new_nodes(char *buffer, int n_chars_buf)
 {
 	node	*new_node;
-	
+
 	new_node = (node *)malloc(sizeof(node));
 	if (!new_node)
 		return (NULL);
@@ -85,35 +99,37 @@ char	*join_strings(node *current)
 	char		*position;
 	node		*origin_current;
 
-	total_size = ((origin_current = current),0);
-	//origin_current = current;
-	while(current)
+	total_size = ((origin_current = current), 0);
+	while (current)
 	{
-		total_size += strlen(current->string_piece);
+		total_size += check_nl_or_null(current->string_piece, 2);
 		current = current->next;
 	}
 	total_size += 2;
+	//printf("Total_size: %d\n", total_size);
 	chain = (char *)malloc(total_size * sizeof(char));
 	if (!chain)
 		return (NULL);
 	position = chain;
 	while (origin_current)
 	{
-		strcpy(position, origin_current->string_piece);
-		position += strlen(origin_current->string_piece);
+		strncpy(position, origin_current->string_piece, check_nl_or_null(origin_current->string_piece, 2));
+		position += check_nl_or_null(origin_current->string_piece, 2);
 		origin_current = origin_current->next;
 	}
 	*position = '\0';
+	//printf("Chain[strlen(chain)]: %s", chain[total_size - 2]);
 	return (chain);
 }
 
 /*
 
-1. Solucionar función where_is_ther_nl (eliminarla dfel mapa)
-2. Sustituir todos los strlen por la función check
-3. Incluir función strcpy a utils
-4. Hay mallocs sin proteger
-5. Algo mas
+1. Solucionar función where_is_ther_nl (eliminarla dfel mapa) DONE
+2. Sustituir todos los strlen por la función check DONE
+3. Incluir función strcpy a utils DONE
+4. Hay mallocs sin proteger DONE
+5. Checkear casos en los que haya salto en el último caracter que lee la
+función read en relación con el BUFFER_SIZE DONE
 
 //funcion1()
 //funcion2()
