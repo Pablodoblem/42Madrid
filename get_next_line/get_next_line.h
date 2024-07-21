@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 00:53:24 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/19 20:57:16 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:44:18 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 4200
 #endif
 
 # include <stdio.h>

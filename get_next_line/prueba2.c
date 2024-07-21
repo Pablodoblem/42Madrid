@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/19 22:43:30 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/21 10:28:31 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	*handle_line(char **line)
 		return (NULL);
 	}
 	*line = join_strings(new_node);
-	//printf("Line pasado por hadle line: %s\n", *line);
 	return (auxchain);
 }
 
@@ -59,10 +58,9 @@ char	*handle_buffer(char *buffer, node *head, char **line)
 	{
 		auxptr += check_nl_or_null(buffer, 1);
 		new_node = create_new_nodes(auxptr, check_nl_or_null(auxptr, 2));
-		*line = join_strings(new_node);
-		//printf("Line pasado por handle buffer: %s\n", *line);
 		if (!new_node)
 			return (NULL);
+		*line = join_strings(new_node);
 		return (auxchain);
 	}
 	else
@@ -115,7 +113,6 @@ char	*get_next_line(int fd)
 	head = ((current = NULL), NULL);
 	if (line)
 	{
-		//printf("Line desde función principal: %s\n", line);
 		if (check_nl_or_null(line, 2) != check_nl_or_null(line, 1))
 			return (handle_line(&line));
 		head = create_new_nodes(line, check_nl_or_null(line, 1));
@@ -123,14 +120,10 @@ char	*get_next_line(int fd)
 	}
 	while (1)
 	{
-		memset(buffer, 0, BUFFER_SIZE + 1);
-		if (read(fd, buffer, BUFFER_SIZE) == 0)
+		if (!memset(buffer, 0, BUFFER_SIZE + 1) || read(fd, buffer, BUFFER_SIZE) == 0)
 			return (handle_zero_read(&line));
-		//printf("Buffer: %s\n", buffer);
 		new_node = create_new_nodes(buffer, check_nl_or_null(buffer, 1));
-		//printf("String creado en create new nodes: %s\n", new_node->string_piece);
 		manage_nodes(&head, &current, new_node);
-		//printf("Line dentro del while: %s\n", line);
 		if (check_nl_or_null(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
 			return (handle_buffer(buffer, head, &line));
 		else
@@ -138,24 +131,24 @@ char	*get_next_line(int fd)
 	}
 }
 
-// int	main(void)
-// {
-// 	int fd = open("text.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening file");
-// 		return 1;
-// 	}
-// 	char *line;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("\033[31mSTRING DESDE EL MAIN: \033[0m%s", line);
-// 		free(line);
-// 	}
+int	main(void)
+{
+	int fd = open("text.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening file");
+		return 1;
+	}
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("\033[31mSTRING DESDE EL MAIN: \033[0m%s", line);
+		free(line);
+	}
 
-// 	close(fd);
-// 	return 0;
-// }
+	close(fd);
+	return 0;
+}
 
 // char	*get_next_line(int fd)
 // {
