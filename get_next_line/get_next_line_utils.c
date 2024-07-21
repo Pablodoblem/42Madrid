@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:40 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/20 17:17:36 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:38:13 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	ft_strncpy(char *dest, const char *src, int size)
 	}
 }
 
-void	free_all_nodes(node *head)
+void	free_all_nodes(t_node *head)
 {
-	node	*temp;
+	t_node	*temp;
 
 	while (head)
 	{
@@ -45,9 +45,10 @@ void	free_all_nodes(node *head)
 		free(temp->string_piece);
 		free(temp);
 	}
+	free(head);
 }
 
-int	check_nl_or_null(char *buffer, int use)
+int	nlornll(char *buffer, int use)
 {
 	int	counter;
 
@@ -73,11 +74,11 @@ int	check_nl_or_null(char *buffer, int use)
 	return (counter);
 }
 
-node	*create_new_nodes(char *buffer, int n_chars_buf)
+t_node	*create_new_nodes(char *buffer, int n_chars_buf)
 {
-	node	*new_node;
+	t_node	*new_node;
 
-	new_node = (node *)malloc(sizeof(node));
+	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node->next = NULL;
@@ -87,38 +88,37 @@ node	*create_new_nodes(char *buffer, int n_chars_buf)
 		free(new_node);
 		return (NULL);
 	}
-	strncpy(new_node->string_piece, buffer, n_chars_buf);
+	ft_strncpy(new_node->string_piece, buffer, n_chars_buf);
 	new_node->string_piece[n_chars_buf] = '\0';
 	return (new_node);
 }
 
-char	*join_strings(node *current)
+char	*join_strings(t_node *current)
 {
 	char		*chain;
 	size_t		total_size;
 	char		*position;
-	node		*origin_current;
+	t_node		*origin_current;
 
 	total_size = ((origin_current = current), 0);
 	while (current)
 	{
-		total_size += check_nl_or_null(current->string_piece, 2);
+		total_size += nlornll(current->string_piece, 2);
 		current = current->next;
 	}
 	total_size += 2;
-	//printf("Total_size: %d\n", total_size);
 	chain = (char *)malloc(total_size * sizeof(char));
 	if (!chain)
 		return (NULL);
 	position = chain;
 	while (origin_current)
 	{
-		strncpy(position, origin_current->string_piece, check_nl_or_null(origin_current->string_piece, 2));
-		position += check_nl_or_null(origin_current->string_piece, 2);
+		ft_strncpy(position, origin_current->string_piece,
+			nlornll(origin_current->string_piece, 2));
+		position += nlornll(origin_current->string_piece, 2);
 		origin_current = origin_current->next;
 	}
 	*position = '\0';
-	//printf("Chain[strlen(chain)]: %s", chain[total_size - 2]);
 	return (chain);
 }
 
@@ -140,8 +140,4 @@ función read en relación con el BUFFER_SIZE DONE
 
 	head = ((current = NULL), NULL);
 	;
-		if (memset(buffer, 0, BUFFER_SIZE + 1) || read(fd, buffer, BUFFER_SIZE) <= 0))
-
-
-
 */

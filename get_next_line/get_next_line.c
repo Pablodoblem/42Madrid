@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba2.c                                          :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/21 10:28:31 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:40:17 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ char	*handle_line(char **line)
 {
 	char	*auxptr;
 	char	*auxchain;
-	node	*new_node;
+	t_node	*new_node;
 
-	auxchain = malloc((check_nl_or_null(*line, 1) + 1) * sizeof(char));
+	auxchain = malloc((nlornll(*line, 1) + 1) * sizeof(char));
 	if (!auxchain)
 		return (NULL);
-	ft_strncpy(auxchain, *line, check_nl_or_null(*line, 1));
-	auxchain[check_nl_or_null(*line, 1)] = '\0';
-	if (check_nl_or_null(*line, 1) == check_nl_or_null(*line, 2))
+	ft_strncpy(auxchain, *line, nlornll(*line, 1));
+	auxchain[nlornll(*line, 1)] = '\0';
+	if (nlornll(*line, 1) == nlornll(*line, 2))
 	{
 		line = NULL;
 		return (NULL);
 	}
 	auxptr = *line;
-	auxptr += check_nl_or_null(*line, 1);
-	new_node = create_new_nodes(auxptr, check_nl_or_null(auxptr, 2));
+	auxptr += nlornll(*line, 1);
+	new_node = create_new_nodes(auxptr, nlornll(auxptr, 2));
 	if (!new_node)
 	{
 		free(auxchain);
@@ -44,20 +44,20 @@ char	*handle_line(char **line)
 	return (auxchain);
 }
 
-char	*handle_buffer(char *buffer, node *head, char **line)
+char	*handle_buffer(char *buffer, t_node *head, char **line)
 {
 	char	*auxchain;
 	char	*auxptr;
-	node	*new_node;
+	t_node	*new_node;
 
 	auxptr = buffer;
 	auxchain = join_strings(head);
 	free_all_nodes(head);
-	if (check_nl_or_null(buffer, 1) != check_nl_or_null(buffer, 2)
-		|| buffer[check_nl_or_null(buffer, 2) - 1] == '\n')
+	if (nlornll(buffer, 1) != nlornll(buffer, 2)
+		|| buffer[nlornll(buffer, 2) - 1] == '\n')
 	{
-		auxptr += check_nl_or_null(buffer, 1);
-		new_node = create_new_nodes(auxptr, check_nl_or_null(auxptr, 2));
+		auxptr += nlornll(buffer, 1);
+		new_node = create_new_nodes(auxptr, nlornll(auxptr, 2));
 		if (!new_node)
 			return (NULL);
 		*line = join_strings(new_node);
@@ -65,7 +65,7 @@ char	*handle_buffer(char *buffer, node *head, char **line)
 	}
 	else
 	{
-		auxchain[strlen(auxchain)] = '\n';
+		auxchain[nlornll(auxchain, 2)] = '\n';
 		*line = NULL;
 		return (auxchain);
 	}
@@ -77,12 +77,12 @@ char	*handle_zero_read(char **line)
 
 	if (*line)
 	{
-		chain = malloc((check_nl_or_null(*line, 2) + 2) * sizeof(char));
+		chain = malloc((nlornll(*line, 2) + 2) * sizeof(char));
 		if (!chain)
 			return (NULL);
-		chain[check_nl_or_null(*line, 2)] = '\n';
-		chain[check_nl_or_null(*line, 2) + 1] = '\0';
-		ft_strncpy(chain, *line, check_nl_or_null(*line, 2));
+		chain[nlornll(*line, 2)] = '\n';
+		chain[nlornll(*line, 2) + 1] = '\0';
+		ft_strncpy(chain, *line, nlornll(*line, 2));
 		*line = NULL;
 		return (chain);
 	}
@@ -90,7 +90,7 @@ char	*handle_zero_read(char **line)
 		return (NULL);
 }
 
-void	manage_nodes(node **head, node **current, node *new_node)
+void	manage_nodes(t_node **head, t_node **current, t_node *new_node)
 {
 	if (!new_node)
 		return ;
@@ -105,26 +105,26 @@ void	manage_nodes(node **head, node **current, node *new_node)
 char	*get_next_line(int fd)
 {
 	static char	*line;
-	char		buffer[BUFFER_SIZE + 1];
-	node		*new_node;
-	node		*head;
-	node		*current;
+	char		buffer[BUFFER_SIZE + 1]; //cambiar a puntero para poder liberar y proteger
+	t_node		*new_node;
+	t_node		*head;
+	t_node		*current;
 
 	head = ((current = NULL), NULL);
 	if (line)
 	{
-		if (check_nl_or_null(line, 2) != check_nl_or_null(line, 1))
+		if (nlornll(line, 2) != nlornll(line, 1))
 			return (handle_line(&line));
-		head = create_new_nodes(line, check_nl_or_null(line, 1));
+		head = create_new_nodes(line, nlornll(line, 1));
 		current = head;
 	}
 	while (1)
 	{
 		if (!memset(buffer, 0, BUFFER_SIZE + 1) || read(fd, buffer, BUFFER_SIZE) == 0)
 			return (handle_zero_read(&line));
-		new_node = create_new_nodes(buffer, check_nl_or_null(buffer, 1));
+		new_node = create_new_nodes(buffer, nlornll(buffer, 1));
 		manage_nodes(&head, &current, new_node);
-		if (check_nl_or_null(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
+		if (nlornll(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
 			return (handle_buffer(buffer, head, &line));
 		else
 			current = new_node;
@@ -168,7 +168,7 @@ int	main(void)
 // 	bytes_read = 0;
 // 	if (line)
 // 	{
-// 		// if (check_nl_or_null(line) != (size_t)check_nl_or_null(line))
+// 		// if (nlornll(line) != (size_t)check_nl_or_null(line))
 // 		// 	return (handle_line(line));
 // 		// else
 // 		// {
@@ -179,14 +179,13 @@ int	main(void)
 // 		// 	head = new_node;
 // 		// 	current = new_node;
 // 		// }
-		
+
 // 		result = handle_line(&line);
 // 		if (result)
 // 			return result;
 // 		head = create_new_nodes(line, check_nl_or_null(line));
 // 		current = head;
 // 	}
-		
 
 // 		// if (strlen(line) != (long unsigned int)check_nl_or_null(line))
 // 		// {
