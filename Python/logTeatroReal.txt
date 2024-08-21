@@ -1,0 +1,406 @@
+2024-07-25 18:21:49.216829: Archivo Excel no encontrado. Creando nuevo archivo.
+2024-07-25 18:21:49.339957: Datos de conciertos guardados/actualizados en el archivo Excel.
+2024-07-25 18:33:48.143685: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:33:48.152744: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:34:25.725759: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:34:25.736424: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:48:47.272488: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:48:47.280834: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:51:54.271310: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:51:54.279828: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:54:21.928431: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:54:21.939077: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:56:03.316634: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 18:56:03.325791: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 18:57:35.554918: No se encontraron cambios en los datos de las óperas.
+2024-07-25 18:57:35.565060: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:02:54.910033: No se encontraron cambios en los datos de las óperas.
+2024-07-25 19:02:54.920842: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:10:53.746897: Se actualizó la ópera 'Gala Joven: Adriana Lecouvreur' con fecha '20 Sep, 24'.
+2024-07-25 19:10:53.747080: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:10:53.747186: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:10:53.747279: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:10:53.747370: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:10:53.747461: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:10:53.747543: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:10:53.747621: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:10:53.747699: Se actualizó la ópera 'Idomeneo, re di Creta' con fecha '23 Ene, 25'.
+2024-07-25 19:10:53.747777: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:10:53.747852: Se actualizó la ópera 'La merope' con fecha '21 Feb, 25'.
+2024-07-25 19:10:53.747931: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:10:53.748008: Se actualizó la ópera 'L'uomo femmina' con fecha '03 Abr, 25'.
+2024-07-25 19:10:53.748083: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:10:53.748160: Se actualizó la ópera 'Jephtha' con fecha '01 Mayo, 25'.
+2024-07-25 19:10:53.748234: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:10:53.748342: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:10:53.748429: Se actualizó la ópera 'Tamerlano' con fecha '16 Mayo, 25'.
+2024-07-25 19:10:53.748506: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:10:53.748583: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:10:53.748660: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:10:53.759793: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:22:06.212279: Se actualizó la ópera 'Gala Joven: Adriana Lecouvreur' con fecha '20 Sep, 24'.
+2024-07-25 19:22:06.212441: Se actualizó la ópera 'Gala Joven: Adriana Lecouvreur' con fecha '20 Sep, 24'.
+2024-07-25 19:22:06.212540: Se actualizó la ópera 'Gala Joven: Adriana Lecouvreur' con fecha '20 Sep, 24'.
+2024-07-25 19:22:06.212622: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:22:06.212701: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:22:06.212777: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:22:06.212848: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:22:06.212918: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:22:06.212985: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:22:06.213052: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:22:06.213120: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:22:06.213189: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:22:06.213256: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:22:06.213322: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:22:06.213388: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:22:06.213455: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:22:06.213525: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:22:06.213593: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:22:06.213661: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:22:06.213727: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:22:06.213793: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:22:06.231604: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:23:47.689734: No se encontraron cambios en los datos de las óperas.
+2024-07-25 19:23:47.705145: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:30:11.888651: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 19:30:11.916609: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:38:28.780039: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780189: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780308: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780401: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780492: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780591: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780681: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780738: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780816: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780875: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.780958: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.781034: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.781090: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.781164: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:38:28.781226: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:38:28.781302: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:38:28.781355: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:38:28.781425: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:38:28.781477: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.781563: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.781641: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.781746: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.781825: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.781910: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.782004: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.782076: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:38:28.782150: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782224: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782297: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782369: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782440: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782523: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782612: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782715: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782794: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782869: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.782943: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:38:28.783017: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:38:28.783089: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:38:28.783163: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783236: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783308: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783379: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783452: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783534: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783621: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783723: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783800: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783875: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.783947: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:38:28.784019: Se actualizó la ópera 'Idomeneo, re di Creta' con fecha '23 Ene, 25'.
+2024-07-25 19:38:28.784091: Se actualizó la ópera 'Idomeneo, re di Creta' con fecha '23 Ene, 25'.
+2024-07-25 19:38:28.784169: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.784409: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.784595: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.784815: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.784957: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.785062: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.785167: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:38:28.785252: Se actualizó la ópera 'La merope' con fecha '21 Feb, 25'.
+2024-07-25 19:38:28.785332: Se actualizó la ópera 'La merope' con fecha '21 Feb, 25'.
+2024-07-25 19:38:28.785411: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785490: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785567: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785643: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785719: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785795: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785869: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.785944: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.786019: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.786289: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.786420: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:38:28.786516: Se actualizó la ópera 'L'uomo femmina' con fecha '03 Abr, 25'.
+2024-07-25 19:38:28.786665: Se actualizó la ópera 'L'uomo femmina' con fecha '03 Abr, 25'.
+2024-07-25 19:38:28.786801: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.786902: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.786988: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787071: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787149: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787225: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787299: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787375: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787452: Se actualizó la ópera 'Jephtha' con fecha '01 Mayo, 25'.
+2024-07-25 19:38:28.787528: Se actualizó la ópera 'Jephtha' con fecha '01 Mayo, 25'.
+2024-07-25 19:38:28.787603: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787678: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787753: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787828: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787913: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.787991: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:38:28.788068: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:38:28.788144: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:38:28.788219: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:38:28.788314: Se actualizó la ópera 'Tamerlano' con fecha '16 Mayo, 25'.
+2024-07-25 19:38:28.788391: Se actualizó la ópera 'Tamerlano' con fecha '16 Mayo, 25'.
+2024-07-25 19:38:28.788468: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:38:28.788542: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:38:28.788617: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:38:28.788693: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:38:28.788768: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:38:28.788843: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.788918: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.788993: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789069: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789143: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789218: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789293: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789367: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789442: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789516: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789590: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789665: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789740: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789815: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789889: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.789965: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.790041: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.790116: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.790194: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:38:28.790267: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:38:28.790343: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:38:28.790416: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:38:28.820037: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:39:56.624406: No se encontraron cambios en los datos de las óperas.
+2024-07-25 19:39:56.647974: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:41:31.752002: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 19:41:31.769625: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:42:33.448284: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 19:42:33.465869: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 19:49:06.396049: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396210: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396312: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396404: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396503: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396597: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396681: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396775: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396854: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.396934: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.397014: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.397093: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.397171: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 19:49:06.397247: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 19:49:06.397325: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 19:49:06.397403: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397480: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397558: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397635: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397711: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397789: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397867: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 19:49:06.397945: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398023: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398098: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398177: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398262: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398345: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398424: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398501: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398577: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398653: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 19:49:06.398729: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 19:49:06.398806: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.398882: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.398968: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399045: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399122: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399198: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399274: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399350: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399426: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399503: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 19:49:06.399579: Se actualizó la ópera 'Idomeneo, re di Creta' con fecha '23 Ene, 25'.
+2024-07-25 19:49:06.399655: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.399731: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.399805: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.399882: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.399957: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.400033: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 19:49:06.400109: Se actualizó la ópera 'La merope' con fecha '21 Feb, 25'.
+2024-07-25 19:49:06.400185: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400260: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400336: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400412: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400486: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400567: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400640: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400715: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400790: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400865: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 19:49:06.400940: Se actualizó la ópera 'L'uomo femmina' con fecha '03 Abr, 25'.
+2024-07-25 19:49:06.401017: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401092: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401167: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401242: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401317: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401392: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401467: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401542: Se actualizó la ópera 'Jephtha' con fecha '01 Mayo, 25'.
+2024-07-25 19:49:06.401617: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401698: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401773: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401848: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401924: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 19:49:06.401999: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:49:06.402076: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 19:49:06.402152: Se actualizó la ópera 'Tamerlano' con fecha '16 Mayo, 25'.
+2024-07-25 19:49:06.402252: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:49:06.402329: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:49:06.402406: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:49:06.402485: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 19:49:06.402561: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.402635: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.402712: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.402787: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.402862: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.402937: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403012: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403087: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403162: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403237: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403313: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403390: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403465: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403540: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403615: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403690: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403765: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403848: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 19:49:06.403928: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:49:06.404004: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 19:49:06.426488: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 20:03:09.995011: Se actualizó la ópera 'Gala Joven: Adriana Lecouvreur' con fecha '20 Sep, 24'.
+2024-07-25 20:03:09.995848: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.996087: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.996222: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.996491: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.996714: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.996901: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997013: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997097: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997171: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997240: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997309: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997377: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997444: Se actualizó la ópera 'Adriana Lecouvreur' con fecha 'De 23 Sep, 24Al 11 Oct, 24'.
+2024-07-25 20:03:09.997512: Se actualizó la ópera 'David et Jonathas' con fecha '27 Sep, 24'.
+2024-07-25 20:03:09.997580: Se actualizó la ópera 'Súmate a la Semana de la Ópera del Teatro Real' con fecha '28 Sep, 24'.
+2024-07-25 20:03:09.997648: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.997716: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.997785: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.997851: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.997917: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.997982: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.998046: Se actualizó la ópera 'Theodora' con fecha 'De 11 Nov, 24Al 23 Nov, 24'.
+2024-07-25 20:03:09.998112: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998178: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998243: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998329: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998397: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998463: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998528: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998593: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998658: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998723: Se actualizó la ópera 'Maria Stuarda' con fecha 'De 14 Dic, 24Al 30 Dic, 24'.
+2024-07-25 20:03:09.998790: Se actualizó la ópera 'Alcina' con fecha '15 Dic, 24'.
+2024-07-25 20:03:09.998856: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.998920: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.998986: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999052: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999118: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999183: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999248: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999313: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999377: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999442: Se actualizó la ópera 'Eugenio Oneguin' con fecha 'De 22 Ene, 25Al 18 Feb, 25'.
+2024-07-25 20:03:09.999513: Se actualizó la ópera 'Idomeneo, re di Creta' con fecha '23 Ene, 25'.
+2024-07-25 20:03:09.999579: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999645: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999710: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999775: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999840: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999905: Se actualizó la ópera 'La vida breve / Tejas verdes' con fecha 'De 13 Feb, 25Al 22 Feb, 25'.
+2024-07-25 20:03:09.999971: Se actualizó la ópera 'La merope' con fecha '21 Feb, 25'.
+2024-07-25 20:03:10.000036: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000101: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000165: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000230: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000294: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000361: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000428: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000493: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000556: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000622: Se actualizó la ópera 'Mitridate, re di Ponto' con fecha 'De 23 Mar, 25Al 09 Abr, 25'.
+2024-07-25 20:03:10.000686: Se actualizó la ópera 'L'uomo femmina' con fecha '03 Abr, 25'.
+2024-07-25 20:03:10.000752: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.000816: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.000880: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.000944: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001008: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001072: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001136: Se actualizó la ópera 'El cuento del zar Saltán' con fecha 'De 30 Abr, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001200: Se actualizó la ópera 'Jephtha' con fecha '01 Mayo, 25'.
+2024-07-25 20:03:10.001265: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001329: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001393: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001457: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001521: Se actualizó la ópera 'Don Juan no existe' con fecha 'De 06 Mayo, 25Al 11 Mayo, 25'.
+2024-07-25 20:03:10.001585: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 20:03:10.001650: Se actualizó la ópera 'Attila' con fecha 'De 14 Mayo, 25Al 17 Mayo, 25'.
+2024-07-25 20:03:10.001714: Se actualizó la ópera 'Tamerlano' con fecha '16 Mayo, 25'.
+2024-07-25 20:03:10.001778: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 20:03:10.001847: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 20:03:10.001913: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 20:03:10.001977: Se actualizó la ópera 'Las indias galantes' con fecha 'De 28 Mayo, 25Al 01 Jun, 25'.
+2024-07-25 20:03:10.002041: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002104: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002168: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002233: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002297: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002362: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002426: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002489: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002554: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002619: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002684: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002748: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002812: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002877: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.002942: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.003006: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.003070: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.003135: Se actualizó la ópera 'La traviata' con fecha 'De 24 Jun, 25Al 23 Jul, 25'.
+2024-07-25 20:03:10.003199: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 20:03:10.003263: Se actualizó la ópera 'I lombardi alla prima crociata' con fecha 'De 06 Jul, 25Al 09 Jul, 25'.
+2024-07-25 20:03:10.025265: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 20:08:08.872984: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-07-25 20:08:08.891031: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-07-25 20:14:10.258335: No se encontraron cambios en los datos de las óperas.
+2024-07-25 20:14:10.279810: Datos de óperas guardados/actualizados en el archivo Excel.

@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:40 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/07/21 17:38:13 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/08/22 00:44:12 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,32 @@ int	nlornll(char *buffer, int use)
 	return (counter);
 }
 
-t_node	*create_new_nodes(char *buffer, int n_chars_buf)
+t_node	*create_new_nodes(char *buffer, int n_chars_buf, int n, int c)
 {
+	char	*ptr;
 	t_node	*new_node;
 
-	new_node = (t_node *)malloc(sizeof(t_node));
-	if (!new_node)
-		return (NULL);
-	new_node->next = NULL;
-	new_node->string_piece = malloc((n_chars_buf + 1) * sizeof(char));
-	if (!new_node->string_piece)
+	ptr = buffer;
+	if (n == 1)
 	{
-		free(new_node);
-		return (NULL);
+		new_node = malloc(sizeof(t_node));
+		if (!new_node)
+			return (NULL);
+		new_node->next = NULL;
+		new_node->string_piece = malloc((n_chars_buf + 1) * sizeof(char));
+		if (!new_node->string_piece)
+			return (NULL);
+		ft_strncpy(new_node->string_piece, buffer, n_chars_buf);
+		new_node->string_piece[n_chars_buf] = '\0';
+		return (new_node);
 	}
-	ft_strncpy(new_node->string_piece, buffer, n_chars_buf);
-	new_node->string_piece[n_chars_buf] = '\0';
-	return (new_node);
+	while (n_chars_buf > 0)
+	{
+		*ptr = c;
+		ptr++;
+		n_chars_buf--;
+	}
+	return (NULL);
 }
 
 char	*join_strings(t_node *current)
