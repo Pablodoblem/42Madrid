@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/08/22 18:10:25 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/14 20:43:30 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*handle_line(char **line)
 	char	*auxchain;
 	t_node	*new_node;
 
-	auxchain = malloc((nlornll(*line, 1) + 1) * sizeof(char));
+	auxchain = malloc((nlornll(*line, 1) + 1) * sizeof(char)); //revisar esto
 	if (!auxchain)
 		return (NULL);
 	ft_strncpy(auxchain, *line, nlornll(*line, 1));
@@ -31,8 +31,8 @@ char	*handle_line(char **line)
 	if (nlornll(*line, 1) == nlornll(*line, 2))
 	{
 		free(*line);
-		line = NULL;
-		return (NULL);
+		*line = NULL;
+		return (auxchain);
 	}
 	auxptr = *line;
 	auxptr += nlornll(*line, 1);
@@ -50,57 +50,25 @@ char	*handle_buffer(char *buffer, t_node *head, char **line)
 	char	*auxchain;
 	char	*auxptr;
 	t_node	*new_node;
+	int		num;
 
-	auxptr = buffer;
-	auxchain = join_strings(head);
-	free_all_nodes(head);
-	if (!buffer)
-	{
-		printf("BUFFER: %s\n", buffer);
-		return (NULL);
-	}
-	if (!auxptr)
-		printf("auxptr: %s\n", auxptr);
-	if (!auxchain)
-		printf("auxchain: %s\n", auxchain);
+	free (*line);
+	num = ((auxptr = buffer + nlornll(buffer, 1)), 1);
+	if (nlornll(buffer, 2) == 0)
+		num = 0;
 	if (nlornll(buffer, 1) != nlornll(buffer, 2)
-		|| buffer[nlornll(buffer, 2) - 1] == '\n')
+		|| buffer[nlornll(buffer, 2) - num] == '\n')
 	{
-		auxptr += nlornll(buffer, 1);
 		new_node = create_new_nodes(auxptr, nlornll(auxptr, 2), 1, 0);
 		if (!new_node)
-			return (NULL);
-		free(*line);
+			return (free(buffer), NULL);
 		*line = join_strings(new_node);
 		free_all_nodes(new_node);
 	}
-	else
-	{
-		auxchain[nlornll(auxchain, 2)] = '\n';
-		free(*line);
-		*line = NULL;
-	}
-	return (auxchain);
-}
-
-char	*handle_zero_read(char **line)
-{
-	char	*chain;
-
-	if (*line)
-	{
-		chain = malloc((nlornll(*line, 2) + 2) * sizeof(char));
-		if (!chain)
-			return (NULL);
-		chain[nlornll(*line, 2)] = '\n';
-		chain[nlornll(*line, 2) + 1] = '\0';
-		ft_strncpy(chain, *line, nlornll(*line, 2));
-		free(*line);
-		*line = NULL;
-		return (chain);
-	}
-	else
-		return (NULL);
+	auxchain = join_strings(head);
+	//auxchain[nlornll(auxchain, 2) - num] = '\n';
+	free_all_nodes(head);
+	return (free(buffer), auxchain);
 }
 
 void	manage_nodes(t_node **head, t_node **current, t_node *new_node)
@@ -115,6 +83,14 @@ void	manage_nodes(t_node **head, t_node **current, t_node *new_node)
 		(*current)->next = new_node;
 }
 
+void	manage_line(t_node **head, t_node **current, char **line)
+{
+	*head = create_new_nodes(*line, nlornll(*line, 2), 1, 0);
+	*current = *head;
+	free (*line);
+	*line = NULL;
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*line;
@@ -123,56 +99,45 @@ char	*get_next_line(int fd)
 	t_node		*head;
 	t_node		*current;
 
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, "", 0))
+		return (NULL);
 	head = ((current = NULL), NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (line && nlornll(line, 2) != nlornll(line, 1))
+		return (free(buffer), handle_line(&line));
 	if (line)
-	{
-		if (nlornll(line, 2) != nlornll(line, 1))
-		{
-			free(buffer);
-			return (handle_line(&line));
-		}
-		head = create_new_nodes(line, nlornll(line, 1), 1, 0);
-		current = head;
-	}
+		manage_line(&head, &current, &line);
 	while (1)
 	{
-		//printf("(MAIN) BUFFER: %s\n", buffer);
-		if (create_new_nodes(buffer, BUFFER_SIZE + 1, 2, 0)
-			|| read(fd, buffer, BUFFER_SIZE) == 0)
-		{
-			free(buffer);
-			return (free_all_nodes(head), handle_zero_read(&line));
-		}
+		create_new_nodes(buffer, BUFFER_SIZE + 1, 2, 0);
+		if (read(fd, buffer, BUFFER_SIZE) == 0 && !head)
+			return (free(buffer), NULL);
 		new_node = create_new_nodes(buffer, nlornll(buffer, 1), 1, 0);
 		manage_nodes(&head, &current, new_node);
 		if (nlornll(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
-		{
-			free(buffer);
 			return (handle_buffer(buffer, head, &line));
-		}
 		current = new_node;
 	}
 }
 
-// int	main(void)
-// {
-// 	int fd = open("text.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening file");
-// 		return 1;
-// 	}
-// 	char *line;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("\033[31mSTRING DESDE EL MAIN: \033[0m%s", line);
-// 		free(line);
-// 	}
+int	main(void)
+{
+	int fd = open("/home/pamarti2/francinette/tests/get_next_line/gnlTester/files/big_line_no_nl", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening file");
+		return 1;
+	}
+	char *line = NULL;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
 
-// 	close(fd);
-// 	return 0;
-// }
+	close(fd);
+	return 0;
+}
 
 // char	*get_next_line(int fd)
 // {

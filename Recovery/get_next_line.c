@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/08/22 18:10:25 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/04 23:31:47 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ char	*handle_line(char **line)
 	{
 		free(*line);
 		line = NULL;
-		return (NULL);
+		return (auxchain);
 	}
 	auxptr = *line;
 	auxptr += nlornll(*line, 1);
 	new_node = create_new_nodes(auxptr, nlornll(auxptr, 2), 1, 0);
 	if (!new_node)
+	{
+		//free(auxchain);
 		return (NULL);
+	}
 	free(*line);
 	*line = join_strings(new_node);
 	free_all_nodes(new_node);
@@ -50,36 +53,37 @@ char	*handle_buffer(char *buffer, t_node *head, char **line)
 	char	*auxchain;
 	char	*auxptr;
 	t_node	*new_node;
+	int		num;
 
+	num = 1;
 	auxptr = buffer;
+	printf("auxptr: %s\n", auxptr);
 	auxchain = join_strings(head);
 	free_all_nodes(head);
-	if (!buffer)
-	{
-		printf("BUFFER: %s\n", buffer);
-		return (NULL);
-	}
-	if (!auxptr)
-		printf("auxptr: %s\n", auxptr);
-	if (!auxchain)
-		printf("auxchain: %s\n", auxchain);
+	if (nlornll(buffer, 2) == 0)
+		num = 0;
 	if (nlornll(buffer, 1) != nlornll(buffer, 2)
-		|| buffer[nlornll(buffer, 2) - 1] == '\n')
+		|| buffer[nlornll(buffer, 2) - num] == '\n')
 	{
 		auxptr += nlornll(buffer, 1);
 		new_node = create_new_nodes(auxptr, nlornll(auxptr, 2), 1, 0);
 		if (!new_node)
+		{
+			free(auxchain);
+			free(buffer);
 			return (NULL);
-		free(*line);
+		}
+		free (*line);
 		*line = join_strings(new_node);
 		free_all_nodes(new_node);
 	}
 	else
 	{
-		auxchain[nlornll(auxchain, 2)] = '\n';
+		auxchain[nlornll(auxchain, 2) - num] = '\n';
 		free(*line);
 		*line = NULL;
 	}
+	free(buffer);
 	return (auxchain);
 }
 
@@ -128,51 +132,46 @@ char	*get_next_line(int fd)
 	if (line)
 	{
 		if (nlornll(line, 2) != nlornll(line, 1))
-		{
-			free(buffer);
-			return (handle_line(&line));
-		}
-		head = create_new_nodes(line, nlornll(line, 1), 1, 0);
+			return (free(buffer), handle_line(&line));
+		head = create_new_nodes(line, nlornll(line, 2), 1, 0);
 		current = head;
+		free (line);
+		line = NULL;
 	}
 	while (1)
 	{
-		//printf("(MAIN) BUFFER: %s\n", buffer);
-		if (create_new_nodes(buffer, BUFFER_SIZE + 1, 2, 0)
-			|| read(fd, buffer, BUFFER_SIZE) == 0)
+		create_new_nodes(buffer, BUFFER_SIZE + 1, 2, 0);
+		if (read(fd, buffer, BUFFER_SIZE) == 0 && !head)
+			return (free(buffer), NULL);
+		else
 		{
-			free(buffer);
-			return (free_all_nodes(head), handle_zero_read(&line));
+			new_node = create_new_nodes(buffer, nlornll(buffer, 1), 1, 0);
+			manage_nodes(&head, &current, new_node);
+			if (nlornll(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
+				return (handle_buffer(buffer, head, &line)); //aquí tenía lo de aux apuntando al return de hande_buffer
+			current = new_node;
 		}
-		new_node = create_new_nodes(buffer, nlornll(buffer, 1), 1, 0);
-		manage_nodes(&head, &current, new_node);
-		if (nlornll(buffer, 1) < BUFFER_SIZE || buffer[BUFFER_SIZE - 1] == '\n')
-		{
-			free(buffer);
-			return (handle_buffer(buffer, head, &line));
-		}
-		current = new_node;
 	}
 }
 
-// int	main(void)
-// {
-// 	int fd = open("text.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening file");
-// 		return 1;
-// 	}
-// 	char *line;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("\033[31mSTRING DESDE EL MAIN: \033[0m%s", line);
-// 		free(line);
-// 	}
+int	main(void)
+{
+	int fd = open("text.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening file");
+		return 1;
+	}
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("\033[31mSTRING DESDE EL MAIN: \033[0m%s", line);
+		free(line);
+	}
 
-// 	close(fd);
-// 	return 0;
-// }
+	close(fd);
+	return 0;
+}
 
 // char	*get_next_line(int fd)
 // {
