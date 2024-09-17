@@ -6,16 +6,14 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:55:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/14 20:43:30 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:58:34 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <string.h>
 
 char	*handle_line(char **line)
 {
@@ -23,7 +21,7 @@ char	*handle_line(char **line)
 	char	*auxchain;
 	t_node	*new_node;
 
-	auxchain = malloc((nlornll(*line, 1) + 1) * sizeof(char)); //revisar esto
+	auxchain = malloc((nlornll(*line, 1) + 1) * sizeof(char));
 	if (!auxchain)
 		return (NULL);
 	ft_strncpy(auxchain, *line, nlornll(*line, 1));
@@ -66,7 +64,6 @@ char	*handle_buffer(char *buffer, t_node *head, char **line)
 		free_all_nodes(new_node);
 	}
 	auxchain = join_strings(head);
-	//auxchain[nlornll(auxchain, 2) - num] = '\n';
 	free_all_nodes(head);
 	return (free(buffer), auxchain);
 }
@@ -99,10 +96,10 @@ char	*get_next_line(int fd)
 	t_node		*head;
 	t_node		*current;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, "", 0))
-		return (NULL);
-	head = ((current = NULL), NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer || fd < 0 || BUFFER_SIZE < 1)
+		return (free(buffer), NULL);
+	head = ((current = NULL), NULL);
 	if (line && nlornll(line, 2) != nlornll(line, 1))
 		return (free(buffer), handle_line(&line));
 	if (line)
@@ -110,7 +107,7 @@ char	*get_next_line(int fd)
 	while (1)
 	{
 		create_new_nodes(buffer, BUFFER_SIZE + 1, 2, 0);
-		if (read(fd, buffer, BUFFER_SIZE) == 0 && !head)
+		if (read(fd, buffer, BUFFER_SIZE) <= 0 && !head)
 			return (free(buffer), NULL);
 		new_node = create_new_nodes(buffer, nlornll(buffer, 1), 1, 0);
 		manage_nodes(&head, &current, new_node);
@@ -120,9 +117,12 @@ char	*get_next_line(int fd)
 	}
 }
 
+#include <string.h>
+#include <stdio.h>
+
 int	main(void)
 {
-	int fd = open("/home/pamarti2/francinette/tests/get_next_line/gnlTester/files/big_line_no_nl", O_RDONLY);
+	int fd = open("multiple_line_with_nl.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error opening file");
@@ -134,10 +134,19 @@ int	main(void)
 		printf("%s", line);
 		free(line);
 	}
-
+	printf("%s", line);
 	close(fd);
 	return 0;
 }
+
+//OBJETIVOS: 
+
+// 1. Eliminar current de la función para poder proteger el 
+//     malloc de buffer ABORTEDandFIXED X
+// 2. Comprobar dentro del subjet si la función cumple la norma con la última 
+//         línea cuando se trata de un salto de línea
+// 3. Realizar comprobaciones de corrector 42Eval
+// 4. Revisar cuestiones de norminette y formato
 
 // char	*get_next_line(int fd)
 // {

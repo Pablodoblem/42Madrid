@@ -6,12 +6,11 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:40 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/14 20:03:11 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:00:28 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -101,46 +100,31 @@ t_node	*create_new_nodes(char *buffer, int n_chars_buf, int n, int c)
 	return (new_node);
 }
 
-char	*join_strings(t_node *current)
+char	*join_strings(t_node *head)
 {
 	char		*chain;
 	size_t		total_size;
 	char		*position;
-	t_node		*origin_current;
+	t_node		*origin_head;
 
-	total_size = ((origin_current = current), 0);
-	while (current)
+	total_size = ((origin_head = head), 0);
+	while (head)
 	{
-		total_size += nlornll(current->string_piece, 2);
-		current = current->next;
+		total_size += nlornll(head->string_piece, 2);
+		head = head->next;
 	}
 	total_size += 2;
 	chain = (char *)malloc(total_size * sizeof(char));
 	if (!chain)
 		return (NULL);
 	position = chain;
-	while (origin_current)
+	while (origin_head)
 	{
-		ft_strncpy(position, origin_current->string_piece,
-			nlornll(origin_current->string_piece, 2));
-		position += nlornll(origin_current->string_piece, 2);
-		origin_current = origin_current->next;
+		ft_strncpy(position, origin_head->string_piece,
+			nlornll(origin_head->string_piece, 2));
+		position += nlornll(origin_head->string_piece, 2);
+		origin_head = origin_head->next;
 	}
 	*position = '\0';
 	return (chain);
 }
-
-/*
-
-1. Recovertir función nlornll para refactorizar código en gnl
-
-//funcion1()
-//funcion2()
-//
-//y = 30;
-//z = 40;
-//int x = ((z = 40),(y = 30), funcion1(1), funcion2(), 0)
-
-	head = ((current = NULL), NULL);
-	;
-*/
