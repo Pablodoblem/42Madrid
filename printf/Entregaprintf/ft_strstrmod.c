@@ -6,19 +6,19 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:23:44 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/27 01:34:02 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:47:34 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
-#include "printf.h"
+#include "ft_printf.h"
 
-int	cspdiuxX_checker(char haystack)
+int	cspdiuxx_checker(char haystack)
 {
 	char	*needle;
 
-	needle = "cspdiuxX";
+	needle = "cspdiuxX%";
 	while (*needle != '\0')
 	{
 		if (haystack == *needle)
@@ -35,18 +35,9 @@ int	ft_strstrmod(const char *haystack, const char *needle)
 	i = 0;
 	while (haystack[i] != '\0')
 	{
-		if (haystack[i] == needle[0] && cspdiuxX_checker(haystack[i + 1]) == 1)
+		if (haystack[i] == needle[0] && cspdiuxx_checker(haystack[i + 1]) == 1)
 			return (i);
 		i++;
 	}
 	return (-1);
 }
-
-// int	main(void)
-// {
-// 	const char	str1[] = "Hola mi nombre es";
-// 	const char	str2[] = "%";
-
-// 	printf("%d\n", ft_strstrmod(str1, str2));
-// 	return (0);
-// }

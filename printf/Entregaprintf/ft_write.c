@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writehexaptr.c                                  :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 00:33:32 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/14 02:28:54 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/13 23:49:55 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/09/29 19:41:37 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
+#include "ft_printf.h"
 
-void	ft_writehexaptr(const void *ptr)
+int	ft_write(const char *str)
 {
-	uintptr_t	direccion;
-	char		*buffer;
-	char		*p;
-	static const char	hex[] = "0123456789abcdef";
-	int			i;
+	int	counter;
 
-	i = sizeof(void*) * 2 - 1;
-	buffer = malloc((sizeof(void*) * 2) + 3);
-	p = buffer;
-	*p++ = '0';
-	*p++ = 'x';
-	direccion = (uintptr_t)ptr;
-	while (i >= 0)
+	if (!str)
 	{
-		*p++ = hex[(direccion >> (i * 4)) & 0xf];
-		i--;
+		ft_write("(null)");
+		counter = 6;
+		return (counter);
 	}
-	*p = '\n';
-	write(STDOUT_FILENO, buffer, p - buffer);
-}	
+	counter = 0;
+	while (*str != '\0')
+	{
+		write (1, str, 1);
+		str++;
+		counter++;
+	}
+	return (counter);
+}

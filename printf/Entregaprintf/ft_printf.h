@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:44:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/28 18:42:55 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:46:43 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 # include <stddef.h>
 # include <stdlib.h>
 
-int		ft_printf(char const *, ...);
-void	ft_write(const char *str);
-void	ft_writehexaptr(const void *ptr);
-char	*ft_strchrmod(const char *string, int c);
-int		ft_strlen(const char *str);
-char	*ft_itoa(int n);
-void    print_hexadecimal(void *ptr);
-void    *decimal_a_binario(int numero);
-void	*hexalower(int num);
-void	*hexaupper(int num);
+int				ft_printf(char const *typo, ...);
+int				ft_write(const char *str);
+int				ft_strlen(const char *str);
+char			*ft_itoa(int n);
+char			*ft_itoalarger(unsigned long n);
+int				print_hexadecimal(void *ptr);
+size_t			dec_to_bnry(unsigned int num);
+int				hexa(int num, int flag);
+unsigned long	count_digitslong(unsigned long n);
+int				print_integer(int num);
 #endif

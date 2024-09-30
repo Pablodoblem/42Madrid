@@ -6,19 +6,16 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 18:07:20 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/28 01:22:07 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:48:57 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
-#include "printf.h"
+#include "ft_printf.h"
 
-int	exponencias(int str_len, int base)
+int	powers(int str_len, int base)
 {
-	// int	x;
-
-	// x = 1;
 	while (str_len > 0)
 	{
 		base *= base;
@@ -40,18 +37,9 @@ int	octal(int n)
 	str_len = ft_strlen(str) - 2;
 	while (str[i] != '\0' && str_len > 0 && i <= str_len + 1)
 	{
-		final_num += str[i] * exponencias(str_len, 8);
+		final_num += str[i] * powers(str_len, 8);
 		i++;
 		str_len--;
 	}
 	return (final_num);
-}
-
-int	main(void)
-{
-	int	n;
-
-	n = 0x345;
-	printf("%d", octal(n));
-	return (0);
 }

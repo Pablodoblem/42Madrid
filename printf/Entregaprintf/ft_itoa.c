@@ -6,51 +6,51 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:53:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/27 13:33:04 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:48:50 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "printf.h"
+#include "ft_printf.h"
 
-int	contar_cifras(int n)
+int	count_digits(int n)
 {
-	int	contador;
+	int	counter;
 	int	num;
 
-	contador = 0;
+	counter = 0;
 	num = n;
 	while (num != 0)
 	{
-		contador++;
+		counter++;
 		num /= 10;
 	}
-	return (contador);
+	return (counter);
 }
 
-char	*contar_cifras_y_crearstring(int n)
+char	*count_n_create_str(int n)
 {
-	int		contador;
+	int		counter;
 	char	*str;
 
-	contador = contar_cifras(n);
+	counter = count_digits(n);
 	if (n < 0)
 	{
-		contador++;
-		str = malloc((contador + 1) * sizeof(char));
+		counter++;
+		str = malloc((counter + 1) * sizeof(char));
 		if (str == NULL)
 			return (NULL);
 		str[0] = '-';
 	}
 	else
 	{
-		str = malloc((contador + 1) * sizeof(char));
+		str = malloc((counter + 1) * sizeof(char));
 		if (str == NULL)
 			return (NULL);
 	}
-	str[contador] = '\0';
+	str[counter] = '\0';
 	return (str);
 }
 
@@ -93,10 +93,8 @@ char	*ft_itoa(int n)
 		return (str_limit_exception);
 	if (n == 0)
 		return (str_zero);
-	str = contar_cifras_y_crearstring(n);
-	if (str == NULL)
-		return (NULL);
-	str_len = contar_cifras(n);
+	str = count_n_create_str(n);
+	str_len = count_digits(n);
 	i = str_len;
 	if (n >= 0)
 		i = str_len - 1;
@@ -105,10 +103,3 @@ char	*ft_itoa(int n)
 	str = write_with_conditions(str, i, str_len, n);
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	int	n = -2147483648;
-// 	printf("%s\n", ft_itoa(n));
-// 	return (0);
-// } 

@@ -6,9 +6,11 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:56:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/10 14:07:29 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:48:39 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_strlen(const char *str)
 {
@@ -24,11 +26,3 @@ int	ft_strlen(const char *str)
 	}
 	return (contador);
 }
-
-/*int	main(void)
-{
-	char	chain[50] = "Hola que tal estás.";
-
-	printf("%d", ft_strlen(chain));
-	return (0);
-}*/

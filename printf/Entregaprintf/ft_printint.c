@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_printint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 23:49:55 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/14 00:04:24 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/09/27 01:45:33 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/09/29 17:41:41 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "ft_printf.h"
 
-void	ft_write(const char *str)
+int	print_integer(int num)
 {
-    while (*str != '\0')
-	{
-        write (1, str, 1);
-		str++;
-	}
-}	
+	char	*str;
+	int		counter;
+
+	str = ft_itoa(num);
+	ft_write(str);
+	counter = ft_strlen(str);
+	free(str);
+	return (counter);
+}

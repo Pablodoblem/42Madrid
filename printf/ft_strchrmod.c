@@ -6,13 +6,13 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 00:07:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/25 00:13:10 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:33:57 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
-#include "libft.h"
+#include "printf.h"
 
 char	*ft_strchr(const char *string, int c)
 {
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *string, int c)
 
 	i = 0;
 	non_cnst_string = (char *)string;
-	if (c == '\0')
+	if (c == '\0') // seguramente se puede meter esta condicion dentro del while
 	{
 		non_cnst_string += ft_strlen(non_cnst_string);
 		return (non_cnst_string);
