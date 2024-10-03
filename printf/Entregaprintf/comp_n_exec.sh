@@ -29,7 +29,7 @@ make clean
 
 # Compilar con gcc
 echo -e "${verde}Compilando con gcc -Wall -Wextra -Werror...${reset}"
-gcc -Wall -Wextra -Werror -g libftprintf.a -o a.out
+gcc -Wall -Wextra -Werror -g ft_printf.a -o a.out
 
 # Comprobar si la compilación fue exitosa
 if [ $? -eq 0 ]; then

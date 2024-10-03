@@ -1,42 +1,45 @@
-# Nombre de la librería
-NAME = libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/03 13:18:00 by pamarti2          #+#    #+#              #
+#    Updated: 2024/10/03 13:24:39 by pamarti2         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Compilador
-CC = cc
+NAME = ft_printf.a
 
-# Opciones de compilación
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc
+CCFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
 
-# Directorio de archivos fuente
-SRCDIR = .
 
-# Obtener automáticamente todos los archivos .c en el directorio
-SRCS = $(wildcard $(SRCDIR)/*.c)
+MY_SOURCES =ft_%i.c\
+						ft_itoa.c\
+						ft_itoalarger.c\
+						ft_printf.c\
+						ft_printint.c\
+						ft_strlen.c\
+						ft_unsigned_num.c\
+						ft_write.c\
+						ft_hexa.c\
+						ft_print_hexadecimal.c
 
-# Objetos generados a partir de los archivos fuente
-OBJS = $(SRCS:.c=.o)
+OBJS = $(MY_SOURCES:.c=.o)
 
-# Regla por defecto
+$(NAME) : $(OBJS)
+	@ar crs $(NAME) $(OBJS)
+
 all: $(NAME)
 
-# Regla para construir la librería estática
-$(NAME): $(OBJS)
-	ar rcs $@ $^
-
-# Regla para compilar los archivos fuente en objetos
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Regla para limpiar archivos generados
+%.o : %.c
+	@$(CC) $(CCFLAGS) -c -o $@ $<
 clean:
-	rm -f $(OBJS)
-
-# Regla para eliminar todos los archivos generados
+	@$(RM) $(OBJS)
 fclean: clean
-	rm -f $(NAME)
-
-# Regla para reconstruir el proyecto desde cero
+	@rm -f $(NAME)
 re: fclean all
-
-# Phony targets (objetivos ficticios para evitar conflictos con archivos reales)
 .PHONY: all clean fclean re

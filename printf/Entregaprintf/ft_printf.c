@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:53:30 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 01:51:51 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:27:01 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	launch_function(va_list args, int *counter, char flag)
 	else if (flag == 'i')
 		*counter += print_integer(va_arg(args, int));
 	else if (flag == 'u')
-		*counter += dec_to_bnry(va_arg(args, int));
+		*counter += unsigned_num(va_arg(args, int));
 	else if (flag == 'x')
 		*counter += hexa(va_arg(args, int), 1);
 	else if (flag == 'X')

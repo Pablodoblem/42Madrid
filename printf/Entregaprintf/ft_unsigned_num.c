@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printint.c                                      :+:      :+:    :+:   */
+/*   ft_dec_to_bnry.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 01:45:33 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:15:55 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/27 18:56:52 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/03 13:13:00 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
-int	print_integer(int num)
+size_t	unsigned_num(unsigned int num)
 {
+	size_t	counter;
 	char	*str;
-	int		counter;
 
-	if (num == 0 || num == -2147483648)
+	counter = 0;
+	if (num == 0)
 	{
-		counter = ft_write(ft_itoa(num));
+		counter = ft_write(ft_itoalarger(num));
 		return (counter);
 	}
-	str = ft_itoa(num);
+	str = ft_itoalarger(num);
 	ft_write(str);
-	counter = ft_strlen(str);
-	free(str);
+	free (str);
+	counter = (count_digitslong(num));
 	return (counter);
 }

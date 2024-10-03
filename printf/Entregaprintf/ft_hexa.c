@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:42:47 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 01:55:46 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:16:28 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ unsigned long	condition(int num, int i, int j)
 	result = bnry_to_dec(bininv, 32);
 	free(bininv);
 	free(binary);
-	//free(placed_binary);
+	free(placed_binary);
 	return (result);
 }
 
@@ -162,11 +162,16 @@ int	hexa(int num, int flag)
 	i = ((rest = 0), num);
 	if (num == 0)
 		return (ft_write("0"), 1);
-	while (i != 0)
+	if (num > 0)
 	{
-		i /= 16;
-		rest++;
+		while (i != 0)
+		{
+			i /= 16;
+			rest++;
+		}
 	}
+	else
+		rest = 8;
 	hex_str = malloc((rest + 1) * sizeof(char));
 	if (!hex_str)
 		return (0);
@@ -174,7 +179,11 @@ int	hexa(int num, int flag)
 	if (flag == 1)
 		ft_write((calculate_hexa_str(num, rest, 1, hex_str))); //revisar
 	else if (flag == 2)
-		ft_write(ft_toupper((calculate_hexa_str(num, rest, 1, hex_str))));
+	{
+		char *aux = ft_toupper((calculate_hexa_str(num, rest, 1, hex_str)));
+		ft_write(aux);
+		free(aux);
+	}
 	counter = ft_strlen(hex_str);
 	return (free(hex_str), counter);
 }

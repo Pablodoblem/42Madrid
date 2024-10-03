@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:44:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/29 20:46:43 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:12:57 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				ft_strlen(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoalarger(unsigned long n);
 int				print_hexadecimal(void *ptr);
-size_t			dec_to_bnry(unsigned int num);
+size_t			unsigned_num(unsigned int num);
 int				hexa(int num, int flag);
 unsigned long	count_digitslong(unsigned long n);
 int				print_integer(int num);

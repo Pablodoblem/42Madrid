@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:53:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/29 20:45:12 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:15:58 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ unsigned long	count_digitslong(unsigned long n)
 		counter++;
 		num /= 10;
 	}
-	//printf("VALOR NUM: %ld\n", n);
-	//printf("counter DESDE ITOA: %ld\n", counter);
 	return (counter);
 }
 
