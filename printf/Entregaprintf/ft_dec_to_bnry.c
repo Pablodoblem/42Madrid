@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 18:56:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/29 20:51:18 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 01:06:20 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,44 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-int	bnry_to_dec(int *binary, int length)
-{
-	unsigned long	result;
-	unsigned long	power;
-	int				i;
-	char			*str;
+// int	bnry_to_dec(int *binary, int length)
+// {
+// 	unsigned long	result;
+// 	unsigned long	power;
+// 	int				i;
+// 	char			*str;
 
-	i = length - 1;
-	result = ((power = 1), 0);
-	while (i >= 0)
-	{
-		if (binary[i] == 1)
-			result += power;
-		power *= 2;
-		i--;
-	}
-	str = ft_itoalarger(result);
-	ft_write(str);
-	return (free (str), count_digitslong(result));
-}
+// 	i = length - 1;
+// 	result = ((power = 1), 0);
+// 	while (i >= 0)
+// 	{
+// 		if (binary[i] == 1)
+// 			result += power;
+// 		power *= 2;
+// 		i--;
+// 	}
+// 	str = ft_itoalarger(result);
+// 	ft_write(str);
+// 	return (free (str), count_digitslong(result));
+// }
 
-int	*inversion(int *binary)
-{
-	int	*bininv;
-	int	i;
+// int	*inversion(int *binary)
+// {
+// 	int	*bininv;
+// 	int	i;
 
-	i = 0;
-	bininv = malloc(32 * sizeof(int));
-	while (i < 32)
-	{
-		if (binary[i] == 0)
-			bininv[i] = 1;
-		else
-			bininv[i] = 0;
-		i++;
-	}
-	return (bininv);
-}
+// 	i = 0;
+// 	bininv = malloc(32 * sizeof(int));
+// 	while (i < 32)
+// 	{
+// 		if (binary[i] == 0)
+// 			bininv[i] = 1;
+// 		else
+// 			bininv[i] = 0;
+// 		i++;
+// 	}
+// 	return (bininv);
+// }
 
 // int	condition(unsigned int num, int counter, int i, int j)
 // {
@@ -93,9 +93,9 @@ size_t	dec_to_bnry(unsigned int num)
 	// 	counter = condition(num, counter, i, j);
 	// else
 	// {
-		//counter = ft_write(ft_itoalarger(num));
+		ft_write(ft_itoalarger(num));
 		//printf("\nCOUNTER DESDE DEC2BNRY: %d\n", counter);
-		counter = (count_digitslong(num) - 1);
+		counter = (count_digitslong(num));
 	//}
 	return (counter);
 }
