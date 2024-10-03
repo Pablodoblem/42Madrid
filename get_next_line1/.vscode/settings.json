@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "unistd.h": "c",
-        "fcntl.h": "c",
-        "stdarg.h": "c",
-        "limits.h": "c"
-    }
-}
