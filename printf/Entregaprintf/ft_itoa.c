@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:53:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:30:44 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:34:16 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char	*ft_itoa(int n)
 	char	*str_limit_exception;
 	char	*str_zero;
 	int		i;
-	char	*straux;
 
 	str_limit_exception = "-2147483648";
 	str_zero = "0";
@@ -101,7 +100,6 @@ char	*ft_itoa(int n)
 		i = str_len - 1;
 	else
 		n *= -1;
-	straux = write_with_conditions(str, i, str_len, n);
-	//free (str);
-	return (straux);
+	str_zero = write_with_conditions(str, i, str_len, n);
+	return (str_zero);
 }

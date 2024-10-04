@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hexalower.c                                        :+:      :+:    :+:   */
+/*   ft_hexa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:42:47 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:16:28 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:42:56 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 char	*ft_toupper(char *str)
 {
-    char    *auxstr;
-    int        i;
+	char	*auxstr;
+	int		i;
 
-    i = 0;
-    auxstr = malloc((ft_strlen(str) + 1) * sizeof(char));
-    while (str[i])
-    {
-      if (str[i] >= 97 && str[i] <= 120)
-          auxstr[i] = str[i] - 32;
-      else
-          auxstr[i] = str[i];
-      i++;
-    }
-    auxstr[i] = '\0';
-    return (auxstr);
+	i = 0;
+	auxstr = malloc((ft_strlen(str) + 1) * sizeof(char));
+	while (str[i])
+	{
+		if (str[i] >= 97 && str[i] <= 120)
+			auxstr[i] = str[i] - 32;
+		else
+			auxstr[i] = str[i];
+		i++;
+	}
+	auxstr[i] = '\0';
+	return (auxstr);
 }
 
 unsigned long	bnry_to_dec(int *binary, int length)
@@ -39,7 +39,6 @@ unsigned long	bnry_to_dec(int *binary, int length)
 	unsigned long	result;
 	unsigned long	power;
 	int				i;
-	//char			*str;
 
 	i = length - 1;
 	result = ((power = 1), 0);
@@ -73,10 +72,10 @@ int	*inversion(int *binary)
 
 unsigned long	condition(int num, int i, int j)
 {
-	int		*binary;
-	int		*bininv;
-	int		*placed_binary;
-	int		rest;
+	int					*binary;
+	int					*bininv;
+	int					*placed_binary;
+	int					rest;
 	unsigned long		result;
 
 	binary = calloc(32, sizeof(int));
@@ -123,11 +122,11 @@ char	*reverse_stringlower(char *str)
 	return (str);
 }
 
-char	*calculate_hexa_str(int num, int rest, int flag, char *hex_str)
+char	*calculate_hexa_str(int num, int rest, char *hex_str)
 {
-	char	*hex_digits;
-	int		i;
-	int		j;
+	char				*hex_digits;
+	int					i;
+	int					j;
 	unsigned long		realnum;
 
 	i = 0;
@@ -135,10 +134,7 @@ char	*calculate_hexa_str(int num, int rest, int flag, char *hex_str)
 	realnum = num;
 	if (num < 0)
 		realnum = condition(num, i, j);
-	if (flag == 1)
-		hex_digits = "0123456789ABCDEF";
-	else if (flag == 2)
-		hex_digits = "0123456789abcdef";
+	hex_digits = "0123456789ABCDEF";
 	while (realnum != 0)
 	{
 		rest = realnum % 16;
@@ -158,6 +154,7 @@ int	hexa(int num, int flag)
 	int		rest;
 	char	*hex_str;
 	int		counter;
+	char	*aux;
 
 	i = ((rest = 0), num);
 	if (num == 0)
@@ -177,14 +174,13 @@ int	hexa(int num, int flag)
 		return (0);
 	hex_str[rest] = '\0';
 	if (flag == 1)
-		ft_write((calculate_hexa_str(num, rest, 1, hex_str))); //revisar
+		ft_write((calculate_hexa_str(num, rest, hex_str)));
 	else if (flag == 2)
 	{
-		char *aux = ft_toupper((calculate_hexa_str(num, rest, 1, hex_str)));
+		aux = ft_toupper((calculate_hexa_str(num, rest, hex_str)));
 		ft_write(aux);
 		free(aux);
 	}
 	counter = ft_strlen(hex_str);
 	return (free(hex_str), counter);
 }
-
