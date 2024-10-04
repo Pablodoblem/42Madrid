@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printint.c                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 01:45:33 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:15:55 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/10/04 18:26:54 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/04 19:24:04 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "ft_printf.h"
 
-int	print_integer(int num)
+void	*ft_calloc(size_t n, size_t size_of_element)
 {
-	char	*str;
-	int		counter;
+	int	*arr;
+	int	i;
 
-	if (num == 0 || num == -2147483648)
+	i = 0;
+	arr = malloc(n * size_of_element);
+	if (arr == NULL)
 	{
-		counter = ft_write(ft_itoa(num));
-		return (counter);
+		free(arr);
+		return (NULL);
 	}
-	str = ft_itoa(num);
-	ft_write(str);
-	counter = ft_strlen(str);
-	free(str);
-	return (counter);
+	while (n > 0)
+	{
+		arr[i] = 0;
+		n--;
+		i++;
+	}
+	return (arr);
 }

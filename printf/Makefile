@@ -6,11 +6,11 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 13:18:00 by pamarti2          #+#    #+#              #
-#    Updated: 2024/10/03 13:24:39 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/10/04 18:31:35 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
@@ -26,6 +26,8 @@ MY_SOURCES =ft_%i.c\
 						ft_unsigned_num.c\
 						ft_write.c\
 						ft_hexa.c\
+						some_utils.c\
+						ft_calloc.c\
 						ft_print_hexadecimal.c
 
 OBJS = $(MY_SOURCES:.c=.o)

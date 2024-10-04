@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_bnry.c                                   :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 18:56:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:13:00 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/13 23:49:55 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/04 18:13:58 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "ft_printf.h"
 
-size_t	unsigned_num(unsigned int num)
+int	ft_write(const char *str)
 {
-	size_t	counter;
-	char	*str;
+	int	counter;
 
-	counter = 0;
-	if (num == 0)
+	if (!str)
 	{
-		counter = ft_write(ft_itoalarger(num));
+		ft_write("(null)");
+		counter = 6;
 		return (counter);
 	}
-	str = ft_itoalarger(num);
-	ft_write(str);
-	free (str);
-	counter = (count_digitslong(num));
+	counter = 0;
+	while (*str != '\0')
+	{
+		write (1, str, 1);
+		str++;
+		counter++;
+	}
 	return (counter);
 }

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_unsigned_num.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 23:49:55 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/29 19:41:37 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/27 18:56:52 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/04 18:13:51 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "ft_printf.h"
 
-int	ft_write(const char *str)
+size_t	unsigned_num(unsigned int num)
 {
-	int	counter;
+	size_t	counter;
+	char	*str;
 
-	if (!str)
+	counter = 0;
+	if (num == 0)
 	{
-		ft_write("(null)");
-		counter = 6;
+		counter = ft_write(ft_itoalarger(num));
 		return (counter);
 	}
-	counter = 0;
-	while (*str != '\0')
-	{
-		write (1, str, 1);
-		str++;
-		counter++;
-	}
+	str = ft_itoalarger(num);
+	ft_write(str);
+	free (str);
+	counter = (count_digitslong(num));
 	return (counter);
 }

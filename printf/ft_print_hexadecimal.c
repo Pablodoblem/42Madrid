@@ -1,17 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hexadecimal.c                                :+:      :+:    :+:   */
+/*   ft_print_hexadecimal.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:18:27 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/09/29 19:45:30 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:14:29 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdint.h>
 #include "ft_printf.h"
 
 void	write_char(char c)

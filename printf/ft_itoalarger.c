@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoalarger.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:53:29 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:34:16 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:14:28 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "ft_printf.h"
 
-int	count_digits(int n)
+unsigned long	count_digitslong(unsigned long n)
 {
-	int	counter;
-	int	num;
+	unsigned long	counter;
+	unsigned long	num;
 
 	counter = 0;
 	num = n;
+	if (num == 0)
+		return (counter = 1, counter);
 	while (num != 0)
 	{
 		counter++;
@@ -30,38 +29,28 @@ int	count_digits(int n)
 	return (counter);
 }
 
-char	*count_n_create_str(int n)
+char	*count_n_create_strr(unsigned long n)
 {
-	int		counter;
-	char	*str;
+	unsigned long	counter;
+	char			*str;
 
-	counter = count_digits(n);
-	if (n < 0)
-	{
-		counter++;
-		str = malloc((counter + 1) * sizeof(char));
-		if (str == NULL)
-			return (NULL);
-		str[0] = '-';
-	}
-	else
-	{
-		str = malloc((counter + 1) * sizeof(char));
-		if (str == NULL)
-			return (NULL);
-	}
+	counter = count_digitslong(n);
+	str = malloc((counter + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
 	str[counter] = '\0';
 	return (str);
 }
 
-char	*write_with_conditions(char *str, int i, int str_len, int number)
+char	*write_with_conditionss(char *str, unsigned long i,
+	unsigned long str_len, unsigned long number)
 {
-	int	z;
-	int	x;
+	unsigned long	z;
+	unsigned long	x;
 
 	z = 10;
 	x = 1;
-	while (str_len > 0 && i >= 0)
+	while (str_len > 0)
 	{
 		if (str_len == 1)
 		{
@@ -79,27 +68,21 @@ char	*write_with_conditions(char *str, int i, int str_len, int number)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoalarger(unsigned long n)
 {
-	char	*str;
-	int		str_len;
-	char	*str_limit_exception;
-	char	*str_zero;
-	int		i;
+	char			*str;
+	unsigned long	str_len;
+	char			*str_zero;
+	unsigned long	i;
 
-	str_limit_exception = "-2147483648";
 	str_zero = "0";
-	if (n == -2147483648)
-		return (str_limit_exception);
+	if (n > LONG_MAX)
+		return (NULL);
 	if (n == 0)
 		return (str_zero);
-	str = count_n_create_str(n);
-	str_len = count_digits(n);
-	i = str_len;
-	if (n >= 0)
-		i = str_len - 1;
-	else
-		n *= -1;
-	str_zero = write_with_conditions(str, i, str_len, n);
-	return (str_zero);
+	str = count_n_create_strr(n);
+	str_len = count_digitslong(n);
+	i = str_len - 1;
+	str = write_with_conditionss(str, i, str_len, n);
+	return (str);
 }

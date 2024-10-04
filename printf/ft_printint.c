@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_%i.c                                            :+:      :+:    :+:   */
+/*   ft_printint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 18:07:20 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/02 01:26:48 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/09/27 01:45:33 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/04 18:13:41 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "ft_printf.h"
 
-int	powers(int str_len, int base)
-{
-	while (str_len > 0)
-	{
-		base *= base;
-		str_len--;
-	}
-	return (base);
-}
-
-int	octal(int n)
+int	print_integer(int num)
 {
 	char	*str;
-	int		str_len;
-	int		i;
-	int		final_num;
+	int		counter;
 
-	final_num = n;
-	i = 1;
-	str = ft_itoa(n);
-	str_len = ft_strlen(str) - 2;
-	while (str[i] != '\0' && str_len > 0 && i <= str_len + 1)
+	if (num == 0 || num == -2147483648)
 	{
-		final_num += str[i] * powers(str_len, 8);
-		i++;
-		str_len--;
+		counter = ft_write(ft_itoa(num));
+		return (counter);
 	}
-	free (str);
-	return (final_num);
+	str = ft_itoa(num);
+	ft_write(str);
+	counter = ft_strlen(str);
+	free(str);
+	return (counter);
 }

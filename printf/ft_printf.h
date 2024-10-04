@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:44:52 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:12:57 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/04 19:23:54 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <stdio.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include "ft_printf.h"
+# include <stdint.h>
+# include <limits.h>
 
 int				ft_printf(char const *typo, ...);
 int				ft_write(const char *str);
@@ -27,4 +32,8 @@ size_t			unsigned_num(unsigned int num);
 int				hexa(int num, int flag);
 unsigned long	count_digitslong(unsigned long n);
 int				print_integer(int num);
+char			*ft_toupper(char *str);
+unsigned long	bnry_to_dec(int *binary, int length);
+int				*inversion(int *binary);
+void			*ft_calloc(size_t n, size_t size_of_element);
 #endif

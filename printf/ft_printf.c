@@ -5,108 +5,127 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 22:19:14 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/04/28 01:25:14 by pamarti2         ###   ########.fr       */
+/*   Created: 2024/04/27 11:53:30 by pamarti2          #+#    #+#             */
+/*   Updated: 2024/10/04 19:40:41 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "printf.h"
-#include <stdint.h>
+#include "ft_printf.h"
 
-int	typology_checker(char const *command)
+char	check_format(const char *typo)
 {
 	char	*data_type;
-	int		contador;
 
-	contador = 0;
-	data_type = "cspdiuxX";
-	if (command[0] == '%')
+	data_type = "cspdiuxX%";
+	while (*data_type != '\0')
 	{
-		while (command[0] == '%' && *data_type != '\0')
-		{
-			if (command[1] == *data_type)
-				return (contador);
-			data_type++;
-			contador++;
-		}
+		if (*typo == *data_type)
+			return (*data_type);
+		data_type++;
 	}
-	else
-		return (1);
 	return (0);
 }
-int ft_printf(char const *typo, ...)
-{
-	int			resultado_typology_checker;
-	const char	*str;
-	const void	*ptr;
-	char		c;
-	va_list		args;
 
-	resultado_typology_checker = typology_checker(typo);
-	switch(resultado_typology_checker)
+int	launch_function(va_list args, int *counter, char flag)
+{
+	if (flag == 'c')
 	{
-        case 0:
-            va_start(args, typo);
-            c = va_arg(args, char);
-            write(1, &c, 1);
-            va_end(args);
-            break;
-        case 1:
-            va_start(args, typo);
-            str = va_arg(args, const char *);
-            ft_write(str);
-            va_end(args);
-            break;
-        case 2:
-			va_start(args, typo);
-            ptr = va_arg(args, const void *);
-            ft_writehexaptr(ptr);
-            va_end(args);
-			
-            // Código para el caso cuando typology_checker devuelve 2
-            break;
-        case 3:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-		case 4:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-    	case 5:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-	    case 6:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-	    case 7:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-	    case 8:
-            // Código para el caso cuando typology_checker devuelve 3
-            break;
-        // Agregar más casos según sea necesario
-        default:
-            // Manejar el caso cuando typology_checker devuelve un valor inesperado
-            break;
-    }
-    
-    return (0);
+		*counter += 1;
+		write(1, ((char []){(char)va_arg(args, int)}), 1);
+	}
+	else if (flag == 's')
+		*counter += ft_write(va_arg(args, const char *));
+	else if (flag == 'p')
+		*counter += print_hexadecimal(va_arg(args, void *));
+	else if (flag == 'd')
+		*counter += print_integer(va_arg(args, int));
+	else if (flag == 'i')
+		*counter += print_integer(va_arg(args, int));
+	else if (flag == 'u')
+		*counter += unsigned_num(va_arg(args, int));
+	else if (flag == 'x')
+		*counter += hexa(va_arg(args, int), 1);
+	else if (flag == 'X')
+		*counter += hexa(va_arg(args, int), 2);
+	else if (flag == '%')
+	{
+		write(1, "%", 1);
+		*counter += 1;
+	}
+	return (*counter);
 }
 
-int main(void)
+int	check_percent(const char **typo, va_list args)
 {
-    char			*str = "String tipo char";
-    // int				arrnbr[] = {1, 2, 3, 4, 5};
-	// int				nbr = 345;
-	// unsigned int	un_nbr = 234;
-	// float			dec_nbr = 2.2;
-	const void			*void_ptr;
+	char	flag;
+	int		counter;
 
-	void_ptr = str;
+	counter = 0;
+	while (**typo == '%')
+	{
+		(*typo)++;
+		flag = check_format(*typo);
+		if (flag != 0)
+			launch_function(args, &counter, flag);
+		(*typo)++;
+	}
+	return (counter);
+}
 
-	ft_printf("%p\n", void_ptr);
-	printf("%p\n", void_ptr);
+int	ft_printf(char const *typo, ...)
+{
+	va_list	args;
+	int		counter;
+
+	va_start(args, typo);
+	counter = 0;
+	if (!typo)
+		return (0);
+	while (*typo != '\0')
+	{
+		counter += check_percent(&typo, args);
+		if (!*typo)
+			return (va_end(args), counter);
+		else
+			write (1, typo, 1);
+		typo++;
+		counter++;
+	}
+	va_end(args);
+	return (counter);
+}
+
+#include <stdio.h>
+#include <limits.h>
+
+int	main(void)
+{
+	printf("O: %d\n", printf(" %p ", "Hola"));
+	printf("C: %d\n", ft_printf(" %p ", "Hola"));
 	return (0);
 }
+
+// int main(void)
+// {
+// 	char *s2 = "Mussum Ipsum, cacilds vidis litro abertis. ...";
+// 	printf("O: %d\n", printf(" %% %% %% "));
+// 	printf("C: %d\n", ft_printf(" %% %% %% "));
+// 	printf("O: %d\n", printf(" %d ", -1));
+// 	printf("C: %d\n", ft_printf(" %d ", -1));
+// 	printf("O: %d\n", printf("%c", '0' + 256));
+// 	printf("C: %d\n", ft_printf("%c", '0' + 256));
+// 	printf("O: %d\n", printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
+// 	printf("C: %d\n", ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
+// 	printf("O: %d\n", printf(" %u ", -2));
+// 	printf("C: %d\n", ft_printf(" %u ", -2));
+// 	printf("O: %d\n", printf(" %X ", INT_MAX));
+// 	printf("C: %d\n", ft_printf(" %X ", INT_MAX));
+// 	printf("O: %d\n", printf(" %x ", INT_MAX));
+// 	printf("C: %d\n", ft_printf(" %x ", INT_MAX));
+// 	// printf("SE PUTO VIENE\n");
+// 	// printf("O: %d\n", printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%...));
+// 	// printf("AQUÍ VIENE LA CHUFA\n");
+// 	// printf("C: %d\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%...));
+//     return (0);
+// }
+
