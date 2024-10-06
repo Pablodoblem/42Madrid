@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:53:30 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/04 19:40:41 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/06 00:39:57 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int	ft_printf(char const *typo, ...)
 
 int	main(void)
 {
-	printf("O: %d\n", printf(" %p ", "Hola"));
-	printf("C: %d\n", ft_printf(" %p ", "Hola"));
+	printf("O: %d\n", printf(" %x ", 0));
+	printf("C: %d\n", ft_printf(" %x ", 0));
 	return (0);
 }
 
@@ -128,4 +128,3 @@ int	main(void)
 // 	// printf("C: %d\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%...));
 //     return (0);
 // }
-

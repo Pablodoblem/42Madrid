@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:42:47 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/04 19:37:06 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/06 00:22:25 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int	manage_cases(int num)
 	int	rest;
 
 	i = ((rest = 0), num);
-	if (num == 0) //revisar con dicion. Tener en cuenta en la función hexa
-		return (ft_write("0"), 1);
+	// if (num == 0) //revisar con dicion. Tener en cuenta en la función hexa
+	// 	return (ft_write("0"), 1);
 	if (num > 0)
 	{
 		while (i != 0)
@@ -118,6 +118,8 @@ int	hexa(int num, int flag)
 	int		counter;
 	char	*aux;
 
+	if (num == 0)
+		return (ft_write("0"), 1);
 	rest = manage_cases(num);
 	hex_str = malloc((rest + 1) * sizeof(char));
 	if (!hex_str)

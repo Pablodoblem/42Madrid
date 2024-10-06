@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciertos en Madrid</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <h1>Conciertos en Madrid</h1>
+    
+    <!-- Contador de resultados -->
+    <div id="contador">
+        <strong>Total de conciertos:</strong> <span id="total-conciertos">{{ total_conciertos }}</span>
+    </div>
+
+    <form action="/filtrar" method="POST">
+        <label for="mes">Filtrar por mes:</label>
+        <select id="mes" name="mes">
+            <option value="">Todos</option>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <div id="conciertos">
+        {% for concierto in conciertos %}
+            <h2>{{ concierto['Titulo'] }}</h2>
+            <p><strong>Sala:</strong> {{ concierto['Sala'] }}</p>
+            <p><strong>Fecha:</strong> {{ concierto['Fecha'] }}</p>
+            <p><a href="{{ concierto['Más Información'] }}" target="_blank">Más Información</a></p>
+        {% endfor %}
+    </div>
+</body>
+</html>
