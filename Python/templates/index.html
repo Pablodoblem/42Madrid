@@ -4,43 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conciertos en Madrid</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .concert-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .concert-card {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .concert-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .concert-card p {
+            margin-bottom: 0.75rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Conciertos en Madrid</h1>
-    
+
+<div class="container mt-4">
+    <h1 class="text-center mb-5">Conciertos en Madrid</h1>
+
     <!-- Contador de resultados -->
-    <div id="contador">
+    <div class="alert alert-info text-center">
         <strong>Total de conciertos:</strong> <span id="total-conciertos">{{ total_conciertos }}</span>
     </div>
 
-    <form action="/filtrar" method="POST">
-        <label for="mes">Filtrar por mes:</label>
-        <select id="mes" name="mes">
-            <option value="">Todos</option>
-            <option value="1">Enero</option>
-            <option value="2">Febrero</option>
-            <option value="3">Marzo</option>
-            <option value="4">Abril</option>
-            <option value="5">Mayo</option>
-            <option value="6">Junio</option>
-            <option value="7">Julio</option>
-            <option value="8">Agosto</option>
-            <option value="9">Septiembre</option>
-            <option value="10">Octubre</option>
-            <option value="11">Noviembre</option>
-            <option value="12">Diciembre</option>
-        </select>
-        <input type="submit" value="Filtrar">
-    </form>
+    <!-- Formulario para filtrar por mes -->
+    <div class="row justify-content-center mb-4">
+        <form class="col-md-6" action="/filtrar" method="POST" onsubmit="return validarSeleccionMes()">
+            <div class="input-group">
+                <select class="form-select" id="mes" name="mes">
+                    <option value="">Selecciona mes</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Filtrar</button>
+            </div>
+        </form>
+    </div>
 
-    <div id="conciertos">
+    <!-- Botón para limpiar filtros -->
+    <div class="row justify-content-center mb-5">
+        <form class="col-md-3 text-center" action="/" method="GET">
+            <button class="btn btn-secondary" type="submit">Limpiar filtros</button>
+        </form>
+    </div>
+
+    <!-- Conciertos listados -->
+    <div class="row">
         {% for concierto in conciertos %}
-            <h2>{{ concierto['Titulo'] }}</h2>
-            <p><strong>Sala:</strong> {{ concierto['Sala'] }}</p>
-            <p><strong>Fecha:</strong> {{ concierto['Fecha'] }}</p>
-            <p><a href="{{ concierto['Más Información'] }}" target="_blank">Más Información</a></p>
+            <div class="col-md-4">
+                <div class="concert-card">
+                    <img src="{{ concierto['Imagen'] }}" alt="Imagen del concierto">
+                    <h2>{{ concierto['Título'] }}</h2>
+                    <p><strong>Sala:</strong> {{ concierto['Sala'] }}</p>
+                    <p><strong>Fecha:</strong> {{ concierto['Fecha'] }}</p>
+                    <p><strong>Programa:</strong> {{ concierto['Programa'] }}</p>
+                    <p><a class="btn btn-outline-primary" href="{{ concierto['Más información'] }}" target="_blank">Más Información</a></p>
+                </div>
+            </div>
         {% endfor %}
     </div>
+
+</div>
+
+<script>
+    function validarSeleccionMes() {
+        const selectMes = document.getElementById('mes');
+        if (selectMes.value === "") {
+            alert("Por favor, selecciona un mes para filtrar.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
