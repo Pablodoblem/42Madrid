@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:53:30 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/06 00:39:57 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/08 10:56:23 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,15 @@ int	ft_printf(char const *typo, ...)
 	return (counter);
 }
 
-#include <stdio.h>
-#include <limits.h>
+// #include <stdio.h>
+// #include <limits.h>
 
-int	main(void)
-{
-	printf("O: %d\n", printf(" %x ", 0));
-	printf("C: %d\n", ft_printf(" %x ", 0));
-	return (0);
-}
+// int	main(void)
+// {
+// 	printf("O: %d\n", printf(" %X ", 0));
+// 	printf("C: %d\n", ft_printf(" %X ", 0));
+// 	return (0);
+// }
 
 // int main(void)
 // {
