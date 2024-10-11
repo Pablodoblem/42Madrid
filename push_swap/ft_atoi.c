@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:54:18 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/08 13:18:12 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:59:36 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	spaces_sign_and_createnumber(char *str_char, int i,
 	return (number * sign);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int		number;
 	int		sign;

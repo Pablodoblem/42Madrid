@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 13:18:00 by pamarti2          #+#    #+#              #
-#    Updated: 2024/10/04 18:31:35 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/10/08 22:28:22 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ CCFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 
-MY_SOURCES =ft_%i.c\
-						ft_itoa.c\
+MY_SOURCES =ft_itoa.c\
 						ft_itoalarger.c\
 						ft_printf.c\
 						ft_printint.c\

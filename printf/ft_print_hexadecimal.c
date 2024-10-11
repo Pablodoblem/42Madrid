@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:18:27 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/04 18:14:29 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:28:30 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int	print_hexadecimal(void *ptr)
 	buffer[0] = '0';
 	buffer[1] = 'x';
 	write_string(transformtohexa(buffer, address, divisor));
-	write_char('\n');
+	//write_char('\n');
 	return (ft_strlen(buffer));
 }
