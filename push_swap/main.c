@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/13 01:14:03 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/14 02:47:18 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,28 +146,7 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 		(*arr_b)[0] = (*arr_a)[0];
 		move_the_row(arr_a, argc);
 	}
-	print_stacks(*arr_a, *arr_b, argc);
-}
-
-void	split_the_stack(float **arr_a, float **arr_b, int argc)
-{
-	int num;
-	int i;
-
-	printf("SPLITTING ACTION\n");
-	i = 0;
-	while(i < ((argc - 1)/2))
-	{
-		num = (*arr_a)[0] - (*arr_a)[1];
-		if (num < 0)
-		{
-			wx_to_stack(arr_a, arr_b, 'a');
-			px_to_stack(arr_a, arr_b, 'b', argc);
-		}
-		else
-			px_to_stack(arr_a, arr_b, 'b', argc);
-		i++;
-	}
+	//print_stacks(*arr_a, *arr_b, argc);
 }
 
 void	rx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
@@ -195,12 +174,12 @@ void	rx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 		i++;
 	}
 	find_zero_number = find_zero(&aux_ptr2arr, argc, 1);
-	printf("ZERO_NUMBER: %d\n", find_zero_number);
+	//printf("ZERO_NUMBER: %d\n", find_zero_number);
 	if (find_zero_number == -1)
 		find_zero_number = argc - 2;
 	
 	aux_ptr2arr[find_zero_number] = int_save; //ultima medida. Rota en el primer 0.5
-	print_stacks(*arr_a, *arr_b, argc);
+	//print_stacks(*arr_a, *arr_b, argc);
 
 }
 
@@ -232,6 +211,85 @@ void	splitv2(float **arr_a, float **arr_b, int argc)
 	rx_to_stack(arr_a, arr_b, 'b', argc);
 }
 
+void	rrx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
+{
+	int		int_save;
+	//int		i;
+	float	*aux_ptr2arr;
+	int		find_zero_number;
+
+	printf("REVERSE ROTATING ACTION\n");
+	//i = 0;
+	if (stack == 'a')
+	{
+		aux_ptr2arr = *arr_a;
+		int_save = (*arr_a)[argc - 2];
+	}
+	else
+	{
+		aux_ptr2arr = *arr_b;
+		int_save = (*arr_b)[argc - 2];
+	}
+	while (argc - 2 >= 1)
+	{
+		aux_ptr2arr[argc - 2] = aux_ptr2arr[argc - 3];
+		argc--;
+	}
+	find_zero_number = find_zero(&aux_ptr2arr, argc, 1);
+	//printf("ZERO_NUMBER: %d\n", find_zero_number);
+	if (find_zero_number == -1)
+		find_zero_number = argc - 2;
+	
+	aux_ptr2arr[find_zero_number] = int_save; //ultima medida. Rota en el primer 0.5
+	//print_stacks(*arr_a, *arr_b, argc);
+
+}
+
+// void	split_the_stack(float **arr_a, float **arr_b, int argc)
+// {
+// 	int num;
+// 	int i;
+
+// 	printf("SPLITTING ACTION\n");
+// 	i = 0;
+// 	while(i < ((argc - 1)/2))
+// 	{
+// 		num = (*arr_a)[0] - (*arr_a)[1];
+// 		if ((*arr_b)[0] == 0.5)
+// 		{
+// 			if (num < 0)
+// 			{
+// 				wx_to_stack(arr_a, arr_b, 'a');
+// 				px_to_stack(arr_a, arr_b, 'b', argc);
+// 			}
+// 			else
+// 				wx_to_stack(arr_a, arr_b, 'a');
+// 		}
+// 		else
+// 		{
+// 			if (num < 0 && num < (*arr_a)[0] - (*arr_b)[0])
+// 			{
+// 				wx_to_stack(arr_a, arr_b, 'a');
+// 				px_to_stack(arr_a, arr_b, 'b', argc);
+// 				wx_to_stack(arr_a, arr_b, 'b');
+// 				px_to_stack(arr_a, arr_b, 'a', argc);
+// 				wx_to_stack(arr_a, arr_b, 'a');
+// 				printf("NUEVA MEDIDA\n");
+// 			}
+// 			else if (num < 0 && num > (*arr_a)[0] - (*arr_b)[0])
+// 			{
+// 				if ((*arr_a)[1] <)
+// 				rx_to_stack(arr_a, arr_b, 'a', argc);
+// 				rx_to_stack(arr_a, arr_b, 'a', argc);
+// 			}
+// 			else if (num > 0)
+// 				wx_to_stack(arr_a, arr_b, 'a');
+
+// 		}
+// 		i++;
+// 	}
+// }
+
 void	manage_zeros(float **arr, int argc) // en caso de que haya ceros 
 //intercalados estos son sustituidos con los valores más próximos
 {
@@ -256,8 +314,6 @@ void	manage_zeros(float **arr, int argc) // en caso de que haya ceros
 	}
 }
 
-#include <stdio.h>
-
 void	stack_comparison(float **arr_a, float **arr_b, int argc)
 {
 	int	i;
@@ -276,25 +332,25 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 	i = 0;
 	j = 1;
 	//x = 1;
-	printf("TOPE: %d\n", ((argc - 1)/2));
+	//printf("TOPE: %d\n", ((argc - 1)/2));
 	while (i < ((argc - 1)/2))
 	{
-		printf("VALOR DE i: %d\n", i);
+		//printf("VALOR DE i: %d\n", i);
 		if (i == ((argc - 1)/2))
 			break ;
-		if (find_zero(arr_a, argc, 1) != -1)
-		{
-			printf("HOLA!\n");
-			//manage_zeros(arr_a, argc);
-			//printf("Ceros manageados...\n");
-			//find_zero(arr_a, argc, 2);
-			print_stacks(*arr_a, *arr_b, argc);
-		}
+		// if (find_zero(arr_a, argc, 1) != -1)
+		// {
+		// 	//printf("HOLA!\n");
+		// 	//manage_zeros(arr_a, argc);
+		// 	//printf("Ceros manageados...\n");
+		// 	//find_zero(arr_a, argc, 2);
+		// 	print_stacks(*arr_a, *arr_b, argc);
+		// }
 		aux_1 = (*arr_a)[0] - (*arr_b)[0];
 		aux_2 = (*arr_a)[0] - (*arr_a)[j];
-		printf("J: %d\n", j);
-		printf("AUX1: %d\n", aux_1);
-		printf("AUX2: %d\n", aux_2);
+		// printf("J: %d\n", j);
+		// printf("AUX1: %d\n", aux_1);
+		// printf("AUX2: %d\n", aux_2);
 		// printf("Vuelta: %d\n", i + 1);
 		//printf("HOLA\n");
 		if (aux_1 < 0 && aux_2 < 0 && aux_1 > aux_2) // dos negativos. + -
@@ -309,6 +365,7 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
 		else if (aux_1 < 0 && aux_2 < 0 && aux_1 < aux_2) // dos negativos. - + 
 		{
@@ -325,6 +382,7 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
 		else if (aux_1 < 0 && aux_2 > 0) // negativo positivo
 		{
@@ -339,6 +397,7 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
 		else if (aux_1 > 0 && aux_2 < 0) // positivo negativo
 		{
@@ -353,6 +412,7 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
 		else if (aux_1 > 0 && aux_2 > 0 && aux_1 < aux_2) // dos positivos. - +
 		{
@@ -365,6 +425,7 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
 		else if (aux_1 > 0 && aux_2 > 0 && aux_1 > aux_2) // dos positivos. + -
 		{
@@ -377,22 +438,179 @@ void	stack_comparison(float **arr_a, float **arr_b, int argc)
 			printf("Procesos: %d\n", i);
 			if (!(i < ((argc - 1)/2)))
 				break ;
+			print_stacks(*arr_a, *arr_b, argc);
 		}
-		printf("HOLA\n");
+		//printf("HOLA\n");
 		//print_stacks(*arr_a, *arr_b, argc);
 		//i++;
 	}
 }
 
-int main(int argc, char **argv)
+int	check_stack_order(float **arr_a, int argc)
+{
+	int	i;
+
+	i = 0;
+	while ((*arr_a)[i] - (*arr_a)[i + 1] < 0)
+		i++;
+	if (i == argc - 2)
+		return (1);
+	return (0);
+}
+
+void	comparison_g1(float **arr_a, float **arr_b, int argc, int *ops)
+{
+	int	i;
+	int	num;
+
+	i = 0;
+	printf("ARGC: %d\n", argc);
+	while (i < argc - 2)
+	{
+		num = (*arr_a)[0] - (*arr_a)[1];
+		printf("Valor de la resta: %d\n", num);
+		if (((*arr_a)[0] - (*arr_a)[1]) > 0)
+		{
+			wx_to_stack(arr_a, arr_b, 'a');
+			printf("Permutando números...\n");
+			print_stacks(*arr_a, *arr_b, argc);
+			(*ops)++;
+			//print_stacks(*arr_a, *arr_b, argc);
+		}
+		i += 2;
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+		printf("Tras rotar\n");
+		print_stacks(*arr_a, *arr_b, argc);
+		(*ops) += 2;
+		printf("Valor I (primera iteración): %d\n", i);
+	}
+	if ((argc - 1) % 2 != 0)
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+	printf("EStado de salida de los stacks:\n");
+	print_stacks(*arr_a, *arr_b, argc);
+}
+
+void	comparison_g2(float **arr_a, float **arr_b, int argc, int *ops)
+{
+	int	i;
+	int	num;
+
+	i = 1;
+	printf("ARGC: %d\n", argc);
+	rx_to_stack(arr_a, arr_b, 'a', argc);
+	(*ops)++;
+	while (i < argc - 2)
+	{
+		if ((argc - 1) % 2 == 0)
+		{
+			printf("hola\n");
+			if (i >= argc - 2)
+				break ;
+		}
+		num = (*arr_a)[0] - (*arr_a)[1];
+		printf("Valor de la resta: %d\n", num);
+		if (((*arr_a)[0] - (*arr_a)[1]) > 0)
+		{
+			wx_to_stack(arr_a, arr_b, 'a');
+			printf("Permutando números...\n");
+			print_stacks(*arr_a, *arr_b, argc);
+			//printf("HOLA\n");
+			(*ops)++;
+			//print_stacks(*arr_a, *arr_b, argc);
+		}
+		i += 2;
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+		printf("Tras rotar\n");
+		print_stacks(*arr_a, *arr_b, argc);
+		(*ops) += 2;
+		printf("Valor I (segunda iteración): %d\n", i);
+	}
+	// if (((*arr_a)[0] - (*arr_a)[1]) > 0)
+	// 	wx_to_stack(arr_a, arr_b, 'a');
+	if ((argc - 1) % 2 == 0)
+		rx_to_stack(arr_a, arr_b, 'a', argc);
+	printf("EStado de salida de los stacks:\n");
+	print_stacks(*arr_a, *arr_b, argc);
+}
+float	*take_first_half(float *arr_a, int argc)
+{
+	float	*first_half;
+	int	half_numeric;
+	int	i;
+
+	i = 0;
+	half_numeric = argc / 2;
+	printf("ARGC: %d\n", argc);
+	printf("Half Numeric: %d\n", half_numeric);
+	first_half = ft_floatcalloc(half_numeric, sizeof(float));
+	while (i < half_numeric)
+	{
+		first_half[i] = arr_a[i];
+		i++;
+	}
+	i = 0;
+	printf("Valores de la primera mitad:\n");
+	while (i < half_numeric)
+	{
+		printf("%.1f\n", first_half[i]);
+		i++;
+	}
+	return (first_half);
+}
+
+float	*find_index_in_stack(float *originalarr, float *first_half, int argc)
+{
+	float	*first_half_index;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	first_half_index = ft_floatcalloc((argc / 2), sizeof(float));
+	if (!first_half)
+		return (0);
+	while (j < (argc / 2) || i <= (argc / 2))
+	{
+		// printf("I: %d\n", i);
+		// printf("J: %d\n", j);
+		//i++;
+		if (originalarr[i] == first_half[j])
+		{
+			//printf("Coincidencia\n");
+			first_half_index[j] = i;
+			j++;
+			if (j == (argc / 2))
+				break ;
+			i = 0;
+		}
+		else
+			i++;
+	}
+	i = 0;
+	printf("Valores de los index de la primera mitad:\n");
+	while (i < argc / 2)
+	{
+		printf("%.1f\n", first_half_index[i]);
+		i++;
+	}
+	return (first_half_index);
+}
+
+int main(int argc, char **argv) //hacer check para valores numéricos int repetidos en argumentos
 {
 	int		i;
 	//char	*operations[] = {"pb", "pb", "sa", "pa", "pa", "sa"};
 	float		*arr_a;
 	float		*arr_b;
-	//int		action;
+	int			vueltas = 1;
+	int			ops;
+	float			*originalarr;
+	float		*first_half;
+	float		*first_half_index;
 
-	//action = 1;
+	ops = 0;
 	i = 0;
 	if (argc < 2)
 	{
@@ -406,40 +624,50 @@ int main(int argc, char **argv)
 	}
 	arr_a = ft_floatcalloc((argc - 1), sizeof(float));
 	arr_b = ft_floatcalloc((argc - 1), sizeof(float));
+	originalarr = ft_floatcalloc((argc - 1), sizeof(float));
 	if (!arr_a)
 		return (0);
 	if (!arr_b)
 		return (0);
-	while(i < argc - 1)
+	while (i < argc - 1)
 	{
 		arr_a[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	//print_stacks(arr_a, arr_b, argc);
-	split_the_stack(&arr_a, &arr_b, argc);
-	print_stacks(arr_a, arr_b, argc);
-	stack_comparison(&arr_a, &arr_b, argc);
-	print_stacks(arr_a, arr_b, argc);
-	splitv2(&arr_a, &arr_b, argc);
-	print_stacks(arr_a, arr_b, argc);
-	stack_comparison(&arr_a, &arr_b, argc);
-	print_stacks(arr_a, arr_b, argc);
-	// split_the_stack(&arr_a, &arr_b, argc);
-	// print_stacks(arr_a, arr_b, argc);
-	// stack_comparison(&arr_a, &arr_b, argc);
-	// print_stacks(arr_a, arr_b, argc);
+	i = 0;
+	while (i < argc - 1)
+	{
+		originalarr[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
+	//rrx_to_stack(&arr_a, &arr_b, 'a', argc);
+	while (check_stack_order(&arr_a, argc) != 1)
+	{
+		//print_stacks(arr_a, arr_b, argc);
+		printf("ORIGINAL STACKS\n");
+		print_stacks(arr_a, arr_b, argc);
+		printf("PRIMERA ITERACIÓN: \n");
+		comparison_g1(&arr_a, &arr_b, argc, &ops);
+		print_stacks(arr_a, arr_b, argc);
+		printf("SEGUNDA ITERACIÓN: \n");
+		comparison_g2(&arr_a, &arr_b, argc, &ops);
+		print_stacks(arr_a, arr_b, argc);
+		// comparison_g1(&arr_a, &arr_b, argc, &ops);
+		// print_stacks(arr_a, arr_b, argc);
+		// comparison_g2(&arr_a, &arr_b, argc, &ops);
+		// print_stacks(arr_a, arr_b, argc);
+		vueltas++;
+	}
+	while (check_stack_order(&arr_a, argc) != 1)
+	//printf("\033[0;32mLO CONSEGUIMOS!!\033[0m\n\n");
+	printf("VUELTAS REALIZADAS: %d\n", vueltas);
+	printf("OPERACIONES REALIZADAS: %d\n", ops);
 
-	// rx_to_stack(&arr_a, &arr_b, 'a', argc);
-	// print_stacks(arr_a, arr_b, argc);
-	// px_to_stack(&arr_a, &arr_b, 'a', argc);
-	// print_stacks(arr_a, arr_b, argc);
-	// px_to_stack(&arr_a, &arr_b, 'a', argc);
-	// print_stacks(arr_a, arr_b, argc);
-	// px_to_stack(&arr_a, &arr_b, 'a', argc);
-	// print_stacks(arr_a, arr_b, argc);
-	// px_to_stack(&arr_a, &arr_b, 'b', argc);
-	// rx_to_stack(&arr_a, &arr_b, 'a', argc);
-	
+	first_half = take_first_half(arr_a, argc);
+	first_half_index = find_index_in_stack(originalarr, first_half, argc);
+	//print_stacks(arr_a, originalarr, argc);
+	Tengo que hacer una función que consiga trazar los movimientos hacia los index de la manera más eficiente.
+
 
 	// rx_to_stack(&arr_a, &arr_b, 'a', argc);
 	// print_stacks(arr_a, arr_b, argc);
@@ -452,5 +680,8 @@ int main(int argc, char **argv)
 
 	free (arr_a);
 	free (arr_b);
+	free (originalarr);
+	free (first_half);
+	free (first_half_index);
 	return (0);
 }
