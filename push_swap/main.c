@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/14 02:47:18 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/17 01:29:44 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,33 +214,46 @@ void	splitv2(float **arr_a, float **arr_b, int argc)
 void	rrx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 {
 	int		int_save;
-	//int		i;
+	//int		copy_zero_number;
 	float	*aux_ptr2arr;
 	int		find_zero_number;
+	//int		i = 0;
 
 	printf("REVERSE ROTATING ACTION\n");
 	//i = 0;
+	// while (i < argc - 1)
+	// {
+	// 	printf("%.1f\n", (*arr_a)[i]);
+	// 	i++;
+	// }
+	find_zero_number = find_zero(arr_a, argc, 1);
+	if (find_zero_number == -1)
+	{
+		printf("HEY\n");
+		find_zero_number = argc - 2;
+	}
+	//copy_zero_number = find_zero_number;
+	printf("Zero number: %d\n", find_zero_number);
 	if (stack == 'a')
 	{
 		aux_ptr2arr = *arr_a;
-		int_save = (*arr_a)[argc - 2];
+		int_save = (*arr_a)[find_zero_number - 1];
 	}
 	else
 	{
 		aux_ptr2arr = *arr_b;
-		int_save = (*arr_b)[argc - 2];
+		int_save = (*arr_b)[find_zero_number - 1];
 	}
-	while (argc - 2 >= 1)
+	while (find_zero_number - 2 >= 0)
 	{
-		aux_ptr2arr[argc - 2] = aux_ptr2arr[argc - 3];
+		aux_ptr2arr[find_zero_number - 1] = aux_ptr2arr[find_zero_number - 2];
 		argc--;
+		find_zero_number--;
 	}
-	find_zero_number = find_zero(&aux_ptr2arr, argc, 1);
+	//find_zero_number = find_zero(&aux_ptr2arr, argc, 1);
 	//printf("ZERO_NUMBER: %d\n", find_zero_number);
-	if (find_zero_number == -1)
-		find_zero_number = argc - 2;
-	
-	aux_ptr2arr[find_zero_number] = int_save; //ultima medida. Rota en el primer 0.5
+	//copy_zero_number = 0;
+	aux_ptr2arr[0] = int_save; //ultima medida. Rota en el primer 0.5
 	//print_stacks(*arr_a, *arr_b, argc);
 
 }
@@ -598,6 +611,139 @@ float	*find_index_in_stack(float *originalarr, float *first_half, int argc)
 	return (first_half_index);
 }
 
+// float	*make_instructions(float **first_half_index, int argc);
+// {
+// 	int	*instruction_arr;
+// 	int	i;
+
+// 	i = 0;
+// 	instruction_arr = ft_floatcalloc((argc / 2), sizeof(float));
+// 	while (i < (argc / 2))
+// 	{
+// 		instruction_arr[i] = (*first_half_index)[i] - (*first_half_index)[i + 1];
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (i < (argc / 2))
+// 	{
+// 		printf("%.1f\n", instruction_arr[i]);
+// 		i++;
+// 	}
+// 	return (instruction_arr);
+// }
+
+void	choose_the_way(float **originalarr, float **arr_b, float **first_half_index, int argc)
+{
+	int	action_counter;
+	int	j;
+	int	x;
+	int	y;
+	int	procesos;
+	int	desviación;
+	//int	*instructions_f_h;
+
+	//instructions_f_h = make_instructions(first_half_index, argc);
+	desviación = 0;
+	procesos = 0;
+	j = 0;
+	action_counter= 0;
+	x = 0;
+	y = 0;
+	printf("Calculando Camino más corto... \n");
+	printf("MITAD: %d\n", (argc / 2));
+	while (x < argc / 2) //revisar stop
+	{
+		printf("J: %d\n", j);
+		printf("action_counter: %d\n", action_counter);
+		printf("X: %d\n", x);
+		printf("Y: %d\n", y);
+		if ((*first_half_index)[j] - (*first_half_index)[j + 1] < 0)
+		{
+			printf("Entrando en condición para rotate mov:\n");
+			while (action_counter<= (*first_half_index)[j + 1])
+			{
+				printf("J: %d\n", j);
+				printf("I: %d\n", i);
+				if (action_counter== (*first_half_index)[x])
+				{
+					px_to_stack(originalarr, arr_b, 'b', argc);
+					x++;
+					desviación++;
+					printf("action_counterclave: %d\n", i);
+					print_stacks(*originalarr, *arr_b, argc);
+					printf("push\n");
+					
+					procesos++;
+				}
+				else
+				{
+					rx_to_stack(originalarr, arr_b, 'a', argc); //rotar
+					procesos++;
+					desviación++;
+					printf("action_counterclave: %d\n", i);
+					print_stacks(*originalarr, *arr_b, argc);
+				}
+				action_counter++;
+			}
+			y++;
+			printf("Gestionando ceros.\n");
+			find_zero(originalarr, argc, 2);
+			//action_counter= find_zero(originalarr, argc, 1);
+			printf("action_counterfinal de condición negativa sin corrección: %d\n", i);
+			action_counter-= desviación;
+			printf("action_counterfinal de condición negativa corregida: %d\n", i);
+		}
+		else if ((*first_half_index)[j] - (*first_half_index)[j + 1] > 0)
+		{
+			printf("*f_h_i[j]: %.1f\n", ((*first_half_index)[j]));
+			printf("*f_h_i[j + 1]: %.1f\n", (*first_half_index)[j + 1]);
+			printf("(*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1)) * -1: %.1f\n", (((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1))) * -1));
+			printf("COMPROBACIÓN 1: %.1f\n", (((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1)))) * -1);
+			printf("COMPROBACIÓN 2: %.1f\n", ((*first_half_index)[j] - ((*first_half_index)[j + 1])));
+			if ((((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1))) * -1) < ((*first_half_index)[j] - ((*first_half_index)[j + 1])))
+			{
+				printf("I: %d\n", i);
+				print_stacks(*originalarr, *arr_b, argc);
+				while (action_counter< (*first_half_index)[j + 1] + (argc - 1) || !((*originalarr)[i] == (*first_half_index[j + 1])))
+				{
+					rx_to_stack(originalarr, arr_b, 'a', argc);
+					action_counter++;
+					// if (action_counter> argc - 2)
+					// 	action_counter= 0;
+					procesos++;
+				}
+			}
+			printf("Entrando en condición para reverse mov:\n");
+			while (action_counter>= (*first_half_index)[j + 1])
+			{
+				printf("J: %d\n", j);
+				printf("I: %d\n", i);
+				printf("X: %d\n", x);
+				if (action_counter== (*first_half_index)[x])
+				{
+					px_to_stack(originalarr, arr_b, 'b', argc);
+					x++;
+					//print_stacks(*originalarr, *arr_b, argc);
+					procesos++;
+					printf("push\n");
+				}
+				else
+				{
+					rrx_to_stack(originalarr, arr_b, 'a', argc); //rotar
+					procesos++;
+					//print_stacks(*originalarr, *arr_b, argc);
+				}
+				action_counter--;
+			}
+			action_counter= 0;
+			y++;
+		}
+		desviación = 0;
+		j++;
+	}
+	printf("MOVIMIENTOS: %d\n", procesos);
+}
+
 int main(int argc, char **argv) //hacer check para valores numéricos int repetidos en argumentos
 {
 	int		i;
@@ -665,8 +811,9 @@ int main(int argc, char **argv) //hacer check para valores numéricos int repeti
 
 	first_half = take_first_half(arr_a, argc);
 	first_half_index = find_index_in_stack(originalarr, first_half, argc);
-	//print_stacks(arr_a, originalarr, argc);
-	Tengo que hacer una función que consiga trazar los movimientos hacia los index de la manera más eficiente.
+
+	choose_the_way(&originalarr, &arr_b, &first_half_index, argc); // en principio bien
+	print_stacks(originalarr, arr_b, argc);
 
 
 	// rx_to_stack(&arr_a, &arr_b, 'a', argc);
