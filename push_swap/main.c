@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/17 01:29:44 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/17 03:01:50 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,11 +229,11 @@ void	rrx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	find_zero_number = find_zero(arr_a, argc, 1);
 	if (find_zero_number == -1)
 	{
-		printf("HEY\n");
+		//printf("HEY\n");
 		find_zero_number = argc - 2;
 	}
 	//copy_zero_number = find_zero_number;
-	printf("Zero number: %d\n", find_zero_number);
+	//printf("Zero number: %d\n", find_zero_number);
 	if (stack == 'a')
 	{
 		aux_ptr2arr = *arr_a;
@@ -611,121 +611,115 @@ float	*find_index_in_stack(float *originalarr, float *first_half, int argc)
 	return (first_half_index);
 }
 
-// float	*make_instructions(float **first_half_index, int argc);
-// {
-// 	int	*instruction_arr;
-// 	int	i;
+float	*make_instructions(float **first_half_index, int argc)
+{
+	float	*instruction_arr;
+	int		i;
 
-// 	i = 0;
-// 	instruction_arr = ft_floatcalloc((argc / 2), sizeof(float));
-// 	while (i < (argc / 2))
-// 	{
-// 		instruction_arr[i] = (*first_half_index)[i] - (*first_half_index)[i + 1];
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < (argc / 2))
-// 	{
-// 		printf("%.1f\n", instruction_arr[i]);
-// 		i++;
-// 	}
-// 	return (instruction_arr);
-// }
+	i = 0;
+	instruction_arr = ft_floatcalloc((argc / 2), sizeof(float));
+	// printf("Opcion con argc + 5: %.1f\n", (((*first_half_index)[i - 1] - ((*first_half_index)[i] + (argc - 1)) * -1)));
+	// printf("Opcion default:%.1f\n", ((*first_half_index)[i - 1] - (*first_half_index)[i]));
+	instruction_arr[i] = 0 - (*first_half_index)[i];
+	i++;
+	while (i < (argc / 2))
+	{
+		if (((*first_half_index)[i - 1] - (*first_half_index)[i]) > 0 && ((*first_half_index)[i - 1] - ((*first_half_index)[i] + (argc - 1))) * -1 < ((*first_half_index)[i - 1] - (*first_half_index)[i]))
+			instruction_arr[i] = ((*first_half_index)[i - 1] - ((*first_half_index)[i] + (argc - 1)));
+		else if (((*first_half_index)[i - 1] - (*first_half_index)[i]) < 0 && (((*first_half_index)[i - 1] + (argc - 1)) - (*first_half_index)[i]) * -1 > ((*first_half_index)[i - 1] - (*first_half_index)[i]))
+			instruction_arr[i] = (((*first_half_index)[i - 1] + (argc - 1)) - (*first_half_index)[i]);
+		else
+			instruction_arr[i] = (*first_half_index)[i - 1] - (*first_half_index)[i];
+		i++;
+	}
+	i = 0;
+	while (i < (argc / 2))
+	{
+		printf("%.1f\n", instruction_arr[i]);
+		i++;
+	}
+	find_zero(&instruction_arr, argc, 2);
+	return (instruction_arr);
+}
 
 void	choose_the_way(float **originalarr, float **arr_b, float **first_half_index, int argc)
 {
-	int	action_counter;
-	int	j;
-	int	x;
-	int	y;
-	int	procesos;
-	int	desviación;
-	//int	*instructions_f_h;
+	int		move_counter;
+	int		j;
+	int		x;
+	int		procesos;
+	int		desviación;
+	float	*instructions_f_h;
 
-	//instructions_f_h = make_instructions(first_half_index, argc);
+	instructions_f_h = make_instructions(first_half_index, argc);
 	desviación = 0;
 	procesos = 0;
 	j = 0;
-	action_counter= 0;
 	x = 0;
-	y = 0;
 	printf("Calculando Camino más corto... \n");
 	printf("MITAD: %d\n", (argc / 2));
-	while (x < argc / 2) //revisar stop
+	// hacer gestión del primer número
+	while (j < argc / 2) //revisar stop
 	{
+		move_counter = 0;
 		printf("J: %d\n", j);
-		printf("action_counter: %d\n", action_counter);
+		printf("move_counter: %d\n", move_counter);
 		printf("X: %d\n", x);
-		printf("Y: %d\n", y);
-		if ((*first_half_index)[j] - (*first_half_index)[j + 1] < 0)
+		printf("VALOR INSTRUCTION_F_H: %.1f\n", instructions_f_h[j]);
+		//printf("Y: %d\n", y);
+		if (instructions_f_h[j] < 0)
 		{
 			printf("Entrando en condición para rotate mov:\n");
-			while (action_counter<= (*first_half_index)[j + 1])
+			while (move_counter <= (instructions_f_h[j] * -1))
 			{
 				printf("J: %d\n", j);
-				printf("I: %d\n", i);
-				if (action_counter== (*first_half_index)[x])
+				printf("move_counter: %d\n", move_counter);
+				if (move_counter == (instructions_f_h[j] * -1))
 				{
 					px_to_stack(originalarr, arr_b, 'b', argc);
 					x++;
 					desviación++;
-					printf("action_counterclave: %d\n", i);
+					printf("move_counter: %d\n", move_counter);
 					print_stacks(*originalarr, *arr_b, argc);
 					printf("push\n");
-					
 					procesos++;
+					break ;
 				}
 				else
 				{
 					rx_to_stack(originalarr, arr_b, 'a', argc); //rotar
 					procesos++;
-					desviación++;
-					printf("action_counterclave: %d\n", i);
+					move_counter++;
+					printf("move_counter: %d\n", move_counter);
 					print_stacks(*originalarr, *arr_b, argc);
 				}
-				action_counter++;
 			}
-			y++;
+			printf("break done\n");
 			printf("Gestionando ceros.\n");
 			find_zero(originalarr, argc, 2);
-			//action_counter= find_zero(originalarr, argc, 1);
-			printf("action_counterfinal de condición negativa sin corrección: %d\n", i);
-			action_counter-= desviación;
-			printf("action_counterfinal de condición negativa corregida: %d\n", i);
+			//move_counter= find_zero(originalarr, argc, 1);
+			//printf("move_counterfinal de condición negativa sin corrección: %d\n", move_counter);
+			move_counter-= desviación;
+			//printf("move_counterfinal de condición negativa corregida: %d\n", move_counter);
 		}
-		else if ((*first_half_index)[j] - (*first_half_index)[j + 1] > 0)
+		else if (instructions_f_h[j] > 0)
 		{
-			printf("*f_h_i[j]: %.1f\n", ((*first_half_index)[j]));
-			printf("*f_h_i[j + 1]: %.1f\n", (*first_half_index)[j + 1]);
-			printf("(*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1)) * -1: %.1f\n", (((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1))) * -1));
-			printf("COMPROBACIÓN 1: %.1f\n", (((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1)))) * -1);
-			printf("COMPROBACIÓN 2: %.1f\n", ((*first_half_index)[j] - ((*first_half_index)[j + 1])));
-			if ((((*first_half_index)[j] - ((*first_half_index)[j + 1] + (argc - 1))) * -1) < ((*first_half_index)[j] - ((*first_half_index)[j + 1])))
-			{
-				printf("I: %d\n", i);
-				print_stacks(*originalarr, *arr_b, argc);
-				while (action_counter< (*first_half_index)[j + 1] + (argc - 1) || !((*originalarr)[i] == (*first_half_index[j + 1])))
-				{
-					rx_to_stack(originalarr, arr_b, 'a', argc);
-					action_counter++;
-					// if (action_counter> argc - 2)
-					// 	action_counter= 0;
-					procesos++;
-				}
-			}
 			printf("Entrando en condición para reverse mov:\n");
-			while (action_counter>= (*first_half_index)[j + 1])
+			//printf("move_counter: %d\n", move_counter);
+			while (move_counter <= (instructions_f_h[j]))
 			{
 				printf("J: %d\n", j);
-				printf("I: %d\n", i);
+				printf("Move_counter: %d\n", move_counter);
 				printf("X: %d\n", x);
-				if (action_counter== (*first_half_index)[x])
+				if (move_counter == (instructions_f_h[j]))
 				{
 					px_to_stack(originalarr, arr_b, 'b', argc);
 					x++;
+					desviación++;
 					//print_stacks(*originalarr, *arr_b, argc);
 					procesos++;
 					printf("push\n");
+					break ;
 				}
 				else
 				{
@@ -733,11 +727,23 @@ void	choose_the_way(float **originalarr, float **arr_b, float **first_half_index
 					procesos++;
 					//print_stacks(*originalarr, *arr_b, argc);
 				}
-				action_counter--;
+				move_counter++;
 			}
-			action_counter= 0;
-			y++;
+			move_counter -= desviación;
 		}
+		else if (instructions_f_h[j] == 0)
+		{
+			px_to_stack(originalarr, arr_b, 'b', argc);
+			x++;
+			desviación++;
+			//print_stacks(*originalarr, *arr_b, argc);
+			procesos++;
+			printf("push\n");
+		}
+		if (instructions_f_h[j + 1] < 0)
+			instructions_f_h[j + 1] += desviación;
+		else
+			instructions_f_h[j + 1] -= desviación;
 		desviación = 0;
 		j++;
 	}
