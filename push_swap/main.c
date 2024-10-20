@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/21 00:40:20 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/21 00:46:23 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -741,10 +741,8 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 	int		procesos;
 	//int		desviación;
 	float	instructions;
-	//int		condition;
 	//float	*arr_b;
 
-	condition = 0;
 	instructions = 0 - (*index_arr)[0]; //revisar
 	procesos = 0;
 	j = 0;
@@ -799,11 +797,7 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 			printf("Entrando en condición para rotate mov:\n");
 			while (move_counter <= (instructions * -1))
 			{
-				// if ((*originalarr)[move_counter] == (*arr_a)[j])
-				// {
-				// 	px_to_stack(originalarr, arr_b, 'b', argc);
-				// 	condition = 1;
-				// }
+				//if ((*originalarr)[move_counter] == (*))
 				printf("J: %d\n", j);
 				printf("move_counter: %d\n", move_counter);
 				if (move_counter == (instructions * -1))
@@ -870,11 +864,6 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 			printf("Se ha pusheado con normalidad valor de instrucción 0push\n");
 			print_stacks(*originalarr, *arr_b, argc);
 		}
-		// if (condition == 1)
-		// {
-		// 	wx_to_stack(arr_a, arr_b, 'b');
-		// 	condition = 0;
-		// }
 		j++;
 	}
 	return (procesos);
@@ -1090,7 +1079,6 @@ int main(int argc, char **argv) //hacer check para valores numéricos int repeti
 		vueltas++;
 	}
 	while (check_stack_order(&arr_a, argc) != 1)
-	//printf("\033[0;32mLO CONSEGUIMOS!!\033[0m\n\n");
 	printf("VUELTAS REALIZADAS: %d\n", vueltas);
 	printf("OPERACIONES REALIZADAS: %d\n", ops);
 
@@ -1121,6 +1109,7 @@ int main(int argc, char **argv) //hacer check para valores numéricos int repeti
 	push_all(&originalarr, &arr_b, argc);
 	print_stacks(originalarr, arr_b, argc);
 	printf("MOVIMIENTOS TOTALES REALIZADOS: %d\n", (operations));
+	printf("\033[0;32mLO CONSEGUIMOS!!\033[0m\n\n");
 
 // ESTE BLOQUE ES PARA V2 ----------------------------------------
 
