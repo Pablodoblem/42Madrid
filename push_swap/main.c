@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/21 00:46:23 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/21 02:32:41 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,17 @@ void	wx_to_stack(float **arr_a, float **arr_b, char stack)
 {
 	float	auxnum;
 
+	
 	if (stack == 'a')
 	{
+		printf("SWAPPING A ACTION\n");
 		auxnum = *arr_a[0];
 		(*arr_a)[0] = (*arr_a)[1];
 		(*arr_a)[1] = auxnum;
 	}
 	if (stack == 'b')
 	{
+		printf("SWAPPING B ACTION\n");
 		auxnum = *arr_b[0];
 		(*arr_b)[0] = (*arr_b)[1];
 		(*arr_b)[1] = auxnum;
@@ -656,7 +659,7 @@ float	*find_halfs_index(float *originalarr, float *first_half, int argc, int fla
 	return (halfs_index);
 }
 
-float	*make_instructions(float **index_arr, int argc)
+float	*make_instructions(float **index_arr, int argc) // jubilar
 {
 	float	*instruction_arr;
 	int		i;
@@ -734,79 +737,59 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 {
 	int		move_counter;
 	int		j;
-	int		x;
+	//int		x;
 	// int		i;
 	// int		y;
 	// int		z;
 	int		procesos;
+	int		flag;
 	//int		desviación;
 	float	instructions;
 	//float	*arr_b;
 
+	flag = 0;
 	instructions = 0 - (*index_arr)[0]; //revisar
 	procesos = 0;
 	j = 0;
-	x = 0;
+	//x = 0;
 	printf("Calculando Camino más corto... \n");
-	//printf("MITAD: %d\n", (argc / 2));
-	// hacer gestión del primer número
 	printf("PUNTO DE PARTIDA:\n");
 	print_stacks(*originalarr, *arr_b, argc);
-	while (j < argc - 1) //revisar stop
+	while (j < argc - 1)
 	{
 		if (j > 0)
 			instructions = make_instructionsv2(arr_a, originalarr, j, argc);
-		// if (j > 0)
-		// {
-		// 	i = 0;
-		// 	y = argc - 2;
-		// 	z = 0;
-		// 	printf("VALOR QUE BUSCAMOS: %.f\n", (*arr_a)[j]);
-		// 	while (i < argc - 1)
-		// 	{
-		// 		if ((*originalarr)[i] == (*arr_a)[j])
-		// 			break ;
-		// 		//printf("VALOR DE original[i]: %.1f\n", (*originalarr)[i]);
-		// 		i++;
-		// 	}
-		// 	while ((*originalarr)[y] == 0.5)
-		// 		y--;
-		// 	//printf("Valor de y: %d\n", y);
-		// 	while (y >= 0)
-		// 	{
-		// 		if ((*originalarr)[y] == (*arr_a)[j])
-		// 			break ;
-		// 		//printf("VALOR DE ORIGINAL[y]: %.1f\n", (*originalarr)[y]);
-		// 		y--;
-		// 		z++;
-		// 	}
-		// 	z++;
-		// 	printf("Valor de z: %d y valor de i: %d\n", z, i);
-		// 	if (i < z || i == z)
-		// 		instructions = i * -1;
-		// 	else if (z < i)
-		// 		instructions = z;
-		// }
 		move_counter = 0;
 		printf("\n\n\033[42mVALOR INSTRUCTION: %.1f\033[0m\n\n", instructions);
 		printf("J: %d\n", j);
-		printf("move_counter: %d\n", move_counter);
-		printf("X: %d\n", x);
+		//printf("move_counter: %d\n", move_counter);
+		//printf("X: %d\n", x);
 		if (instructions < 0)
 		{
 			printf("Entrando en condición para rotate mov:\n");
+			printf("NUMERO TARGET:: %.1f\n", (*arr_a)[j]);
+			printf("Valor bonus: %.1f\n", (*arr_a)[j + 1]);
 			while (move_counter <= (instructions * -1))
 			{
-				//if ((*originalarr)[move_counter] == (*))
-				printf("J: %d\n", j);
 				printf("move_counter: %d\n", move_counter);
-				if (move_counter == (instructions * -1))
+				printf("Valor de original[0]: %.1f\n", (*originalarr)[0]);
+				printf("J: %d\n", j);
+				if ((*originalarr)[0] == (*arr_a)[j + 1] && j < argc - 2 && flag == 0)
+				{
+					printf("hola1\n");
+					printf("\033[0;32mVALOR PUSHEADO DESDE PASO MEDIO: %.1f\033[0m\n", (*originalarr)[0]);
+					px_to_stack(originalarr, arr_b, 'b', argc);
+					print_stacks(*originalarr, *arr_b, argc);
+					flag = 1;
+					instructions += 1;
+					printf("INSTRUCTIONS: %.1f\n", instructions);
+					j++;
+				}
+				else if (move_counter == (instructions * -1))
 				{
 					printf("\033[0;32mVALOR PUSHEADO: %.1f\033[0m\n", (*originalarr)[0]);
 					px_to_stack(originalarr, arr_b, 'b', argc);
-					x++;
-					// desviación++;
-					//printf("move_counter: %d\n", move_counter);
+					//x++;
 					print_stacks(*originalarr, *arr_b, argc);
 					//printf("push\n");
 					procesos++;
@@ -827,18 +810,34 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 		}
 		else if (instructions > 0)
 		{
+			move_counter = 0;
 			printf("Entrando en condición para reverse mov:\n");
+			printf("NUMERO TARGET:: %.1f\n", (*arr_a)[j]);
+			printf("Valor de (*arr_a)[j + 1]: %.1f\n", (*arr_a)[j + 1]);
 			//printf("move_counter: %d\n", move_counter);
 			while (move_counter <= (instructions))
 			{
+				printf("move_counter: %d\n", move_counter);
+				printf("Valor de original[0]: %.1f\n", (*originalarr)[0]);
 				printf("J: %d\n", j);
-				printf("Move_counter: %d\n", move_counter);
-				printf("X: %d\n", x);
-				if (move_counter == (instructions))
+				//printf("X: %d\n", x);
+				if ((*originalarr)[0] == (*arr_a)[j + 1] && j < argc - 2 && flag == 0)
+				{
+					printf("hola2\n");
+					printf("\033[0;32mVALOR PUSHEADO DESDE PASO MEDIO: %.1f\033[0m\n", (*originalarr)[0]);
+					px_to_stack(originalarr, arr_b, 'b', argc);
+					print_stacks(*originalarr, *arr_b, argc);
+					flag = 1;
+					move_counter--;
+					//instructions -= 1;
+					printf("INSTRUCTIONS: %.1f\n", instructions);
+					j++;
+				}
+				else if (move_counter == (instructions))
 				{
 					printf("\033[0;32mVALOR PUSHEADO DESDE REVERSE: %.1f\033[0m\n", (*originalarr)[0]);
 					px_to_stack(originalarr, arr_b, 'b', argc);
-					x++;
+					//x++;
 					// desviación++;
 					print_stacks(*originalarr, *arr_b, argc);
 					procesos++;
@@ -857,13 +856,24 @@ int	choose_the_way(float **originalarr, float **arr_b, float **index_arr, float 
 		else if (instructions == 0)
 		{
 			px_to_stack(originalarr, arr_b, 'b', argc);
-			x++;
+			//x++;
 			// desviación++;
 			//print_stacks(*originalarr, *arr_b, argc);
 			procesos++;
 			printf("Se ha pusheado con normalidad valor de instrucción 0push\n");
 			print_stacks(*originalarr, *arr_b, argc);
 		}
+		if (flag == 1)
+		{
+			wx_to_stack(arr_a, arr_b, 'b');
+			flag = 0;
+		}
+		// if ((*arr_b)[0] == (*arr_a)[1] && (*arr_b)[1] == (*arr_a)[0])
+		// {
+		// 	printf("hey\n");
+		// 	j += 2;
+		// // }
+		// else
 		j++;
 	}
 	return (procesos);
