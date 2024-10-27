@@ -6,14 +6,14 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/10/20 18:34:33 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/10/27 22:59:59 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push.a
 
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 MY_SOURCES = main.c \
