@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/10/27 22:59:59 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/11/02 13:00:10 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,10 @@ RANGE ?= 100
 run: all
 	@$(CC) $(CCFLAGS) -o push_exec $(OBJS)
 	@./push_exec $(shell seq 1 $(RANGE) | shuf -n $(NUMS))
+
+runcust: all
+	@$(CC) $(CCFLAGS) -o push_exec $(OBJS)
+	@./push_exec
 
 .PHONY: all clean fclean re run
 

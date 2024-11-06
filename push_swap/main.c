@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/28 00:16:19 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/11/06 01:26:29 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	int	j;
 	int	zero_check;
 
-	printf("PUTTING ACTION\n");
+	printf("\033[0;32mPUTTING ACTION.\033[0m\n");
 	i = argc - 3; // 4
 	j = i + 1;
 	if (stack == 'a')
@@ -243,7 +243,11 @@ void	rrx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	// 	printf("%.1f\n", (*arr_a)[i]);
 	// 	i++;
 	// }
-	find_zero_number = find_zero(arr_a, argc, 1);
+	if (stack == 'a')
+		find_zero_number = find_zero(arr_a, argc, 1);
+	else if (stack == 'b')
+		find_zero_number = find_zero(arr_b, argc, 1);
+	printf("find_zero_number: %d\n", find_zero_number);
 	if (find_zero_number == -1)
 	{
 		//printf("HEY\n");
@@ -255,12 +259,15 @@ void	rrx_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	{
 		aux_ptr2arr = *arr_a;
 		int_save = (*arr_a)[find_zero_number - 1];
+		printf("int_save: %.1f\n", (*arr_a)[find_zero_number - 1]);
 	}
 	else
 	{
 		aux_ptr2arr = *arr_b;
 		int_save = (*arr_b)[find_zero_number - 1];
+		printf("int_save: %.1f\n", (*arr_b)[find_zero_number - 1]);
 	}
+	//printf("int_save: %.1f\n", )
 	while (find_zero_number - 2 >= 0)
 	{
 		aux_ptr2arr[find_zero_number - 1] = aux_ptr2arr[find_zero_number - 2];
@@ -929,6 +936,7 @@ int	same_num_index(float **sorted_s_h_index, int argc, int x)
 {
 	int	i;
 
+	//printf("valor de x desde same_num_index : %d\n", x);
 	i = 0;
 	while (i < ((argc - 1) - (argc / 2)))
 	{
@@ -968,31 +976,266 @@ float	*make_index(float **sorted, float **originalarr, int size)
 	return (arr);
 }
 
+void	decrease_numbers(float **arr, int argc, int flag, int index)
+{
+	int i;
+	int	cpy;
+
+	if (index == -1)
+		i = 0;
+	i = 0;
+	if (flag == 1)
+	{
+		while (i < argc - 1)
+		{
+			if ((*arr)[i] != 0.5)
+			{
+				(*arr)[i] -= 1;
+			}
+			i++;
+		}
+	}
+	// else if (flag == 2)
+	// {
+	// 	cpy = index;
+	// 	while (index < ((argc - 1)- (argc / 2)))
+	// 	{
+	// 		index++;
+	// 		if ((*arr)[index] > (*arr)[cpy])
+	// 		{
+	// 			(*arr)[index] -= 1;
+	// 		}
+	// 	}
+	// }
+	else if (flag == 2) //revisar
+	{
+		while (i < ((argc - 1)- (argc / 2)))
+		{
+			if ((*arr)[i] > index)
+			{
+				(*arr)[i] -= 1;
+			}
+			i++;
+		}
+	}
+	else if (flag == 3)
+	{
+		cpy = index;
+		while (index < ((argc - 1)- (argc / 2)))
+		{
+			if ((*arr)[index] >= (*arr)[cpy])
+			{
+				(*arr)[index] -= 1;
+			}
+			index++;
+		}
+	}
+}
+void	increase_numbers(float **arr, int argc, int flag, int index)
+{
+	int i;
+	int	cpy;
+
+	if (index == -1)
+		i = 0;
+	i = 0;
+	if (flag == 1)
+	{
+		while (i < argc - 1)
+		{
+			if ((*arr)[i] != 0.5)
+			{
+				(*arr)[i] += 1;
+			}
+			i++;
+		}
+	}
+	else if (flag == 2)
+	{
+		cpy = index;
+		while (index < ((argc - 1)- (argc / 2)))
+		{
+			index++;
+			if ((*arr)[index] > (*arr)[cpy])
+			{
+				(*arr)[index] += 1;
+			}
+		}
+	}
+	else if (flag == 3)
+	{
+		cpy = index;
+		while (index < ((argc - 1)- (argc / 2)))
+		{
+			if ((*arr)[index] >= (*arr)[cpy])
+			{
+				(*arr)[index] += 1;
+			}
+			index++;
+		}
+	}
+	else if (flag == 4)
+	{
+		while (index < ((argc - 1)- (argc / 2)))
+		{
+			if ((*arr)[index] != 0.5)
+				(*arr)[index] += 1;
+			index++;
+		}
+	}
+}
+
+int	check_zero(float **arr_c, int argc, int flag)
+{
+	int i;
+
+	i = 0;
+	if (flag == 1)
+	{
+		while (i < argc - 1)
+		{
+			if ((*arr_c)[i] == 0)
+			{
+				(*arr_c)[i] = 0.5;
+				return (i);
+			}
+			i++;
+		}
+	}
+	else if (flag == 2)
+	{
+		while (i < argc - 1)
+		{
+			if ((*arr_c)[i] != 0.5)
+				break ;
+			i++;
+		}
+		return (0);
+	}
+	return (-1);
+}
+int	good_order(float **arr, int argc)
+{
+	int i;
+	int counter;
+	int j;
+	int x;
+	int	z;
+	//int	y;
+
+	//y =
+	j = 0;
+	i = 0;
+	//counter = 0;
+	// while (i < argc)
+	// {
+	// 	if ((*arr)[i] != 0.5)
+	// 		counter++;
+	// 	i++;
+	// }
+	while (j < argc)
+	{
+		z = 0;
+		counter = 0;
+		while (z < argc - 1)
+		{
+			if ((*arr)[i] - (*arr)[i + 1] < 0)
+			{
+				printf("N ");
+				counter++;
+			}
+			if (counter == argc - 1)
+			{
+				printf("\n SH ORDENADO\n");
+				return (1);
+			}
+			i++;
+			x++;
+			z++;
+			if (i > argc - 1)
+				i -= argc;
+			if (x > argc - 1)
+				x -= argc;
+		}
+		printf("\n");
+		j++;
+	}
+  	return (0);
+}
+	// int		i;
+	// int		j;
+	// int		counter;
+	// int 	z;
+	// float	*aux;
+
+	// aux = ft_floatcalloc(((argc - 1) - (argc / 2)), sizeof(float));
+	// counter = 0;
+	// j = 0;
+	// i = 0;
+	// z = 0;
+	// while (i < ((argc - 1) - (argc / 2)))
+	// {
+	// 	aux[i] = (*arr)[i];
+	// 	i++;
+	// }
+	// i = 0;
+	// while (z < (argc - 1) - (argc / 2) - 1)
+	// {
+	// 	j = 0;
+	// 	i = 0;
+	// 	while (j < ((argc - 1) - (argc / 2)) - 1)
+	// 	{
+	// 		if (aux[i] - aux [i + 1] < 0)
+	// 			counter++;
+	// 		if (counter == ((argc - 1) - (argc / 2)) - 1)
+	// 			return (1);
+	// 		i++;
+	// 		j++;
+	// 	}
+	// 	z++;
+	// 	rx_to_stack(&aux, arr_b, 'a', argc);
+	// }
+	// return (0);
+
 void    s_h_arr_strat(float **originalarr, float **arr_b, float **arr_a, int argc)
 {
-    float	*sorted_s_h;
+    //float	*sorted_s_h;
 	float	*sorted_s_h_index;
+	//float	*target_s_h_index;
 	//float	*sorted_f_h;
 	float	*sorted_f_h_index;
 	float	*sorted_index_arr;
+	float	*arr_c;
     int		i;
-    int		j;
+    //int		j;
     int		x;
 	int		z;
 	int		w;
 	int		y;
 	int		flag;
+	//int		flax;
 	//int		instruction;
 	int		num_check;
+	int		zero;
+	int		zero_aux;
+	int		cpy_argc;
+	int		moves;
 
+	moves = 0;
+	//pos = 0;
+	cpy_argc = argc - 1;
+	zero = 0;
 	flag = 0;
+	//flax = 0;
 	z = 0;
 	x = 0;
     y = 0;
-    j = 0;
+   // j = 0;
     w = 0;
 	i = 0;
 	y = 0;
+
+//-------------------------------------------------------------
 	printf("ORIGINALARR: \n");
 	while (w < argc - 1)
 	{
@@ -1005,15 +1248,6 @@ void    s_h_arr_strat(float **originalarr, float **arr_b, float **arr_a, int arg
 	while (w < argc - 1)
 	{
 		printf("%.1f\n", sorted_index_arr[w]);
-		w++;
-	}
-	//sorted_f_h = take_a_half(sorted_index_arr, argc, 1);
-	sorted_s_h = take_a_half(sorted_index_arr, argc, 2);
-	printf("SORTED SECOND HALF: \n");
-	w = 0;
-	while (w < ((argc - 1) - (argc / 2)))
-	{
-		printf("%.1f\n", sorted_s_h[w]);
 		w++;
 	}
 	sorted_f_h_index = find_halfs_index(sorted_index_arr, argc, 1);
@@ -1035,275 +1269,579 @@ void    s_h_arr_strat(float **originalarr, float **arr_b, float **arr_a, int arg
 
 	printf("Estado inicial: \n");
 	print_stacks(*originalarr, *arr_b, argc);
+	arr_c = ft_floatcalloc((argc - 1), sizeof(float));
 
-	// while (check_stack_order(originalarr, argc, 1) != 1 && check_stack_order(arr_b, argc, 2) != 1)
-	// while (i < (argc / 2))
-	// {
-		printf("INDEX DE SortFHI: %.1f\n", sorted_f_h_index[i]);
-		printf("INDEX DE SortSHI: %.1f\n", sorted_s_h_index[i]);
-		if (x < sorted_f_h_index[i]) // x es el indicador de index en el que nos encontramos
+//--------------------------------------------------------------
+
+	while (i < (argc / 2) && good_order(originalarr, (argc - 1)) == 0)
+	{
+
+		printf("\033[42mCOMIENZO DE BUCLE.\033[0m\n");
+		printf("Cpy_argc: %d\n", cpy_argc);
+
+
+		num_check = same_num_index(&sorted_s_h_index, argc, x);
+		if (sorted_f_h_index[i] < 0)
 		{
-			while (x < sorted_f_h_index[i]) // mientras que x no llegue al index que esperamos de la primera mitad (to stack B):
-			{
-				printf("Valor de x: %d\n", x);
-				printf("Valor de num_check: %d\n", num_check);
-				num_check = same_num_index(&sorted_s_h_index, argc, x);
-				if (num_check == 0 && x == 0)
-				{
-					px_to_stack(originalarr, arr_b, 'b', argc);
-					flag++;
-					x++;
-					y++;
-				}
-				if (flag > 0) // aquí conseguimos capturar valores SH intermedios
-				{
-					if (x == sorted_s_h_index[num_check + y])
-					{
-						px_to_stack(originalarr, arr_b, 'b', argc);
-						y++;
-						flag++;
-					}
-				}
-				if (flag > 1 && check_values_same_half(arr_b, &sorted_s_h, argc) == 1) //en caso de haber hecho push a un número de SH se hace +=1 a flag. Se hace check en caso de que haya dos números de SH
-				{
-					if ((*arr_b)[0] < (*arr_b)[1]) //Si estos números pertenecen al SH se deben de posicionar el mayor "arriba"
-						wx_to_stack(arr_a, arr_b, 'b');
-				}
-				if (x == sorted_s_h_index[num_check] && num_check != -1 && flag == 0 && sorted_f_h_index[i + 1] > sorted_f_h_index[i] && sorted_s_h_index[num_check + 1] > sorted_s_h_index[num_check] && sorted_s_h_index[num_check + 2] > sorted_s_h_index[num_check]) // SI en el camino nos encontramos con un número de la SH lo pickeamos en caso de que el siguiente dentro del sorted_s_h_index sea mayor
-				{
-					printf("Paso intermedio detectado.\n");
-					if (sorted_s_h_index[num_check] - sorted_s_h_index[num_check + 1] != -1) // Si los números de sorted_s_h_index no son "consecutivos" se hace el push, de lo contrario se pasan
-					{
-						px_to_stack(originalarr, arr_b, 'b', argc);
-						flag++; //se añade marcador de haber añadido un número SH
-						z = sorted_s_h_index[num_check + 1]; //por comodidad y para liberar la Y que nos interesa
-					} 
-						y += 2; //índice de sorted_s_h_index
-					
-				}
-				if (flag > 0 && x == (z - 1)) //En caso de encontrarnos por el camino con el índice posterior al pickeado -1, se procede a devolver el número al stack A
-				{
-					if (flag > 1) // este es para el caso de que haya más números SH metidos. DIcho de otra manera que flag > 1
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						//y += 2;
-						while (flag > 0)
-						{
-							px_to_stack(originalarr, arr_b, 'a', argc);
-							flag--;
-							//y++;
-						}
-						//y++;
-					}
-					else
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						flag--; //se quita el marcador de número SH en stack B
-						//y += 2;
-					}
-				}
-				rx_to_stack(originalarr, arr_b, 'a', argc); //mientras x no encuentra el índice indicado, se rota de manera reiterada
-				x++;
-			}
-			i++;
-			if (flag != 0) // Condición para poder hacer que un FH se pueda pushear evitando pushear un valor SH guardado en Stack B
-			{
-				int aux = flag;
-				while (aux > 0)
-				{
-					rx_to_stack(arr_a, arr_b, 'b', argc);
-					aux--;
-				}
-				px_to_stack(originalarr, arr_b, 'b', argc);
-				while (aux < flag)
-				{
-					rrx_to_stack(arr_a, arr_b, 'b', argc);
-					aux++;
-				}
-			}
-			else
-				px_to_stack(originalarr, arr_b, 'b', argc); //aquí está la acción de dejar el FH en stack B
-			//i++;
-			while (flag > 0) //en caso de que ya se haya llegado al índice donde se ha hecho el push de un número FH a stack A y siga habiendo marcador flag > 1 se procede a buscar el índice para depositar el número SH
-			{
-				if (x == sorted_f_h_index[i]) // Check para ver si mientras buscamos el lugar donde dejar los números SH encontramos un número FH
-				{
-					px_to_stack(originalarr, arr_b, 'b', argc);
-					i++;
-				}
-				if (flag > 0 && x == (z - 1))
-				{
-					if (flag > 1) // este es para el caso de que haya más números SH metidos. DIcho de otra manera que flag > 1
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						y += 2;
-						while (flag > 0)
-						{
-							px_to_stack(originalarr, arr_b, 'a', argc);
-							flag--;
-							y++;
-						}
-						y++;
-					}
-					else
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						flag--; //se quita el marcador de número SH en stack B
-						y += 2;
-					}
-				}
-				rx_to_stack(arr_a, arr_b, 'a', argc);
-				x++;
-			}
-			//i++;
+			sorted_f_h_index[i] += argc - 1;
+			if ((sorted_f_h_index[i - 1] + 1) > sorted_f_h_index[i])
+				sorted_f_h_index[i] += 1;
+			//flag++;
 		}
-		else if (x > sorted_f_h_index[i]) // x es el indicador de index en el que nos encontramos
+
+
+
+
+
+
+
+		while (x == sorted_f_h_index[i] && i < ((argc - 1) - (argc / 2)))
 		{
-			while (x > sorted_f_h_index[i]) // mientras que x no llegue al index que esperamos de la primera mitad (to stack B):
-			{	
-				num_check = same_num_index(&sorted_s_h_index, argc, x);
-				if (flag > 0 && num_check != -1) // aquí conseguimos capturar valores SH intermedios
-				{
-					if (x == sorted_s_h_index[num_check + y])
-					{
-						px_to_stack(originalarr, arr_b, 'b', argc);
-						y++;
-						flag++;
-					}
-				}
-				if (flag > 1 && check_values_same_half(arr_b, &sorted_s_h, argc) == 1) //en caso de haber hecho push a un número de SH se hace +=1 a flag. Se hace check en caso de que haya dos números de SH
-				{
-					if ((*arr_b)[0] < (*arr_b)[1]) //Si estos números pertenecen al SH se deben de posicionar el mayor "arriba"
-						wx_to_stack(arr_a, arr_b, 'b');
-				}
-				if (x == sorted_s_h_index[num_check] && num_check != -1 && flag == 0 && sorted_f_h_index[i + 1] < sorted_f_h_index[i] && sorted_s_h_index[num_check + 1] < sorted_s_h_index[num_check] && sorted_s_h_index[num_check + 2] < sorted_s_h_index[num_check]) // SI en el camino nos encontramos con un número de la SH lo pickeamos en caso de que el siguiente dentro del sorted_s_h_index sea mayor
-				{
-					if (sorted_s_h_index[num_check] - sorted_s_h_index[num_check + 1] != 1) // Si los números de sorted_s_h_index no son "consecutivos" se hace el push, de lo contrario se pasan
-					{
-						px_to_stack(originalarr, arr_b, 'b', argc);
-						flag++; //se añade marcador de haber añadido un número SH
-						z = sorted_s_h_index[num_check + 1]; //por comodidad y para liberar la Y que nos interesa
-					} 
-						y += 2; //índice de sorted_s_h_index
-					
-				}
-				if (flag > 0 && x == (z - 1)) //En caso de encontrarnos por el camino con el índice posterior al pickeado -1, se procede a devolver el número al stack A
-				{
-					if (flag > 1) // este es para el caso de que haya más números SH metidos. DIcho de otra manera que flag > 1
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						//y += 2;
-						while (flag > 0)
-						{
-							px_to_stack(originalarr, arr_b, 'a', argc);
-							flag--;
-							//y++;
-						}
-						//y++;
-					}
-					else
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						flag--; //se quita el marcador de número SH en stack B
-						//y += 2;
-					}
-				}
-				rx_to_stack(arr_a, arr_b, 'a', argc); //mientras x no encuentra el índice indicado, se rota de manera reiterada
-				x++;
+			printf("\033[1;37;40mCondición de x == sorted_f_h_omdex[x].\033[0m\n");
+			printf("PUSH X = SORTED_F_H_INDEX[I]\n");
+			px_to_stack(originalarr, arr_b, 'b', argc);
+			moves++;
+			cpy_argc--;
+			printf("Cpy_argc: %d\n", cpy_argc);
+			//flax++;                                                    //significa que ha habido push de FH
+			printf("Decreasing indexes...\n");
+			decrease_numbers(&sorted_f_h_index, argc, 2, i);
+			decrease_numbers(&arr_c, argc, 1, i);
+			decrease_numbers(&sorted_s_h_index, argc, 2, i);
+			printf("SORTED FIRST HALF INDEX DECREASED: \n");
+
+ // -----------------------------------------------------------------
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2)))
+			{
+				printf("%.1f\n", sorted_f_h_index[w]);
+				w++;
+			}
+			printf("SORTED_S_H_INDEX DECREASED: \n");
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2)))
+			{
+				printf("%.1f\n", sorted_s_h_index[w]);
+				w++;
 			}
 			i++;
-			if (flag != 0) // Condición para poder hacer que un FH se pueda pushear evitando pushear un valor SH guardado en Stack B
+		}
+
+
+
+
+
+
+
+		if (x < sorted_f_h_index[i] && good_order(&sorted_s_h_index, ((argc - 1) - (argc / 2))) == 0 && i < ((argc - 1) - (argc / 2)))
+		{
+			printf("\033[1;37;40mCondición de x < sorted_f_h_omdex[x].\033[0m\n");
+			z = 0;
+			while (x < sorted_f_h_index[i] && good_order(&sorted_s_h_index, ((argc - 1) - (argc / 2))) == 0)
 			{
-				int aux = flag;
-				while (aux > 0)
+//--------------------------------------------------------------------
+				num_check = same_num_index(&sorted_s_h_index, argc, x); //este sobra
+				printf("num_check: %d, y: %d\n", num_check, y);
+				printf("Valor de x: %d\n", x);
+				printf("Valor de y: %d\n", y);
+				printf("Valor de num_check: %d\n", num_check);
+				printf("sorted_f_h_i[i]: %.1f\n", sorted_f_h_index[i]);
+				printf("sorted_s_h_i[y]: %.1f\n", sorted_s_h_index[y]);
+//----------------------------------------------------------------------
+				while (same_num_index(&sorted_s_h_index, argc, x) != -1) //------------------------------- CONDICIONES
 				{
-					rx_to_stack(arr_a, arr_b, 'b', argc);
-					aux--;
+						num_check = same_num_index(&sorted_s_h_index, argc, x);
+						printf("num_check: %d, y: %d\n", num_check, y);
+						if (num_check != y && num_check > y)
+						{
+							if (sorted_s_h_index[y] - sorted_s_h_index[y + 1] == -1) // se puede hacer un "|| sorted_s_h_index[num_check - 1] - sorted_s_h_index[num_check] == -1"
+							{
+								printf("Condición sorted_s_h_index[y] - sorted_s_h_index[y + 1] == -1\n");
+								//wx_to_stack(originalarr, arr_b, 'a');
+								y += 2;
+							}
+							else
+							{
+								printf("Valor de z: %d\n", z);
+								printf("Valor de x: %d\n", x);
+								//printf("Valor de i: %d\n", i);
+								printf("\033[0;35mSe ha cumplido la condición 1.\033[0m\n");
+								px_to_stack(originalarr, arr_b, 'b', argc);
+								moves++;
+								cpy_argc--;
+								printf("Cpy_argc: %d\n", cpy_argc);
+								sorted_s_h_index[num_check] += 0.5;
+								rx_to_stack(originalarr, arr_b, 'b', argc);
+								moves++;
+								w = y; //copia
+								if (sorted_s_h_index[y] == sorted_s_h_index[num_check - 1] && sorted_s_h_index[y] > sorted_s_h_index[num_check]) //revisar
+									y += 2;
+								else
+									y++;
+								decrease_numbers(&sorted_f_h_index, argc, 2, x);
+								printf("Decreasing sh indexes...\n");
+								decrease_numbers(&sorted_s_h_index, argc, 2, x);
+								decrease_numbers(&arr_c, argc, 1, i);
+								if ((num_check - w) > 1)
+								{
+									printf("Hola1\n");
+									arr_c[z] = sorted_s_h_index[num_check - 1] - (x - 1);
+								}
+								else if ((num_check - w) == 1) //Eliminar una de las opciones
+								{
+									printf("Hola2\n");
+									arr_c[z] = sorted_s_h_index[num_check - 1] - (x - 1);
+								}
+								z++;
+								flag++;
+								printf("Flag: %d\n", flag);
+							}
+
+//--------------------------------------------------------------------
+
+							printf("SORTED FIRST HALF INDEX DECREASED: \n");
+							w = 0;
+							while (w < ((argc - 1) - (argc / 2))) //prints
+							{
+								printf("%.1f\n", sorted_f_h_index[w]);
+								w++;
+							}
+							printf("SORTED_S_H_INDEX DECREASED: \n");
+							w = 0;
+							while (w < ((argc - 1) - (argc / 2))) //prints
+							{
+								printf("%.1f\n", sorted_s_h_index[w]);
+								w++;
+							}
+							w = 0;
+							printf("ARR_C (dentro del if):\n");
+							while (w < (argc - 1))
+							{
+								printf("%.1f\n", arr_c[w]);
+								w++;
+							}
+
+//----------------------------------------------------------------------
+
+							while ((zero = check_zero(&arr_c, argc, 1)) != -1) //------------------------------ GESTIÓN DE BUFFER SH DENTRO DE CONDICIÓN
+							{
+								printf("\033[1;37;40mCondición Countdown == 0.\033[0m\n");
+								printf("\033[41mGestionando buffer ... (DENTRO DE CONDICIÓN)\033[0m\n");
+								zero_aux = zero;
+								flag--;
+								printf("flag: %d\n", flag);
+								printf("Rotando buffer\n");
+								//while (zero_aux + 1 > 0)
+								while (zero_aux > 0) // rotate
+								{
+									rrx_to_stack(originalarr, arr_b, 'b', argc);
+									moves++;
+									zero_aux--;
+								}
+								//rx_to_stack(originalarr, arr_b, 'a', argc); -----------contemplar seriamente
+								px_to_stack(originalarr, arr_b, 'a', argc);
+								cpy_argc++;
+								moves++;
+								printf("Cpy_argc: %d\n", cpy_argc);
+								increase_numbers(&sorted_f_h_index, argc, 2, i);
+								increase_numbers(&sorted_s_h_index, argc, 2, i);
+								printf("SORTED FIRST HALF INDEX INCREASED: \n");
+								w = 0;
+								while (w < ((argc - 1) - (argc / 2))) //prints
+								{
+									printf("%.1f\n", sorted_f_h_index[w]);
+									w++;
+								}
+								printf("SORTED_S_H_INDEX INCREASED: \n");
+								w = 0;
+								while (w < ((argc - 1) - (argc / 2))) //prints
+								{
+									printf("%.1f\n", sorted_s_h_index[w]);
+									w++;
+								}
+								w = 0;
+								printf("ARR_C :\n");
+								while (w < (argc - 1))
+								{
+									printf("%.1f\n", arr_c[w]);
+									w++;
+								}
+								w = 0;
+								printf("ARR_A:\n");
+								while (w < (argc - 1))
+								{
+									printf("%.1f\n", (*originalarr)[w]);
+									w++;
+								}
+								printf("\033[0;36mSe ha devuelto un valor del SH buffer a Stack A.\033[0m\n");
+								while (zero - 1 > 0) //reverse rotate
+								{
+									rx_to_stack(originalarr, arr_b, 'b', argc);
+									moves++;
+									zero--;
+								}
+							}
+						}
+						else if (num_check == y)
+						{
+								y++;
+								break ;
+						}
+						else if (num_check < y)
+							break ;
 				}
-				px_to_stack(originalarr, arr_b, 'b', argc);
-				while (aux < flag)
+				printf("Saliendo del While condicional... \n");
+				printf("Valor de y: %d\n", y);
+				printf("Valor de x: %d\n", x);
+
+				if (x == sorted_f_h_index[i])
+					break ;
+				decrease_numbers(&arr_c, argc, 1, i);
+				w = 0;
+				print_stacks(*originalarr, *arr_b, argc);
+				printf("ARR_C:\n");
+				while (w < (argc - 1))
 				{
-					rrx_to_stack(arr_a, arr_b, 'b', argc);
-					aux++;
+					printf("%.1f\n", arr_c[w]);
+					w++;
 				}
+				while ((zero = check_zero(&arr_c, argc, 1)) != -1) //---------------------------------------------- GESTIÓN DE BUFFER SH
+				{
+					printf("\033[1;37;40mCondición de Countdown después de main condition.\033[0m\n");
+					//printf("zero != -1\n");
+					printf("\033[41mGestionando buffer...\033[0m\n");
+					zero_aux = zero;
+					flag--;
+					printf("zero_aux: %d\n", zero_aux);
+					printf("Rotando buffer\n");
+					while (zero_aux + 1 > 0)
+					{
+						rrx_to_stack(originalarr, arr_b, 'b', argc);
+						moves++;
+						zero_aux--;
+					}
+					rx_to_stack(originalarr, arr_b, 'a', argc);
+					moves++;
+					x++; //importante
+					printf("Valor de x: %d\n", x);
+					print_stacks(*originalarr, *arr_b, argc);
+					px_to_stack(originalarr, arr_b, 'a', argc);
+					moves++;
+					cpy_argc++;
+					printf("Cpy_argc: %d\n", cpy_argc);
+					increase_numbers(&sorted_f_h_index, argc, 3, i);
+					increase_numbers(&sorted_s_h_index, argc, 3, i);
+					printf("\033[0;36mSe ha devuelto un valor del SH buffer a Stack A.\033[0m\n");
+					printf("Valor de x: %d\n", x);
+					printf("Valor de y: %d\n", y);
+					printf("SORTED FIRST HALF INDEX INCREASED: \n");
+					w = 0;
+					while (w < ((argc - 1) - (argc / 2))) //prints
+					{
+						printf("%.1f\n", sorted_f_h_index[w]);
+						w++;
+					}
+					printf("SORTED_S_H_INDEX INCREASED: \n");
+					w = 0;
+					while (w < ((argc - 1) - (argc / 2))) //prints
+					{
+						printf("%.1f\n", sorted_s_h_index[w]);
+						w++;
+					}
+					w = 0;
+					//print_stacks(*originalarr, *arr_b, argc);
+					printf("ARR_C:\n"); //revisar
+					while (w < (argc - 1))
+					{
+						printf("%.1f\n", arr_c[w]);
+						w++;
+					}
+					while (zero > 0)
+					{
+						rx_to_stack(originalarr, arr_b, 'b', argc);
+						moves++;
+						zero--;
+					}
+					z--;
+				}
+				printf("Rotación normal\n");
+				rx_to_stack(originalarr, arr_b, 'a', argc); //acción de rotación hacia valor FH
+				moves++;
+				x++;
+				printf("Valor de x: %d\n", x);
+				print_stacks(*originalarr, *arr_b, argc);
+				//x++;
+			} // ----------------------------------------------------------------------------------------- FINAL DE BUCLE
+			printf("Valor de x: %d\n", x);
+			printf("Valor de i: %d\n", i);
+			printf("PUSHEANDO FH: \n");
+			printf("Flag: %d\n", flag);
+			px_to_stack(originalarr, arr_b, 'b', argc); // ------------------------------------------------ PUSH ORDINARIO A STACK A
+			moves++;
+			cpy_argc--;
+			printf("Cpy_argc: %d\n", cpy_argc);
+			i++;
+			printf("Decreasing indexes...\n");
+			decrease_numbers(&sorted_f_h_index, argc, 2, x);
+			decrease_numbers(&sorted_s_h_index, argc, 2, x);
+			decrease_numbers(&arr_c, argc, 1, i);
+			printf("SORTED FIRST HALF INDEX DECREASED: \n");
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2))) //prints
+			{
+				printf("%.1f\n", sorted_f_h_index[w]); 
+				w++;
 			}
-			else
-				px_to_stack(originalarr, arr_b, 'b', argc); //aquí está la acción de dejar el FH en stack B
-			//i++;
-			while (flag > 0) //en caso de que ya se haya llegado al índice donde se ha hecho el push de un número FH a stack A y siga habiendo marcador flag > 1 se procede a buscar el índice para depositar el número SH
+			printf("SORTED SECOND HALF INDEX DECREASED: \n");
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2))) //prints
 			{
-				if (x == sorted_f_h_index[i]) // Check para ver si mientras buscamos el lugar donde dejar los números SH encontramos un número FH
+				printf("%.1f\n", sorted_s_h_index[w]);
+				w++;
+			}
+			w = 0;
+			printf("ARR_C (dentro del if):\n");
+			while (w < (argc - 1))
+			{
+				printf("%.1f\n", arr_c[w]);
+				w++;
+			}
+			if (x == cpy_argc)
+				x = -1;
+			// while (check_zero(&arr_c, argc, 2) != 0)
+			// {
+			// 	if ((zero = check_zero(&arr_c, argc, 1)) != -1) //---------------------------------------------- GESTIÓN DEL AFTER BUFFER SH
+			// 	{
+			// 		printf("Gestión de buffer\n");
+			// 		zero_aux = zero;
+			// 		printf("Rotando buffer\n");
+			// 		while (zero_aux > 0)
+			// 		{
+			// 			rrx_to_stack(originalarr, arr_b, 'b', argc);
+			// 			zero_aux--;
+			// 		}
+			// 		px_to_stack(originalarr, arr_b, 'a', argc);
+			// 		increase_numbers(&sorted_f_h_index, argc, 3, i);
+			// 		increase_numbers(&sorted_s_h_index, argc, 3, i);
+			// 		printf("\033[0;36mSe ha devuelto un valor del SH buffer a Stack A.\033[0m\n");
+			// 		while (zero - 1 > 0)
+			// 		{
+			// 			rx_to_stack(originalarr, arr_b, 'b', argc);
+			// 			zero--;
+			// 		}
+			// 	}
+			// 	rx_to_stack(originalarr, arr_b, 'a', argc);
+			// 	decrease_numbers(&arr_c, argc, 1, i);
+			// 	x++;
+			// }
+			print_stacks(*originalarr, *arr_b, argc);
+		}
+
+
+
+
+
+
+
+
+
+		else if (x > sorted_f_h_index[i] && good_order(&sorted_s_h_index, ((argc - 1) - (argc / 2))) == 0 && i < ((argc - 1) - (argc / 2)))
+		{
+			printf("\033[1;37;40mCondición de x > sorted_f_h_omdex[x].\033[0m\n");
+			while (x > sorted_f_h_index[i] && good_order(&sorted_s_h_index, ((argc - 1) - (argc / 2))) == 0)
+			{
+				
+				printf("Valor de x: %d\n", x);
+				printf("Valor de i: %d\n", i);
+				printf("Valor de sorted_f_h_index[i]: %.1f\n", sorted_f_h_index[i]);
+				rrx_to_stack(originalarr, arr_b, 'a', argc); //acción de reverse rotación hacia valor FH
+				moves++;
+				increase_numbers(&arr_c, argc, 4, 0);
+				w = 0;
+				printf("ARR_C INCREASED:\n");
+				while (w < (argc - 1))
 				{
+					printf("%.1f\n", arr_c[w]);
+					w++;
+				}
+				x--;
+			}
+			px_to_stack(originalarr, arr_b, 'b', argc);
+			moves++;
+			cpy_argc--;
+			printf("Cpy_argc: %d\n", cpy_argc);
+			i++;
+			//x--;
+			printf("Valor de x: %d\n", x);
+			decrease_numbers(&arr_c, argc, 1, i);
+			printf("Decreasing fh indexes...\n");
+			decrease_numbers(&sorted_f_h_index, argc, 2, x);
+			printf("Decreasing sh indexes...\n");
+			decrease_numbers(&sorted_s_h_index, argc, 2, x); //revisar
+			w = 0;
+			printf("ARR_C DECREASED:\n");
+			while (w < (argc - 1))
+			{
+				printf("%.1f\n", arr_c[w]);
+				w++;
+			}
+			printf("SORTED FIRST HALF INDEX DECREASED: \n");
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2)))
+			{
+				printf("%.1f\n", sorted_f_h_index[w]);
+				w++;
+			}
+			printf("SORTED SECOND HALF INDEX DECREASED: \n");
+			w = 0;
+			while (w < ((argc - 1) - (argc / 2)))
+			{
+				printf("%.1f\n", sorted_s_h_index[w]);
+				w++;
+			}
+			if (x == cpy_argc)
+				x = -1;
+			print_stacks(*originalarr, *arr_b, argc);
+
+			// while (flag > 0)
+			// {
+			// 	rx_to_stack(originalarr, arr_b, 'a', argc); //acción de rotación hacia valor FH
+			// 	decrease_numbers(&arr_c, argc);
+			// 	if (check_zero(&arr_c, argc) != -1) //check que revisa los decrementos de los movimientos restante SH
+			// 	{
+			// 		zero = check_zero(&arr_c, argc);
+			// 		if (zero == 0)
+			// 		{
+			// 			rrx_to_stack(originalarr, arr_b, 'b', argc);
+			// 			px_to_stack(originalarr, arr_b, 'a', argc);
+			// 			flag--;
+			// 		}
+			// 		else if (zero > 0)
+			// 		{
+			// 			while (pos <= zero)
+			// 			{
+			// 				rrx_to_stack(originalarr, arr_b, 'b', argc);
+			// 				pos++;
+			// 			}
+			// 			px_to_stack(originalarr, arr_b, 'a', argc);
+			// 			flag--;
+			// 			while (pos > 0)
+			// 			{
+			// 				rx_to_stack(originalarr, arr_b, 'a', argc);
+			// 				pos--;
+			// 			}
+			// 		}
+			// 		arr_c[zero] = 0.5;
+			// 	}
+			// 	x++;
+			// }
+			//i++;
+			if (x == sorted_f_h_index[i] && i < ((argc - 1) - (argc / 2))) // ------------------------------ MEDIDA PREVENTIVA ANTES DE HACER INCREMENTO DE I++
+			{
+				while (x == sorted_f_h_index[i] && i < ((argc - 1) - (argc / 2)))
+				{
+					printf("PUSH X = SORTED_F_H_INDEX[I]\n");
 					px_to_stack(originalarr, arr_b, 'b', argc);
+					moves++;
+					cpy_argc--;
+					printf("Cpy_argc: %d\n", cpy_argc);
+					//flax++;                                                    //significa que ha habido push de FH
+					printf("Decreasing indexes...\n");
+					decrease_numbers(&sorted_f_h_index, argc, 2, i);
+					decrease_numbers(&arr_c, argc, 1, i);
+					decrease_numbers(&sorted_s_h_index, argc, 2, i);
+					printf("SORTED FIRST HALF INDEX DECREASED: \n");
+
+					w = 0;
+					while (w < ((argc - 1) - (argc / 2)))
+					{
+						printf("%.1f\n", sorted_f_h_index[w]);
+						w++;
+					}
+					printf("SORTED_S_H_INDEX DECREASED: \n");
+					w = 0;
+					while (w < ((argc - 1) - (argc / 2)))
+					{
+						printf("%.1f\n", sorted_s_h_index[w]);
+						w++;
+					}
 					i++;
 				}
-				if (flag > 0 && x == (z - 1))
-				{
-					if (flag > 1) // este es para el caso de que haya más números SH metidos. DIcho de otra manera que flag > 1
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						rx_to_stack(arr_a, arr_b, 'a', argc);
-						y += 2;
-						while (flag > 0)
-						{
-							px_to_stack(originalarr, arr_b, 'a', argc);
-							flag--;
-							y++;
-						}
-						y++;
-					}
-					else
-					{
-						px_to_stack(originalarr, arr_b, 'a', argc);
-						flag--; //se quita el marcador de número SH en stack B
-						y += 2;
-					}
-				}
-				rx_to_stack(arr_a, arr_b, 'a', argc);
-				x++;
 			}
-			//i++;
-		// }
-		// else if (x > sorted_f_h_index[i])
-		// {
-		// 	while (x > (*sorted_f_h_index)[i])
-		// 	{
-		// 		if (flag > 1 && check_values_same_half(arr_b, sorteed_s_h, argc) == 1)
-		// 		{
-		// 			if ((*arr_b)[0] < (*arr_b)[1])
-		// 				wx_to_stack(arr_a, arr_b, 'b');
-		// 		}
-		// 		if (x == sorted_s_h_index[y] && (*sorted_f_h_index)[i + 1] < (*sorted_f_h_index)[i] && sorted_s_h_index[y + 1] < (*sorted_s_h_index)[y])
-		// 		{
-		// 			px_to_stack(originalarr, arr_b, 'b', argc);
-		// 			flag++;
-		// 			y++;
-		// 		}
-		// 		rrx_to_stack(arr_a, arr_b, 'a', argc);
-		// 		x--;
-		// 	}
-		// 	px_to_stack(originalarr, arr_b, 'b', argc);
-		// 	if (flag > 0)
-		// 	{
-		// 		while (x > ((*sorted_s_h_index)[i + 1] + 1))
-		// 		{
-		// 			rx_to_stack(arr_a, arr_b, 'a', argc);
-		// 			x--;
-		// 		}
-		// 		px_to_stack(originalarr, arr_b, 'a', argc);
-		// 	}
+		}
+		
+		// else
 		// 	i++;
-		// }
-		j++;
 	}
-	
+	if (flag > 0)
+	{
+		while (flag > 0)
+		{
+			while ((zero = check_zero(&arr_c, argc, 1)) != -1) //---------------------------------------------- GESTIÓN DE BUFFER SH
+			{
+				printf("zero != -1\n");
+				printf("\033[41mGestionando buffer...\033[0m\n");
+				zero_aux = zero;
+				flag--;
+				printf("zero_aux: %d\n", zero_aux);
+				printf("Rotando buffer\n");
+				while (zero_aux + 1 > 0)
+				{
+					rrx_to_stack(originalarr, arr_b, 'b', argc);
+					moves++;
+					zero_aux--;
+				}
+				rx_to_stack(originalarr, arr_b, 'a', argc);
+				moves++;
+				print_stacks(*originalarr, *arr_b, argc);
+				px_to_stack(originalarr, arr_b, 'a', argc);
+				cpy_argc++;
+				printf("Cpy_argc: %d\n", cpy_argc);
+				increase_numbers(&sorted_f_h_index, argc, 3, i);
+				increase_numbers(&sorted_s_h_index, argc, 3, i);
+				printf("\033[0;36mSe ha devuelto un valor del SH buffer a Stack A.\033[0m\n");
+				printf("Valor de x: %d\n", x);
+				printf("Valor de y: %d\n", y);
+				printf("SORTED FIRST HALF INDEX INCREASED: \n");
+				w = 0;
+				while (w < ((argc - 1) - (argc / 2))) //prints
+				{
+					printf("%.1f\n", sorted_f_h_index[w]);
+					w++;
+				}
+				printf("SORTED_S_H_INDEX INCREASED: \n");
+				w = 0;
+				while (w < ((argc - 1) - (argc / 2))) //prints
+				{
+					printf("%.1f\n", sorted_s_h_index[w]);
+					w++;
+				}
+				w = 0;
+				//print_stacks(*originalarr, *arr_b, argc);
+				printf("ARR_C INCREASED:\n"); //revisar
+				while (w < (argc - 1))
+				{
+					printf("%.1f\n", arr_c[w]);
+					w++;
+				}
+				while (zero > 0)
+				{
+					rx_to_stack(originalarr, arr_b, 'b', argc);
+					zero--;
+				}
+				z--;
+			}	
+			rx_to_stack(originalarr, arr_b, 'a', argc);
+			moves++;
+			decrease_numbers(&arr_c, argc, 1, i);
+			printf("Valor de x: %d\n", x);
+			if (x > 100)
+				break ;
+			printf("Valor de flag: %d\n", flag);
+			x++;
+		}
+	}
+	printf("NÚMERO TOTAL DE MOVIMIENTOS: %d\n", moves);
 }
 
 // int	choose_the_wayv3(float **originalarr, float **arr_b, float **index_arr, float **arr_a, int argc)
