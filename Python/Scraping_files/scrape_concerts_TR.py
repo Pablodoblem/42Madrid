@@ -4,10 +4,19 @@ import time
 import re
 import pandas as pd
 from datetime import datetime
+import os
+
+# Directorios donde guardar los archivos
+DIRECTORY = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs'
+DIRECTORY2 = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs/Logs'
+
+# Archivos con sus rutas completas
+EXCEL_FILE = os.path.join(DIRECTORY, 'TRReg.xlsx')
+LOG_FILE = os.path.join(DIRECTORY2, 'logTeatroReal.txt')
 
 BASE_URL = 'https://www.teatroreal.es/es/temporada-actual/conciertos#toContent'
-EXCEL_FILE = 'TRReg.xlsx'
-LOG_FILE = 'logTeatroReal.txt'
+
+# El resto del código sigue igual...
 
 def extract_concert_info(url):
     try:
@@ -54,7 +63,7 @@ def extract_concert_info(url):
                     'Título': title,
                     'Fecha': date,
                     'Más información': more_info_url,
-                    'Información': program,
+                    'Programa': program,
                     'Hora': hour,
                     'Precio': price,
                     'Imagen': image_url
@@ -163,10 +172,10 @@ def main():
     # Extraer los datos actuales de conciertos
     current_concerts = extract_concert_info(BASE_URL)
     current_df = pd.DataFrame(current_concerts)
-
+    
     # Leer los datos existentes del archivo Excel
     existing_df = read_existing_data(EXCEL_FILE)
-
+    
     # Comparar los datos y actualizar si hay cambios
     if not existing_df.empty:
         changes_made = False
@@ -179,17 +188,19 @@ def main():
             write_log("No se encontraron cambios en los datos de los conciertos.")
     else:
         write_log("Archivo Excel no encontrado. Creando nuevo archivo.")
-
-    # Guardar los datos actualizados en el archivo Excel
-    current_df.to_excel(EXCEL_FILE, index=False)
+    
+    # Guardar los datos actualizados en el archivo Excel con la hoja 'Conciertos'
+    with pd.ExcelWriter(EXCEL_FILE, mode='a', if_sheet_exists='replace') as writer:
+        current_df.to_excel(writer, sheet_name='Conciertos', index=False)
+    
     write_log("Datos de conciertos guardados/actualizados en el archivo Excel.")
-
+    
     # Imprimir los datos de los conciertos
     for concert in current_concerts:
         print(f"Título: {concert['Título']}")
         print(f"Fecha: {concert['Fecha']}")
         print(f"Más información: {concert['Más información']}")
-        print(f"Información: {concert['Información']}")
+        print(f"Programa: {concert['Programa']}")
         print(f"Hora: {concert['Hora']}")
         print(f"Precio: {concert['Precio']}")
         print(f"Imagen: {concert['Imagen']}")
@@ -197,3 +208,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

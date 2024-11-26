@@ -3,10 +3,17 @@ from bs4 import BeautifulSoup
 import time
 import pandas as pd
 from datetime import datetime
+import os
 
-BASE_URL = 'https://www.teatroreal.es/es/temporada-actual/opera#toContent'
-EXCEL_FILE = 'TRReg.xlsx'
-LOG_FILE = 'logTeatroReal.txt'
+# Definir los directorios
+DIRECTORY = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs'
+DIRECTORY2 = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs/Logs'
+
+# Especificar las rutas de los archivos
+EXCEL_FILE = os.path.join(DIRECTORY, 'TRReg.xlsx')
+LOG_FILE = os.path.join(DIRECTORY2, 'logTeatroReal.txt')
+
+BASE_URL = 'https://www.teatroreal.es/es/temporada-actual/tambien-real#toContent'
 
 def extract_opera_info(url):
     try:
@@ -18,7 +25,7 @@ def extract_opera_info(url):
 
         # Buscar el bloque que contiene las óperas
         opera_blocks = soup.find_all('div', class_='col-xs-6 col-sm-4 col-md-3')
-        print(f"Número de bloques de óperas encontrados: {len(opera_blocks)}")
+        print(f"Número de bloques de conciertos de También en el Real encontrados: {len(opera_blocks)}")
 
         for block in opera_blocks:
             try:
@@ -62,7 +69,7 @@ def extract_opera_info(url):
                         'Título': title,
                         'Fecha': date,
                         'Más información': more_info_url,
-                        'Información': program,
+                        'Programa': program,
                         'Función': function,
                         'Precio': more_info_url,  # La URL del evento como precio
                         'Imagen': image_url
@@ -168,7 +175,7 @@ def write_log(message):
         log_file.write(f"{datetime.now()}: {message}\n")
 
 def main():
-    print("Inicio de la extracción de datos de óperas...")
+    print("Inicio de la extracción de datos de conciertos de También en el Real...")
     # Extraer los datos actuales de óperas
     current_operas = extract_opera_info(BASE_URL)
     current_df = pd.DataFrame(current_operas)
@@ -176,7 +183,7 @@ def main():
     print(f"Datos extraídos: {current_df}")
 
     # Leer los datos existentes del archivo Excel
-    existing_df = read_existing_data(EXCEL_FILE, 'Ópera')
+    existing_df = read_existing_data(EXCEL_FILE, 'También_en_el_Real')
 
     # Comparar los datos y actualizar si hay cambios
     if not existing_df.empty:
@@ -187,13 +194,13 @@ def main():
                 write_log(f"Se actualizó la ópera '{row['Título']}' con fecha '{row['Fecha']}'.")
         
         if not changes_made:
-            write_log("No se encontraron cambios en los datos de las óperas.")
+            write_log("No se encontraron cambios en los datos de los conciertos de También en el Real.")
     else:
-        write_log("Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.")
+        write_log("Archivo Excel o pestaña 'También en el Real' no encontrados. Creando nuevo archivo/pestaña.")
 
     # Guardar los datos actualizados en el archivo Excel
     with pd.ExcelWriter(EXCEL_FILE, mode='a', if_sheet_exists='replace') as writer:
-        current_df.to_excel(writer, sheet_name='Ópera', index=False)
+        current_df.to_excel(writer, sheet_name='También_en_el_Real', index=False)
     write_log("Datos de óperas guardados/actualizados en el archivo Excel.")
 
     # Imprimir los datos de las óperas
@@ -201,7 +208,7 @@ def main():
         print(f"Título: {opera['Título']}")
         print(f"Fecha: {opera['Fecha']}")
         print(f"Más información: {opera['Más información']}")
-        print(f"Información: {opera['Información']}")
+        print(f"Programa: {opera['Programa']}")
         print(f"Función: {opera['Función']}")
         print(f"Precio: {opera['Precio']}")
         print(f"Imagen: {opera['Imagen']}")

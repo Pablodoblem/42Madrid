@@ -5,8 +5,10 @@ import pandas as pd
 import os
 
 # Rutas de los archivos
-STATE_FILE = 'AudNacReg.xlsx'
-LOG_FILE = 'logAudNac.txt'
+DIRECTORY = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs'
+DIRECTORY2 = '/home/pamarti2/42_official_repo_git/42Madrid/Python/Regs/Logs'
+STATE_FILE = os.path.join(DIRECTORY, 'AudNacReg.xlsx')
+LOG_FILE = os.path.join(DIRECTORY2,'AudNacLog.txt')
 
 def clean_text(element):
     # Elimina etiquetas <br/> y espacios adicionales

@@ -1,0 +1,32 @@
+2024-11-18 17:27:42.803118: Se actualizó el concierto 'XXIX CONCIERTO BENÉFICO' con fecha '23 Nov, 24'.
+2024-11-18 17:27:42.803315: Se actualizó el concierto 'Asmik Grigorian' con fecha '24 Nov, 24'.
+2024-11-18 17:27:42.803435: Se actualizó el concierto 'Una Navidad española' con fecha '18 Dic, 24'.
+2024-11-18 17:27:42.803536: Se actualizó el concierto 'Domingos de cámara III / 24-25' con fecha '29 Dic, 24'.
+2024-11-18 17:27:42.803601: Se actualizó el concierto 'Domingos de cámara IV / 24-25' con fecha '02 Mar, 25'.
+2024-11-18 17:27:42.803660: Se actualizó el concierto 'Michael Volle & Gabriela Scherer' con fecha '29 Mar, 25'.
+2024-11-18 17:27:42.803745: Se actualizó el concierto 'Concierto Concurso Tenor Viñas 2025' con fecha '06 Abr, 25'.
+2024-11-18 17:27:42.803835: Se actualizó el concierto 'Domingos de cámara V / 24-25' con fecha '11 Mayo, 25'.
+2024-11-18 17:27:42.803926: Se actualizó el concierto 'Réquiem para Ophélie' con fecha '13 Mayo, 25'.
+2024-11-18 17:27:42.804042: Se actualizó el concierto 'CONCIERTO Agrupación Musical Inclusiva' con fecha '21 Jun, 25'.
+2024-11-18 17:27:42.804146: Se actualizó el concierto 'Domingos de cámara VI' con fecha '29 Jun, 25'.
+2024-11-18 17:27:42.804236: Se actualizó el concierto 'Anna Netrebko y Yusif Eyvazov' con fecha '05 Sep, 24'.
+2024-11-18 17:27:42.804337: Se actualizó el concierto 'Juan Diego Flórez' con fecha '19 Sep, 24'.
+2024-11-18 17:27:42.804439: Se actualizó el concierto 'Domingos de cámara I' con fecha '29 Sep, 24'.
+2024-11-18 17:27:42.804543: Se actualizó el concierto 'Ludovic Tézier' con fecha '03 Oct, 24'.
+2024-11-18 17:27:42.804644: Se actualizó el concierto 'Domingos de cámara II / 24-25' con fecha '03 Nov, 24'.
+2024-11-18 17:27:42.804753: Se actualizó el concierto 'Sondra Radvanovsky & Piotr Beczala' con fecha '03 Nov, 24'.
+2024-11-18 17:27:42.812288: Datos de conciertos guardados/actualizados en el archivo Excel.
+2024-11-18 17:28:36.389384: Archivo Excel o pestaña 'Ópera' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-18 17:28:36.410653: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-11-18 17:43:21.228229: No se encontraron cambios en los datos de los conciertos.
+2024-11-18 17:43:21.254901: Datos de conciertos guardados/actualizados en el archivo Excel.
+2024-11-19 10:15:45.257291: Archivo Excel o pestaña 'Danza' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-19 10:15:45.287008: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-11-19 10:20:27.480650: Archivo Excel o pestaña 'Música_de_Cámara' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-19 10:20:27.512951: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-11-19 10:23:05.973111: Archivo Excel o pestaña 'Flamenco' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-19 10:23:06.009779: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-11-19 10:25:58.783561: Archivo Excel o pestaña 'También en el Real' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-19 10:25:58.825088: Datos de óperas guardados/actualizados en el archivo Excel.
+2024-11-19 10:28:55.860368: Archivo Excel o pestaña 'El Real Junior' no encontrados. Creando nuevo archivo/pestaña.
+2024-11-19 10:28:55.918529: Datos de óperas guardados/actualizados en el archivo Excel.
