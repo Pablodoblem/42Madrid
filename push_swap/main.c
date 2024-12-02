@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/02 12:26:42 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/03 00:20:45 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,20 @@ int	find_zero(float **arr, int argc, int flag)
 	return (-1);
 }
 
-void	move_the_row(float **arr, int argc)
+void	move_the_row(float **arr, int argc, int flag)
 {
 	int	i;
 	int	j;
 
 	i = 0; // 0
 	j = i + 1;  // 1
+	
 	while (j < argc - 1 || i < argc - 1)
 		(*arr)[i++] = (*arr)[j++];
 	(*arr)[argc - 2] = 0.5;
 	//printf("HELLO\n");
-	find_zero(arr, argc, 2); //cuidado con esto que puede haber ceros de argumentos. Manejar próximamanete
+	if (flag == 1)
+		find_zero(arr, argc, 2); //cuidado con esto que puede haber ceros de argumentos. Manejar próximamanete
 }
 
 void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
@@ -150,7 +152,7 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 		while (j >= 0 || i >= 0)
 			(*arr_a)[j--] = (*arr_a)[i--];
 		(*arr_a)[0] = (*arr_b)[0];
-		move_the_row(arr_b, argc);
+		move_the_row(arr_b, argc, 1);
 		//print_stacks(*arr_a, *arr_b, argc);
 	}
 	if (stack == 'b')
@@ -161,7 +163,7 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 		while (j >= 0 || i >= 0)
 			(*arr_b)[j--] = (*arr_b)[i--];
 		(*arr_b)[0] = (*arr_a)[0];
-		move_the_row(arr_a, argc);
+		move_the_row(arr_a, argc, 1);
 	}
 	//print_stacks(*arr_a, *arr_b, argc);
 }
@@ -990,9 +992,12 @@ void	decrease_numbers(float **arr, int argc, int flag, int index)
 	{
 		while (i < argc - 1)
 		{
-			if ((*arr)[i] != 0.5)
+			if ((*arr)[i] != 0.5 && (*arr)[i] != 0)
 			{
-				(*arr)[i] -= 1;
+				// if ((*arr)[i] == 0)
+				// 	(*arr)[i] = 0.5;
+				// else
+					(*arr)[i] -= 1;
 			}
 			i++;
 		}
@@ -1090,76 +1095,35 @@ void	increase_numbers(float **arr, int argc, int flag, int index)
 int	check_zero(float **arr_c, float **arr_b, int argc, int flag)
 {
 	int i;
-	//int	counter;
 	int	aux_i;
 	int	ft;
 
 	ft = 0;
-	//counter = 0;
+	aux_i = -1;
 	i = 0;
-	// if (flag == 1)
-	// {
-	// 	while (i < argc - 1)
-	// 	{
-	// 		if ((*arr_c)[i] == 0)
-	// 		{
-	// 			(*arr_c)[i] = 0.5;
-	// 			return (i);
-	// 		}
-	// 		i++;
-	// 	}
-	// }
+
 	if (flag == 1)
 	{
-		while (i < argc - 1)
+		while (i < argc - 1 && (*arr_b)[0] != 0.5)
 		{
 			if ((*arr_c)[i] == 0)
 			{
 				if (ft == 0)
 				{
 					aux_i = i;
+					printf("aux_i: %d\n", aux_i);
 					ft = 1;
 				}
 				else if ((*arr_b)[aux_i] > (*arr_b)[i])
+				{
 					aux_i = i;
+					printf("aux_i: %d\n", aux_i);
+				}
 				//counter ++;
 			}
 			i++;
 		}
-		// i = aux_i;
-		// while (i < argc - 2)
-		// {
-		// 	if ((*arr_c)[i + 1] != 0.5)
-		// 		(*arr_c)[i] = (*arr_c)[i + 1];
-		// 	i++; 
-		// }
-		// i = 0;
-		// while (i < aux_i)
-		// {
-		// 	rx_to_stack(arr_c, arr_b, 'a', argc);
-		// 	i++;
-		// }
-		// print_stacks(*arr_c, *arr_b, argc);
 		return (aux_i);
-		// i = 0;
-		// if (counter > 1)
-		// {
-		// 	while (i < argc -1)
-		// 	{
-		// 		if ((*arr_c)[i] == 0)
-		// 		{
-		// 			if (ft = 0)
-		// 			{
-		// 				aux = (*arr_b)[i];
-		// 				ft++;
-		// 			}
-		// 			if (aux > (*arr_b)[i])
-		// 				aux = (*arr_b)[i];
-		// 			i++;
-		// 		}
-		// 	}
-		// }
-		//return (aux)
 	}
 	else if (flag == 2)
 	{
@@ -2047,7 +2011,7 @@ void	find_extremes(float **arr_d, float **originalarr, int argc)
 
 	i = 0;
 	aux = 0;
-	while (i < argc - 2)
+	while (i < argc - 1)
 	{
 		if ((*originalarr)[i] > aux)
 			aux = (*originalarr)[i];
@@ -2055,7 +2019,7 @@ void	find_extremes(float **arr_d, float **originalarr, int argc)
 	}
 	(*arr_d)[1] = aux;
 	i = 0;
-	while (i < argc - 2)
+	while (i < argc - 1)
 	{
 		if ((*originalarr)[i] < aux)
 			aux = (*originalarr)[i];
@@ -2094,19 +2058,48 @@ void	find_extremes(float **arr_d, float **originalarr, int argc)
 
 // }
 
+// int	check_ordered_nums_originalarr(float **orderedarr, float **originalarr, int argc, float lowest_num)
+// {
+// 	int	i;
+// 	int	counter;
+
+// 	counter = 0;
+// 	i = 0;
+// 	while (i < argc - 1)
+// 	{
+// 		if ((*originalarr)[i] == lowest_num)
+// 			break ;
+// 		i++;
+// 	}
+// 	while (counter < argc - 1)
+// 	{
+
+// 	}
+// }
+
 int	check_bhind_lowest_num(float **originalarr, int argc, float lowest_num, float current_num)
 {
 	int	i;
 
 	i = 0;
+	printf("---------- FUNCIÓN BHIND ------------:\n");
+	printf("Lowest_num: %.1f\n", lowest_num);
 	if (current_num == lowest_num)
 		return (-1);
 	while (i < argc - 1)
 	{
+		printf("originalarr[i] desde check bhind lowest num: %.1f\n", (*originalarr)[i]);
+		printf("current_num: %.2f\n", current_num);
 		if ((*originalarr)[i] == lowest_num) // el número más bajo está primero
+		{
+			printf("hey1\n");
 			return (-1);
+		}
 		else if ((*originalarr)[i] == current_num) // el número más bajo está después
+		{
+			printf("hey2\n");
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -2133,13 +2126,16 @@ int	check_destination(float num, float **sortedarr_a, float **originalarr, int a
 		}
 		i++;
 	}
-	
+	printf("sortedarr_a[i]: %.1f\n", (*sortedarr_a)[i]);
+	printf("Originalarr[y]: %.1f\n", (*originalarr)[y]);
 	// Buscar en `originalarr` para decidir el destino
 	while (y < argc - 1)
 	{
 		if ((*originalarr)[y] == (*sortedarr_a)[i] || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i])
 		{
 			result = check_bhind_lowest_num(originalarr, argc, lowest_num, (*sortedarr_a)[i]);
+			printf("---------- FUNCIÓN CHECK DESTINATION ------------:\n");
+			printf("result: %d\n", result);
 			if (result == -1)
 				return (counter + 1);
 			else if (result == 1)
@@ -2178,11 +2174,12 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	int		zero;
 	int		y = 0; //quitar
 	int		x; //quitar
-	int		z;
+	int		j;
 	int		flag;
+	int		zero_check;
 
 	flag = 0;
-	z = 0;
+	j = 0;
 	i = 0;
 	instructions = 0;
 	cargo = 0;
@@ -2205,61 +2202,53 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	// {
 	printf("STACKS INICIALES: \n");
 	print_stacks(*originalarr, *arr_b, argc);
-	while (y < 14)
+	while (y < 16)
 	{
 		printf("Flag: %d\n", flag);
 		zero = check_zero(&arr_c, arr_b, argc, 1);
-		if (zero != -1) // --------------- FUNCIÓN DE DESCARGA DE NÚEROS EN STACK A
+		while (zero != -1) // --------------- FUNCIÓN DE DESCARGA DE NÚEROS EN STACK A
 		{
 			printf("\033[4;31mEntrando en función de descarga.\033[0m\n");
-			//zero = check_zero(&arr_c, argc, 1);
 			printf("zero: %d\n", zero);
-			printf("cargo: %d\n", cargo);
-			if (cargo == 1 || zero == cargo - 1)
+			if (zero == 0)
 			{
 				px_to_stack(originalarr, arr_b, 'a', argc);
-				rx_to_stack(originalarr, arr_b, 'a', argc);
-				instructions += 2;
+				move_the_row(&arr_c, argc, 2);
+				(*originalarr)[0] += 0.5;
+				instructions++;
 			}
-			else if (zero >= 0 && cargo > 1)
+			else if (zero > 0)
 			{
-				int	local_move;
-				local_move = (cargo - 1) - zero;
-				printf("local_move: %d\n", local_move);
-				while (local_move > 0)
+				while (zero > 0)
 				{
+					printf("rotate stack b\n");
 					rx_to_stack(originalarr, arr_b, 'b', argc);
-					px_to_stack(originalarr, arr_b, 'a', argc);
-					(*originalarr)[0] += 0.5;
-					rx_to_stack(originalarr, arr_b, 'a', argc);
-					instructions += 3;
-					local_move--;
+					printf("rotate stack c\n");
+					rx_to_stack(&arr_c, arr_b, 'a', argc);
+					instructions++;
+					zero--;
 				}
-				local_move = (cargo - 1) - zero;
-				arr_c[zero] = 0.5;
-				if (local_move > 1)
-				{
-					while (local_move > 0)
-					{
-						rx_to_stack(originalarr, arr_b, 'b', argc);
-						instructions++;
-						local_move--;
-					}
-				}
+				move_the_row(&arr_c, argc, 2);
+				px_to_stack(originalarr, arr_b, 'a', argc);
+				//(*originalarr)[0] += 0.5; //REVISIÓN!
 			}
-			printf("Estado de tras la colocación\n");
+			printf("rotate stack a\n");
+			rx_to_stack(originalarr, arr_b, 'a', argc);
+			printf("decreasing numbers stack c\n");
+			//decrease_numbers(&arr_c, argc, 1, 0);
+			//rx_to_stack(&arr_c, arr_b, 'a', argc);
+			//find_zero(&arr_c, argc, 2);
+			instructions++;
 			print_stacks(*originalarr, *arr_b, argc);
+			zero = check_zero(&arr_c, arr_b, argc, 1);
+			printf("zero: %d\n", zero);
 			printf("arr_c:\n");
 			x = 0;
-			while (x < argc - 1) //print de arr_c
+			while (x < argc - 1)
 			{
 				printf("%.1f\n", arr_c[x]);
 				x++;
 			}
-			zero = check_zero(&arr_c, arr_b, argc, 1);
-			printf("zero: %d\n", zero);
-			if (zero == -1)
-				increase_numbers(&arr_c, argc, 4, 0);
 		}
 
 		printf("(*originalarr)[0] = %.1f\n", (*originalarr)[0]);
@@ -2267,18 +2256,45 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 		if ((*originalarr)[0] == arr_d[0]) // ------------------- ESTE ES EL CASO DE LOWEST NUMBER
 		{
 			printf("Hubo (*originalarr)[0] == arr_d[0].\n");
+			(*originalarr)[0] += 0.5;
 			rx_to_stack(originalarr, arr_b, 'a', argc);
 			instructions++;
+			// x = 0;
+			// while (x < argc - 1) //print de arr_c
+			// {
+			// 	printf("%.1f\n", arr_c[x]);
+			// 	x++;
+			// }
+			printf("Originalarr:\n");
+			print_stacks(*originalarr, *arr_b, argc);
+			decrease_numbers(&arr_c, argc, 1, 0);
+			flag = 1;
+///-------------------------------------------------///
+			printf("arr_c:\n");
 			x = 0;
-			while (x < argc - 1) //print de arr_c
+			while (x < argc - 1)
 			{
 				printf("%.1f\n", arr_c[x]);
 				x++;
 			}
+///-------------------------------------------------///
+		}
+		if ((*originalarr)[0] == arr_d[1]) // ------------------- ESTE ES EL CASO DE LOWEST NUMBER
+		{
+			printf("Hubo (*originalarr)[0] == arr_d[1].\n");
+			(*originalarr)[0] += 0.5;
+			rx_to_stack(originalarr, arr_b, 'a', argc);
+			instructions++;
+			// x = 0;
+			// while (x < argc - 1) //print de arr_c
+			// {
+			// 	printf("%.1f\n", arr_c[x]);
+			// 	x++;
+			// }
 			printf("Originalarr:\n");
 			print_stacks(*originalarr, *arr_b, argc);
-			decrease_numbers(&arr_c, argc, 3, 0);
-			flag = 1;
+			decrease_numbers(&arr_c, argc, 1, 0);
+			//flag = 1;
 ///-------------------------------------------------///
 			printf("arr_c:\n");
 			x = 0;
@@ -2293,25 +2309,30 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 		{
 			moves_to_deposit = check_destination((*originalarr)[0], sortedarr_a, originalarr, argc, arr_b, arr_d[0]);
 			printf("moves_to_deposit: %d\n", moves_to_deposit);
-			if (moves_to_deposit <= 0) //revisar si es 0
+
+
+			zero_check = find_zero(&arr_c, argc, 1);
+			if (zero_check != -1)
+					i = ((j = zero_check), (j - 1));
+			while (j >= 0 || i >= 0)
+				arr_c[j--] = arr_c[i--];
+			if (moves_to_deposit <= 0)
 			{
 				printf("moves_to_deposit <= 0\n");
-				moves_to_deposit += 2;
-				arr_c[z] = arr_c[moves_to_deposit];
-				z++;
+				moves_to_deposit *= -1;
+				arr_c[0] = arr_c[moves_to_deposit + 1];
 			}
 			else
-			{
-				arr_c[z] = moves_to_deposit;
-				z++;
-			}
+				arr_c[0] = moves_to_deposit;
+
+
 			px_to_stack(originalarr, arr_b, 'b', argc);
 			cargo++;
 			instructions++;
 			printf("Originalarr:\n");
 			print_stacks(*originalarr, *arr_b, argc);
-			decrease_numbers(&arr_c, argc, 3, 0);
-			if (!(((*originalarr)[moves_to_deposit - 2]) - (int)(*originalarr)[moves_to_deposit - 2] >= 0.4999) && ((*originalarr)[moves_to_deposit - 2] - (int)(*originalarr)[moves_to_deposit - 2] <= 0.5001))
+			decrease_numbers(&arr_c, argc, 1, 0);
+			if (!(((*originalarr)[moves_to_deposit - 2]) - (int)(*originalarr)[moves_to_deposit - 2] >= 0.4999) && ((*originalarr)[moves_to_deposit - 2] - (int)(*originalarr)[moves_to_deposit - 2] <= 0.5001) && (*originalarr)[moves_to_deposit - 2] != arr_d[0])
 				(*originalarr)[moves_to_deposit - 2] += 0.5;
 			
 ///-------------------------------------------------///
