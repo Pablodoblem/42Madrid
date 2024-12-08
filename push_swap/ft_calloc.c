@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 18:26:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/14 02:25:02 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:51:54 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	*ft_floatcalloc(size_t n, size_t size_of_element)
 	int		i;
 
 	i = 0;
+	if (n == 0 || size_of_element == 0)
+		return (NULL);
 	arr = malloc(n * size_of_element);
 	if (arr == NULL)
 		return (NULL);
-	while (n > 0)
+	while (i < (int)n)
 	{
 		arr[i] = 0.5;
-		n--;
 		i++;
 	}
 	return (arr);

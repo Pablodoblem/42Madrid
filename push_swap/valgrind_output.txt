@@ -1,0 +1,2686 @@
+==21059== Memcheck, a memory error detector
+==21059== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==21059== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==21059== Command: ./push_exec 71 18 43 17 66 48 77 2
+==21059== 
+Check
+Check
+Check
+Check
+Check
+Check
+Check
+Check
+ORIGINAL STACKS
+STACK A:
+71.0
+18.0
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+Valor de la resta: 53
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+18.0
+71.0
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+18.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 2
+Valor de la resta: 26
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+17.0
+43.0
+66.0
+48.0
+77.0
+2.0
+18.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+66.0
+48.0
+77.0
+2.0
+18.0
+71.0
+17.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 4
+Valor de la resta: 18
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+48.0
+66.0
+77.0
+2.0
+18.0
+71.0
+17.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+77.0
+2.0
+18.0
+71.0
+17.0
+43.0
+48.0
+66.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 6
+Valor de la resta: 75
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+77.0
+18.0
+71.0
+17.0
+43.0
+48.0
+66.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+18.0
+71.0
+17.0
+43.0
+48.0
+66.0
+2.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 8
+EStado de salida de los stacks:
+STACK A:
+18.0
+71.0
+17.0
+43.0
+48.0
+66.0
+2.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+ROTATING ACTION
+hola
+Valor de la resta: 54
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+17.0
+71.0
+43.0
+48.0
+66.0
+2.0
+77.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+43.0
+48.0
+66.0
+2.0
+77.0
+18.0
+17.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 3
+hola
+Valor de la resta: -5
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+66.0
+2.0
+77.0
+18.0
+17.0
+71.0
+43.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 5
+hola
+Valor de la resta: 64
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+66.0
+77.0
+18.0
+17.0
+71.0
+43.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+77.0
+18.0
+17.0
+71.0
+43.0
+48.0
+2.0
+66.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 7
+ROTATING ACTION
+EStado de salida de los stacks:
+STACK A:
+18.0
+17.0
+71.0
+43.0
+48.0
+2.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ORIGINAL STACKS
+STACK A:
+18.0
+17.0
+71.0
+43.0
+48.0
+2.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+Valor de la resta: 1
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+17.0
+18.0
+71.0
+43.0
+48.0
+2.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+71.0
+43.0
+48.0
+2.0
+66.0
+77.0
+17.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 2
+Valor de la resta: 28
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+43.0
+71.0
+48.0
+2.0
+66.0
+77.0
+17.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+48.0
+2.0
+66.0
+77.0
+17.0
+18.0
+43.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 4
+Valor de la resta: 46
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+48.0
+66.0
+77.0
+17.0
+18.0
+43.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+66.0
+77.0
+17.0
+18.0
+43.0
+71.0
+2.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 6
+Valor de la resta: -11
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+17.0
+18.0
+43.0
+71.0
+2.0
+48.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 8
+EStado de salida de los stacks:
+STACK A:
+17.0
+18.0
+43.0
+71.0
+2.0
+48.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+ROTATING ACTION
+hola
+Valor de la resta: -25
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+71.0
+2.0
+48.0
+66.0
+77.0
+17.0
+18.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 3
+hola
+Valor de la resta: 69
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+71.0
+48.0
+66.0
+77.0
+17.0
+18.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+48.0
+66.0
+77.0
+17.0
+18.0
+43.0
+2.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 5
+hola
+Valor de la resta: -18
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+77.0
+17.0
+18.0
+43.0
+2.0
+71.0
+48.0
+66.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 7
+ROTATING ACTION
+EStado de salida de los stacks:
+STACK A:
+17.0
+18.0
+43.0
+2.0
+71.0
+48.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ORIGINAL STACKS
+STACK A:
+17.0
+18.0
+43.0
+2.0
+71.0
+48.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+Valor de la resta: -1
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+43.0
+2.0
+71.0
+48.0
+66.0
+77.0
+17.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 2
+Valor de la resta: 41
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+43.0
+71.0
+48.0
+66.0
+77.0
+17.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+71.0
+48.0
+66.0
+77.0
+17.0
+18.0
+2.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 4
+Valor de la resta: 23
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+48.0
+71.0
+66.0
+77.0
+17.0
+18.0
+2.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+66.0
+77.0
+17.0
+18.0
+2.0
+43.0
+48.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 6
+Valor de la resta: -11
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+17.0
+18.0
+2.0
+43.0
+48.0
+71.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 8
+EStado de salida de los stacks:
+STACK A:
+17.0
+18.0
+2.0
+43.0
+48.0
+71.0
+66.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+ROTATING ACTION
+hola
+Valor de la resta: 16
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+18.0
+43.0
+48.0
+71.0
+66.0
+77.0
+17.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+43.0
+48.0
+71.0
+66.0
+77.0
+17.0
+2.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 3
+hola
+Valor de la resta: -5
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+71.0
+66.0
+77.0
+17.0
+2.0
+18.0
+43.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 5
+hola
+Valor de la resta: 5
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+66.0
+71.0
+77.0
+17.0
+2.0
+18.0
+43.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+77.0
+17.0
+2.0
+18.0
+43.0
+48.0
+66.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 7
+ROTATING ACTION
+EStado de salida de los stacks:
+STACK A:
+17.0
+2.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ORIGINAL STACKS
+STACK A:
+17.0
+2.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+Valor de la resta: 15
+SWAPPING A ACTION
+Permutando números...
+STACK A:
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+2.0
+17.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 2
+Valor de la resta: -25
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+48.0
+66.0
+71.0
+77.0
+2.0
+17.0
+18.0
+43.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 4
+Valor de la resta: -18
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+71.0
+77.0
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 6
+Valor de la resta: -6
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (primera iteración): 8
+EStado de salida de los stacks:
+STACK A:
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+-------------==21059== Invalid read of size 4
+==21059==    at 0x10A4BE: check_stack_order (main.c:464)
+==21059==    by 0x10D95B: main (main.c:2723)
+==21059==  Address 0x4a90060 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D7D1: main (main.c:2703)
+==21059== 
+==21059== Invalid write of size 4
+==21059==    at 0x10C682: last_chance (main.c:2341)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a91258 is 0 bytes after a block of size 8 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10C650: last_chance (main.c:2338)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10C4F1: block_ordered_num (main.c:2295)
+==21059==    by 0x10C72E: last_chance (main.c:2357)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a90060 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D7D1: main (main.c:2703)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10CDA3: last_chance (main.c:2464)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a9119c is 4 bytes before a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10C62A: last_chance (main.c:2336)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x1097E3: px_to_stack (main.c:164)
+==21059==    by 0x10CE53: last_chance (main.c:2493)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a9009c is 4 bytes before a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D7EA: main (main.c:2704)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10962E: move_the_row (main.c:130)
+==21059==    by 0x109822: px_to_stack (main.c:166)
+==21059==    by 0x10CE53: last_chance (main.c:2493)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a90120 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D803: main (main.c:2705)
+==21059== 
+-------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+ARGC: 9
+ROTATING ACTION
+hola
+Valor de la resta: -1
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+43.0
+48.0
+66.0
+71.0
+77.0
+2.0
+17.0
+18.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 3
+hola
+Valor de la resta: -5
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+66.0
+71.0
+77.0
+2.0
+17.0
+18.0
+43.0
+48.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 5
+hola
+Valor de la resta: -5
+ROTATING ACTION
+ROTATING ACTION
+Tras rotar
+STACK A:
+77.0
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+71.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Valor I (segunda iteración): 7
+ROTATING ACTION
+EStado de salida de los stacks:
+STACK A:
+2.0
+17.0
+18.0
+43.0
+48.0
+66.0
+71.0
+77.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+VUELTAS REALIZADAS: 5
+OPERACIONES REALIZADAS: 75
+ARR_A ORIGINAL SIN PROCESAR:
+STACK A:
+71.0
+18.0
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+2.0
+77.0
+STACKS con blocked nums: 
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+STACK A:
+71.0
+18.0
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 71.0
+Valor de y: 0
+sortedarr_a[i]: 66.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 48.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 43.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 18.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 17.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 2.0
+Originalarr[y]: 71.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: -1
+sortedarr[i]: 2.0
+originalarr[i]: 71.0
+moves_to_deposit: 8
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+18.0
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+0.5
+--------------------
+STACK B:
+71.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+7.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 18.0
+Valor de y: 1
+sortedarr_a[i]: 17.0
+Originalarr[y]: 18.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 2.0
+Originalarr[y]: 18.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: -1
+sortedarr[i]: 2.0
+originalarr[i]: 18.0
+moves_to_deposit: 7
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+43.0
+17.0
+66.0
+48.0
+77.0
+2.0
+0.5
+0.5
+--------------------
+STACK B:
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+6.0
+6.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 43.0
+Valor de y: 2
+sortedarr_a[i]: 18.0
+Originalarr[y]: 43.0
+moves_to_deposit: 0
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+17.0
+66.0
+48.0
+77.0
+2.0
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+0.==21059== Invalid read of size 4
+==21059==    at 0x109737: px_to_stack (main.c:153)
+==21059==    by 0x10C855: last_chance (main.c:2375)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a900fc is 4 bytes before a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D803: main (main.c:2705)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10962E: move_the_row (main.c:130)
+==21059==    by 0x109776: px_to_stack (main.c:155)
+==21059==    by 0x10C855: last_chance (main.c:2375)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a900c0 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D7EA: main (main.c:2704)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10962E: move_the_row (main.c:130)
+==21059==    by 0x10C86B: last_chance (main.c:2376)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a911c0 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10C62A: last_chance (main.c:2336)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059== 
+5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+5.0
+5.0
+5.0
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 17.0
+Valor de y: 3
+sortedarr_a[i]: 2.0
+Originalarr[y]: 17.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: -1
+sortedarr[i]: 2.0
+originalarr[i]: 17.0
+moves_to_deposit: 5
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+66.0
+48.0
+77.0
+2.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+4.0
+4.0
+4.0
+4.0
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 66.0
+Valor de y: 4
+sortedarr_a[i]: 48.0
+Originalarr[y]: 66.0
+---------- FUNCIÓN CHECK DESTINATION ------------:
+result: 1
+sortedarr_a[i]: 43.0
+Originalarr[y]: 66.0
+moves_to_deposit: -1
+moves_to_deposit <= 0
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+48.0
+77.0
+2.0
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+66.0
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+0.0
+3.0
+3.0
+3.0
+3.0
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+aux_i: 0
+[4;31mEntrando en función de descarga.[0m
+zero: 0
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+48.0
+77.0
+2.0
+66.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+zero: -1
+arr_c:
+3.0
+3.0
+3.0
+3.0
+0.5
+0.5
+0.5
+0.5
+(*originalarr)[0] = 48.0
+Valor de y: 5
+sortedarr_a[i]: 43.0
+Originalarr[y]: 48.0
+moves_to_deposit: -1
+moves_to_deposit <= 0
+[0;32mPUTTING ACTION.[0m
+Originalarr:
+STACK A:
+77.0
+2.0
+66.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+48.0
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c tras decrease:
+0.0
+2.0
+2.0
+2.0
+2.0
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+aux_i: 0
+[4;31mEntrando en función de descarga.[0m
+zero: 0
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+77.0
+2.0
+66.5
+48.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+zero: -1
+arr_c:
+2.0
+2.0
+2.0
+2.0
+0.5
+0.5
+0.5
+0.5
+(*originalarr)[0] = 77.0
+Valor de y: 6
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 77.5
+Valor de y: 7
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+2.0
+66.5
+48.5
+77.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+1.0
+1.0
+1.0
+1.0
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 0
+(*originalarr)[0] = 2.0
+Valor de y: 8
+Hubo (*originalarr)[0] == arr_d[0].
+ROTATING ACTION
+Originalarr:
+STACK A:
+66.5
+48.5
+77.5
+2.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+17.0
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+arr_c:
+0.0
+0.0
+0.0
+0.0
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag==21059== Invalid read of size 4
+==21059==    at 0x10962E: move_the_row (main.c:130)
+==21059==    by 0x10C918: last_chance (main.c:2391)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a911c0 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10C62A: last_chance (main.c:2336)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x109737: px_to_stack (main.c:153)
+==21059==    by 0x10C932: last_chance (main.c:2392)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a900fc is 4 bytes before a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D803: main (main.c:2705)
+==21059== 
+==21059== Invalid read of size 4
+==21059==    at 0x10962E: move_the_row (main.c:130)
+==21059==    by 0x109776: px_to_stack (main.c:155)
+==21059==    by 0x10C932: last_chance (main.c:2392)
+==21059==    by 0x10D9A9: main (main.c:2808)
+==21059==  Address 0x4a900c0 is 0 bytes after a block of size 32 alloc'd
+==21059==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21059==    by 0x10DCD5: ft_floatcalloc (ft_calloc.c:21)
+==21059==    by 0x10D7EA: main (main.c:2704)
+==21059== 
+: 1
+aux_i: 0
+[4;31mEntrando en función de descarga.[0m
+zero: 0
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+66.5
+48.5
+77.5
+2.5
+17.5
+0.5
+0.5
+0.5
+--------------------
+STACK B:
+43.0
+18.0
+71.0
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+aux_i: 0
+aux_i: 1
+zero: 1
+arr_c:
+0.0
+0.0
+0.0
+0.5
+0.5
+0.5
+0.5
+0.5
+[4;31mEntrando en función de descarga.[0m
+zero: 1
+rotate stack b
+ROTATING ACTION
+rotate stack c
+ROTATING ACTION
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+0.5
+0.5
+--------------------
+STACK B:
+71.0
+43.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+aux_i: 0
+aux_i: 1
+zero: 1
+arr_c:
+0.0
+0.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+[4;31mEntrando en función de descarga.[0m
+zero: 1
+rotate stack b
+ROTATING ACTION
+rotate stack c
+ROTATING ACTION
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+43.5
+0.5
+--------------------
+STACK B:
+71.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+aux_i: 0
+zero: 0
+arr_c:
+0.0
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+[4;31mEntrando en función de descarga.[0m
+zero: 0
+[0;32mPUTTING ACTION.[0m
+rotate stack a
+ROTATING ACTION
+decreasing numbers stack c
+STACK A:
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+43.5
+71.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+zero: -1
+arr_c:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+(*originalarr)[0] = 66.5
+Valor de y: 9
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+48.5
+77.5
+2.5
+17.5
+18.5
+43.5
+71.5
+66.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 48.5
+Valor de y: 10
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+77.5
+2.5
+17.5
+18.5
+43.5
+71.5
+66.5
+48.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 77.5
+Valor de y: 11
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+2.5
+17.5
+18.5
+43.5
+71.5
+66.5
+48.5
+77.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 2.5
+Valor de y: 12
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+17.5
+18.5
+43.5
+71.5
+66.5
+48.5
+77.5
+2.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 17.5
+Valor de y: 13
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+18.5
+43.5
+71.5
+66.5
+48.5
+77.5
+2.5
+17.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 18.5
+Valor de y: 14
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+43.5
+71.5
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+arr:d[0]: 2.0
+arr:d[0]: 77.0
+Flag: 1
+(*originalarr)[0] = 43.5
+Valor de y: 15
+Hubo número con 0.5
+ROTATING ACTION
+Originalarr:
+STACK A:
+71.5
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+43.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+ROTATING ACTION
+NO ORDENADO
+Moves till good order: -1
+Stacks Ordenados:
+STACK A:
+71.5
+66.5
+48.5
+77.5
+2.5
+17.5
+18.5
+43.5
+--------------------
+STACK B:
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+--------------------
+\\\\\\\\\\\\\\\\\\\\
+--------------------
+Número de movimientos realizados: 27
+==21059== 
+==21059== HEAP SUMMARY:
+==21059==     in use at exit: 0 bytes in 0 blocks
+==21059==   total heap usage: 26 allocs, 26 frees, 4,848 bytes allocated
+==21059== 
+==21059== All heap blocks were freed -- no leaks are possible
+==21059== 
+==21059== For lists of detected and suppressed errors, rerun with: -s
+==21059== ERROR SUMMARY: 51 errors from 12 contexts (suppressed: 0 from 0)

@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/03 00:20:45 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:00:09 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -461,7 +461,7 @@ int	check_stack_order(float **arr_a, int argc, int flag)
 	}
 	else if (flag == 3)
 	{
-		while ((*arr_a)[i] - (*arr_a)[i + 1] < 0)
+		while ((*arr_a)[i] - (*arr_a)[i + 1] < 0 && (i + 1) < argc - 1) //segunda parte de la condicional añadida como posible fix
 			i++;
 		if (i == argc - 2)
 			return (1);
@@ -1137,7 +1137,7 @@ int	check_zero(float **arr_c, float **arr_b, int argc, int flag)
 	}
 	return (-1);
 }
-int good_order(float *arr, float *arr_b, int argc)
+int good_order(float **arr, float **arr_b, int argc)
 {
 	float	*aux;
     int		i;
@@ -1150,29 +1150,31 @@ int good_order(float *arr, float *arr_b, int argc)
 	aux = ft_floatcalloc((argc - 1), sizeof(float));
 	while (i < argc - 1)
 	{
-		aux[i] = arr[i];
+		aux[i] = (*arr)[i];
 		i++;
 	}
-	printf("AUX:\n");
-	i = 0;
-	while (i < argc - 1)
-	{
-		printf("%.1f", aux[i]);
-		i++;
-	}
+	// printf("AUX:\n");
+	// i = 0;
+	// while (i < argc - 1)
+	// {
+	// 	printf("%.1f\n", aux[i]);
+	// 	i++;
+	// }
 	printf("\n");
 	i = 0;
-	while (y < argc - 2)
+	while (y < argc - 1)
 	{
-		while (i < argc - 1)
+		counter = 0;
+		i = 0;
+		while (i < argc - 2)
 		{
 			if (aux[i] > aux[i + 1]) // Si no está en orden ascendente
-				printf("X\n");
+				break ;
 			else
 				counter++;
 			i++;
 		}
-		rx_to_stack(&aux, &arr_b, 'a', argc);
+		rx_to_stack(&aux, arr_b, 'a', argc);
 		if (counter == argc - 2)
 		{
 			printf("ORDENADO\n");
@@ -1181,7 +1183,8 @@ int good_order(float *arr, float *arr_b, int argc)
 		y++;
 	}
 	printf("NO ORDENADO\n");
-	return (0);
+	free (aux);
+	return (-1);
 }
 	// int		i;
 	// int		j;
@@ -2082,22 +2085,22 @@ int	check_bhind_lowest_num(float **originalarr, int argc, float lowest_num, floa
 	int	i;
 
 	i = 0;
-	printf("---------- FUNCIÓN BHIND ------------:\n");
-	printf("Lowest_num: %.1f\n", lowest_num);
-	if (current_num == lowest_num)
+	//printf("---------- FUNCIÓN BHIND ------------:\n");
+	//printf("Lowest_num: %.1f\n", lowest_num);
+	if (current_num == lowest_num) //revisar condiciones añadir 0.5 o no
 		return (-1);
 	while (i < argc - 1)
 	{
-		printf("originalarr[i] desde check bhind lowest num: %.1f\n", (*originalarr)[i]);
-		printf("current_num: %.2f\n", current_num);
-		if ((*originalarr)[i] == lowest_num) // el número más bajo está primero
+		//printf("originalarr[i] desde check bhind lowest num: %.1f\n", (*originalarr)[i]);
+		//printf("current_num: %.2f\n", current_num);
+		if ((*originalarr)[i] == lowest_num || (*originalarr)[i] == lowest_num + 0.5) // el número más bajo está primero
 		{
-			printf("hey1\n");
+			//printf("hey1\n");
 			return (-1);
 		}
-		else if ((*originalarr)[i] == current_num) // el número más bajo está después
+		else if ((*originalarr)[i] == current_num || (*originalarr)[i] == current_num + 0.5) // el número más bajo está después
 		{
-			printf("hey2\n");
+			//printf("hey2\n");
 			return (1);
 		}
 		i++;
@@ -2105,7 +2108,7 @@ int	check_bhind_lowest_num(float **originalarr, int argc, float lowest_num, floa
 	return (0);
 }
 
-int	check_destination(float num, float **sortedarr_a, float **originalarr, int argc, float **arr_b, float lowest_num)
+int	check_destination(float num, float **sortedarr_a, float **originalarr, int argc, float **arr_b, float lowest_num, int flag, int main_flag)
 {
 	int	counter;
 	int	result;
@@ -2115,50 +2118,222 @@ int	check_destination(float num, float **sortedarr_a, float **originalarr, int a
 	i = 0;
 	y = 0;
 	counter = 0;
-
+	if (flag == 1)
+	{
+		while (i < argc - 1)
+		{
+			if ((*originalarr)[i] == num)
+				break ;
+			i++;
+		}
+		while (i < argc - 1)
+		{
+			if ((*originalarr)[i] == lowest_num || (*originalarr)[i] == lowest_num + 0.5)
+			{
+				//counter--;
+				break ;
+			}
+			printf("Inside counter: %d\n", counter); 
+			counter++;
+			i++;
+		}
+		printf("Counter - 1 = %d\n", counter - 1);
+		return (counter - 1);
+	}
 	// Encontrar el índice de `num` en `sortedarr_a`
-	while (i < argc - 1)
+	else if (flag == 2)
 	{
-		if ((*sortedarr_a)[i] == num)
+		while (i < argc - 1)
 		{
-			i--;
-			break ;
+			if ((*sortedarr_a)[i] == num)
+			{
+				i--;
+				break ;
+			}
+			i++;
 		}
-		i++;
-	}
-	printf("sortedarr_a[i]: %.1f\n", (*sortedarr_a)[i]);
-	printf("Originalarr[y]: %.1f\n", (*originalarr)[y]);
-	// Buscar en `originalarr` para decidir el destino
-	while (y < argc - 1)
-	{
-		if ((*originalarr)[y] == (*sortedarr_a)[i] || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i])
-		{
-			result = check_bhind_lowest_num(originalarr, argc, lowest_num, (*sortedarr_a)[i]);
-			printf("---------- FUNCIÓN CHECK DESTINATION ------------:\n");
-			printf("result: %d\n", result);
-			if (result == -1)
-				return (counter + 1);
-			else if (result == 1)
-				return (check_destination((*sortedarr_a)[i], sortedarr_a, originalarr, argc, arr_b, lowest_num));
-		}
-		counter++;
-		y++;
-	}
-
-	// Buscar en `arr_b` si no se encuentra en `originalarr`
-	y = 0;
-	counter = 0;
-	if ((*arr_b)[y] != 0.5)
-	{
+		printf("sortedarr_a[i]: %.1f\n", (*sortedarr_a)[i]);
+		printf("Originalarr[y]: %.1f\n", (*originalarr)[y]);
+		// Buscar en `originalarr` para decidir el destino
 		while (y < argc - 1)
 		{
-			if ((*arr_b)[y] == (*sortedarr_a)[i])
-				return (counter *= -1);
+			if (main_flag == 0 || main_flag == 1)
+			{
+				if ((*originalarr)[y] == (*sortedarr_a)[i] || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i])
+				{
+					result = check_bhind_lowest_num(originalarr, argc, lowest_num, (*sortedarr_a)[i]);
+					printf("---------- FUNCIÓN CHECK DESTINATION ------------:\n");
+					printf("result: %d\n", result);
+					if (result == -1)
+					{
+						printf("sortedarr[i]: %.1f\n", (*sortedarr_a)[i]);
+						printf("originalarr[i]: %.1f\n", (*originalarr)[i]);
+						return (counter + 1);
+					}
+					else if (result == 1)
+					{
+						if (((*originalarr)[y] == (*sortedarr_a)[i] + 0.5 || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i] + 0.5))
+							return (counter + 1);
+						return (check_destination((*sortedarr_a)[i], sortedarr_a, originalarr, argc, arr_b, lowest_num, 2, main_flag));
+					}
+				}
+			}
+			// else if (main_flag == 1)
+			// {
+			// 	if (((*originalarr)[y] == (*sortedarr_a)[i] || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i]
+			// 			|| (*originalarr)[y] == (*sortedarr_a)[i] + 0.5 || ((*originalarr)[y] - 0.5) == (*sortedarr_a)[i] + 0.5))
+			// 		return (counter + 1);
+			// }
 			counter++;
 			y++;
 		}
+
+		// Buscar en `arr_b` si no se encuentra en `originalarr`
+		y = 0;
+		counter = 0;
+		if ((*arr_b)[y] != 0.5)
+		{
+			while (y < argc - 1)
+			{
+				if ((*arr_b)[y] == (*sortedarr_a)[i])
+					return (counter *= -1);
+				counter++;
+				y++;
+			}
+		}
 	}	
 	return (0);
+}
+
+int	*make_aux_array(int argc)
+{
+	int	*aux;
+
+	aux = malloc((argc - 1) * sizeof(int));
+	if (aux == NULL)
+    {
+        printf("Error: malloc falló\n");
+        exit(1);
+    }
+	return (aux);	
+
+}
+
+void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, int argc, float lowest_num)
+{
+	int		i;
+	int		y;
+	float	*aux;
+	int		counter;
+	int		x;
+	int		y_aux[] = {0, 0, 0, 0, 0, 0};
+	int		z;
+	int		f;
+	int		e;
+	//int		auxaux;
+
+
+	
+	e = 0;
+	z = 0;
+	counter = 0;
+	i = 0;
+	y = 1;
+	f = y;
+	x = 0;
+	//y_aux = y;
+	printf("Valor de argc: %d\n", argc);
+	printf("Valor de z: %d\n", z);
+	printf("Valor de i: %d\n", i);
+	//y_aux = make_aux_array(argc);
+	// auxaux = *y_aux;
+	// printf("Valor de auxaux: %d\n", auxaux);
+    // if (y_aux == NULL)
+	// 	exit (1); // NO SE RICK ------------------------------------------
+	while (i < argc - 1)
+	{
+		y_aux[i] = 0;
+		i++;
+	}
+	i = 0;
+	aux = ft_floatcalloc((argc - 1), sizeof(float));
+	//y_aux = ft_floatcalloc((argc - 1), sizeof(float));
+	while (i < argc - 1) //función de copia
+	{
+		aux[i] = (*originalarr)[i];
+		i++;
+	}
+	i = 0;
+	while (i < argc - 1) // función de búsqueda de lowest number
+	{
+		if (aux[0] == lowest_num)
+			break ;
+		rx_to_stack(&aux, arr_b, 'a', argc);
+		i++;
+	}
+	e = i;
+	//printf("Valor de e: %d\n", e);
+	i = 0;
+	//printf("Valor de aux[i]: %.1f\n", aux[i]);
+	while (x < argc - 2) //revisar y registrar opción con mayor número de bloqueos
+	{
+		y = f;
+		//printf("Valor de f: %d\n", f);
+		while (i < argc - 1 && y < argc - 1)
+		{
+			//printf("Valor de sortedarr[y]: %.1f\n", (*sortedarr)[y]);
+			//printf("Valor de aux[i]: %.1f\n", aux[i]);
+			if (aux[i] == (*sortedarr)[y]) // antes estaba con (*originalarr)[] en vez de aux
+			{
+				y++;
+				counter++;
+			}
+			i++;
+		}
+		i = 0;
+		y_aux[z] = counter;
+		f += 1;
+		// printf("Valor de y_aux[z]: %d\n", y_aux[z]);
+		// printf("Valor de y: %d\n", y);
+		counter = 0;
+		z++;
+		x++;
+	}
+	i = 0;
+	y = 0;
+	x = 0;
+	while (i < argc - 1)
+	{
+		//printf("holax\n");
+		//printf("Valor de y_aux[i]: %d\n", y_aux[i]);
+		if (y_aux[i] > x)
+		{
+			y = i;
+			x = y_aux[i];
+		}
+		i++;
+	}
+    i = 0;
+    y++;
+	// printf("Valor de y: %d\n", y);
+	// printf("Valor de aux[i] de nuevo: %.1f\n", aux[i]);
+	// printf("Valor de (*sortedarr)[y]: %.1f\n", (*sortedarr)[y]);
+	// printf("Valor de i: %d\n", i);
+	while (i < argc - 1) //conociendo
+	{
+		if (aux[i] == (*sortedarr)[y])
+		{
+			x = i + e;
+			if (x > argc - 2)
+				x -= (argc - 1);
+			//printf("(*originalarr)[x]: %.1f\n", (*originalarr)[x]);
+			(*originalarr)[x] += 0.5;
+			y++;
+		}
+		i++;
+	}
+	free (aux);
+	//free (y_aux);
 }
 
 void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int argc)
@@ -2170,26 +2345,33 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	int		moves_to_deposit;
 	//float	*sorted_index_arr;
 	int		instructions;
-	int		cargo;
+	//int		cargo;
 	int		zero;
 	int		y = 0; //quitar
 	int		x; //quitar
 	int		j;
 	int		flag;
 	int		zero_check;
+	float	*copia_oroginalarr;
 
 	flag = 0;
 	j = 0;
 	i = 0;
 	instructions = 0;
-	cargo = 0;
+	//cargo = 0;
 	printf("ARR_A ORIGINAL SIN PROCESAR:\n");
 	print_stacks(*originalarr, *arr_b, argc);
 	// sorted_index_arr = make_index(arr_a, originalarr, argc - 1);
 	arr_c = ft_floatcalloc((argc - 1), sizeof(float));
 	arr_d = ft_floatcalloc(2, sizeof(float));
+	copia_oroginalarr = ft_floatcalloc(2, sizeof(float));
+	while (i < argc - 1) // BORRARRRR
+	{
+		copia_oroginalarr[i] = (*originalarr)[i];
+		i++;
+	}
 	find_extremes(&arr_d, originalarr, argc);
-
+	i = 0;
 ///-------------------------------------------------///
 	while (i < 2)
 	{
@@ -2200,10 +2382,18 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	i = 0;
 	// while (good_order(*originalarr, *arr_b, argc) == 0)
 	// {
-	printf("STACKS INICIALES: \n");
+	printf("STACKS con blocked nums: \n");
+	printf("ARGC: %d\n", argc);
+	block_ordered_num(originalarr, arr_b, sortedarr_a, argc, arr_d[0]);
 	print_stacks(*originalarr, *arr_b, argc);
 	while (y < 16)
 	{
+		if (good_order(originalarr, arr_b, argc) != -1 && flag == 1)
+			break ;
+		// printf("good_order: %d, arr_b[0]: %.1f, flag: %d\n", good_order(originalarr, arr_b, argc), (*arr_b)[0], flag);
+		printf("arr:d[0]: %.1f\n", arr_d[0]);
+		printf("arr:d[0]: %.1f\n", arr_d[1]);
+
 		printf("Flag: %d\n", flag);
 		zero = check_zero(&arr_c, arr_b, argc, 1);
 		while (zero != -1) // --------------- FUNCIÓN DE DESCARGA DE NÚEROS EN STACK A
@@ -2230,7 +2420,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 				}
 				move_the_row(&arr_c, argc, 2);
 				px_to_stack(originalarr, arr_b, 'a', argc);
-				//(*originalarr)[0] += 0.5; //REVISIÓN!
+				(*originalarr)[0] += 0.5; //REVISIÓN!
 			}
 			printf("rotate stack a\n");
 			rx_to_stack(originalarr, arr_b, 'a', argc);
@@ -2279,116 +2469,90 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 			}
 ///-------------------------------------------------///
 		}
-		if ((*originalarr)[0] == arr_d[1]) // ------------------- ESTE ES EL CASO DE LOWEST NUMBER
-		{
-			printf("Hubo (*originalarr)[0] == arr_d[1].\n");
-			(*originalarr)[0] += 0.5;
-			rx_to_stack(originalarr, arr_b, 'a', argc);
-			instructions++;
-			// x = 0;
-			// while (x < argc - 1) //print de arr_c
-			// {
-			// 	printf("%.1f\n", arr_c[x]);
-			// 	x++;
-			// }
-			printf("Originalarr:\n");
-			print_stacks(*originalarr, *arr_b, argc);
-			decrease_numbers(&arr_c, argc, 1, 0);
-			//flag = 1;
-///-------------------------------------------------///
-			printf("arr_c:\n");
-			x = 0;
-			while (x < argc - 1)
-			{
-				printf("%.1f\n", arr_c[x]);
-				x++;
-			}
-///-------------------------------------------------///
-		}
 		else if (!(((*originalarr)[0]) - (int)(*originalarr)[0] >= 0.4999) && ((*originalarr)[0] - (int)(*originalarr)[0] <= 0.5001))
 		{
-			moves_to_deposit = check_destination((*originalarr)[0], sortedarr_a, originalarr, argc, arr_b, arr_d[0]);
-			printf("moves_to_deposit: %d\n", moves_to_deposit);
-
-
-			zero_check = find_zero(&arr_c, argc, 1);
-			if (zero_check != -1)
-					i = ((j = zero_check), (j - 1));
-			while (j >= 0 || i >= 0)
-				arr_c[j--] = arr_c[i--];
-			if (moves_to_deposit <= 0)
+			// if ((*originalarr)[1] != arr_d[0] && (*originalarr)[1] != arr_d[0] + 0.5)
+			// {
+			if (!((*originalarr)[0] == arr_d[1] && (*originalarr)[1] == arr_d[0]))
 			{
-				printf("moves_to_deposit <= 0\n");
-				moves_to_deposit *= -1;
-				arr_c[0] = arr_c[moves_to_deposit + 1];
+				if ((*originalarr)[0] == arr_d[1])
+				{
+					printf("Entrando\n");
+					moves_to_deposit = check_destination((*originalarr)[0], sortedarr_a, originalarr, argc, arr_b, arr_d[0], 1, flag) + 1;
+					// if (moves_to_deposit == 0)
+					// 	moves_to_deposit += 2;		
+				}
+				else
+					moves_to_deposit = check_destination((*originalarr)[0], sortedarr_a, originalarr, argc, arr_b, arr_d[0], 2, flag);
+				printf("moves_to_deposit: %d\n", moves_to_deposit);
+
+
+				zero_check = find_zero(&arr_c, argc, 1);
+				if (zero_check != -1)
+						i = ((j = zero_check), (j - 1));
+				while (j >= 0 || i >= 0)
+					arr_c[j--] = arr_c[i--];
+				if (moves_to_deposit < 0)
+				{
+					printf("moves_to_deposit <= 0\n");
+					moves_to_deposit *= -1;
+					arr_c[0] = arr_c[moves_to_deposit + 1];
+				}
+				if (moves_to_deposit == 0 && (*originalarr)[0] != arr_d[1])
+					arr_c[0] = arr_c[1];
+				else
+				{
+					//printf("arr_c[0] = moves_to_deposit\n");
+					arr_c[0] = moves_to_deposit;
+					//(*originalarr)[1] += 0.5;
+					// if (check_bhind_lowest_num(originalarr, argc, arr_d[0], (*originalarr)[moves_to_deposit - 2]) == -1)
+					// {
+					// if (flag == 1)
+					// {
+					// 	if ((!((((*originalarr)[moves_to_deposit - 1]) - (int)(*originalarr)[moves_to_deposit - 1] >= 0.4999)
+					// 		&& ((*originalarr)[moves_to_deposit - 1] - (int)(*originalarr)[moves_to_deposit - 1] <= 0.5001))))
+					// 	{
+					// 		printf("Hola pescao\n");
+					// 		printf("(*originalarr)[moves_to_deposit - 1]: %.1f\n", (*originalarr)[moves_to_deposit - 1]);
+					// 		//(*originalarr)[moves_to_deposit - 1] += 0.5;
+					// 	}
+						
+					// }
+				}
+
+				px_to_stack(originalarr, arr_b, 'b', argc);
+				//cargo++;
+				instructions++;
+				printf("Originalarr:\n");
+				print_stacks(*originalarr, *arr_b, argc);
+				decrease_numbers(&arr_c, argc, 1, 0);
+				// if (!(((*originalarr)[moves_to_deposit - 2]) - (int)(*originalarr)[moves_to_deposit - 2] >= 0.4999) && ((*originalarr)[moves_to_deposit - 2] - (int)(*originalarr)[moves_to_deposit - 2] <= 0.5001) && (*originalarr)[moves_to_deposit - 2] != arr_d[0])
+				// 	(*originalarr)[moves_to_deposit - 2] += 0.5;
+				
+	///-------------------------------------------------///
+				printf("arr_c tras decrease:\n");
+				x = 0;
+				while (x < argc - 1)
+				{
+					printf("%.1f\n", arr_c[x]);
+					x++;
+				}
 			}
 			else
-				arr_c[0] = moves_to_deposit;
-
-
-			px_to_stack(originalarr, arr_b, 'b', argc);
-			cargo++;
-			instructions++;
-			printf("Originalarr:\n");
-			print_stacks(*originalarr, *arr_b, argc);
-			decrease_numbers(&arr_c, argc, 1, 0);
-			if (!(((*originalarr)[moves_to_deposit - 2]) - (int)(*originalarr)[moves_to_deposit - 2] >= 0.4999) && ((*originalarr)[moves_to_deposit - 2] - (int)(*originalarr)[moves_to_deposit - 2] <= 0.5001) && (*originalarr)[moves_to_deposit - 2] != arr_d[0])
-				(*originalarr)[moves_to_deposit - 2] += 0.5;
-			
-///-------------------------------------------------///
-			printf("arr_c tras decrease:\n");
-			x = 0;
-			while (x < argc - 1)
 			{
-				printf("%.1f\n", arr_c[x]);
-				x++;
+				(*originalarr)[0] += 0.5;
+				//rx_to_stack(originalarr, arr_b, 'a', argc);
 			}
 ///-------------------------------------------------///
 		}
-		else
+		else if ((((*originalarr)[0]) - (int)(*originalarr)[0] >= 0.4999) && ((*originalarr)[0] - (int)(*originalarr)[0] <= 0.5001))
 		{
-	// 		if (flag == 0)
-	// 		{
-	// 			moves_to_deposit = check_destination((int)(*originalarr)[0], sortedarr_a, originalarr, argc, arr_b);
-	// 			printf("moves_to_deposit: %d\n", moves_to_deposit);
-	// 			if (moves_to_deposit <= 0)
-	// 			{
-	// 				printf("moves_to_deposit <= 0\n");
-	// 				moves_to_deposit += 2;
-	// 				arr_c[z] = arr_c[moves_to_deposit];
-	// 				z++;
-	// 			}
-	// 			else
-	// 			{
-	// 				arr_c[z] = moves_to_deposit;
-	// 				z++;
-	// 			}
-	// 			px_to_stack(originalarr, arr_b, 'b', argc);
-	// 			cargo++;
-	// 			instructions++;
-	// 			printf("Originalarr:\n");
-	// 			print_stacks(*originalarr, *arr_b, argc);
-	// 			decrease_numbers(&arr_c, argc, 3, 0);
-	// 			if (!(((*originalarr)[moves_to_deposit - 2]) - (int)(*originalarr)[moves_to_deposit - 2] >= 0.4999) && ((*originalarr)[moves_to_deposit - 2] - (int)(*originalarr)[moves_to_deposit - 2] <= 0.5001))
-	// 				(*originalarr)[moves_to_deposit - 2] += 0.5;
-	// ///-------------------------------------------------///
-	// 			printf("arr_c tras decrease:\n");
-	// 			x = 0;
-	// 			while (x < argc - 1)
-	// 			{
-	// 				printf("%.1f\n", arr_c[x]);
-	// 				x++;
-	// 			}
-	// ///-------------------------------------------------///
-	// 		}
-			//else
-			//{
 			printf("Hubo número con 0.5\n");
 			rx_to_stack(originalarr, arr_b, 'a', argc);
 			instructions++;
 			printf("Originalarr:\n");
 			print_stacks(*originalarr, *arr_b, argc);
-			decrease_numbers(&arr_c, argc, 3, 0);
+			decrease_numbers(&arr_c, argc, 1, 0);
 			x = 0;
 			while (x < argc - 1) //print de arr_c
 			{
@@ -2397,25 +2561,31 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 			}
 			//}
 		}
+	// --------------------------- BORRAR ------------------------------//
+	// printf("COPIA DE ORIGINALARR:\n");
+	// 	i = 0;
+	// 	while (i < argc - 1)
+	// 	{
+	// 		printf("%.1f\n", copia_oroginalarr[i]);
+	// 		i++;
+	// 	}
 		y++;
 	}
-	printf("Moves till good order: %d\n", moves_to_good_order = good_order(*originalarr, *arr_b, argc));
-	// free (arr_c);
-	// free (arr_d);
+	printf("Moves till good order: %d\n", moves_to_good_order = good_order(originalarr, arr_b, argc));
+	while (moves_to_good_order > 0)
+	{
+		rx_to_stack(originalarr, arr_b, 'a', argc);
+		moves_to_good_order--;
+		instructions++;
+	}
+	printf("Stacks Ordenados:\n");
+	print_stacks(*originalarr, *arr_b, argc);
+	printf("Número de movimientos realizados: %d\n", instructions);
+	free (arr_c);
+	free (arr_d);
+	free (copia_oroginalarr);
 }
 
-// int	choose_the_wayv3(float **originalarr, float **arr_b, float **index_arr, float **arr_a, int argc)
-// {
-// 	float	*first_half;
-// 	float	*secund_half;
-
-// 	first_half = ft_floatcalloc((argc / 2), sizeof(float));
-// 	second_half = ft_floatcalloc(((argc - 1) - (argc / 2)), sizeof(float));
-// 	first_half = take_a_half(arr_a, argc, 1);
-// 	second_half = take_a_half(arr_a, argc, 2);
-// 	s_h_arr_strat()
-// 	return (operations);
-// }
 
 void	del_index(float **arr, float **arr_b, int index, int argc)
 {
@@ -2666,15 +2836,10 @@ int main(int argc, char **argv) //hacer check para valores numéricos int repeti
 // ESTE BLOQUE ES PARA V4 LAST CHANCE  -----------------------------------------------
 
 	last_chance(&originalarr, &arr_a, &arr_b, argc);
-	//print_stacks(originalarr, arr_b, argc);
-	
-	
+
 	free (arr_a);
 	free (arr_b);
 	free (originalarr);
-	//free (first_half);
-	//free (first_half_index);
-	//free (second_half);
-	//free (second_half_index);
+
 	return (0);
 }
