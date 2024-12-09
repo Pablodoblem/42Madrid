@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/12/09 13:51:34 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/12/09 17:24:55 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ re: fclean all
 NUMS ?= 5
 
 # Variable para definir el rango superior de los números aleatorios, por defecto 100
-RANGE ?= 100
+RANGE ?= 1000
 
 # Regla para ejecutar el programa con números aleatorios no repetidos
 run: all
