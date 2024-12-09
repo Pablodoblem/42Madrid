@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/09 00:00:09 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:01:51 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -461,8 +461,14 @@ int	check_stack_order(float **arr_a, int argc, int flag)
 	}
 	else if (flag == 3)
 	{
-		while ((*arr_a)[i] - (*arr_a)[i + 1] < 0 && (i + 1) < argc - 1) //segunda parte de la condicional añadida como posible fix
+		printf("ARGC: %d\n", argc);
+		while ((i + 1) < argc - 1 && (*arr_a)[i] - (*arr_a)[i + 1] < 0) //segunda parte de la condicional añadida como posible fix
+		{
+			printf("(*arr_a)[i] : %.1f\n", (*arr_a)[i]);
+			printf("(*arr_a)[i + 1] : %.1f\n", (*arr_a)[i + 1]);
+			printf("\n ----------------------- \n");
 			i++;
+		}
 		if (i == argc - 2)
 			return (1);
 	}
@@ -2211,10 +2217,7 @@ int	*make_aux_array(int argc)
 
 	aux = malloc((argc - 1) * sizeof(int));
 	if (aux == NULL)
-    {
-        printf("Error: malloc falló\n");
-        exit(1);
-    }
+        return(NULL);
 	return (aux);	
 
 }
@@ -2226,7 +2229,8 @@ void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, in
 	float	*aux;
 	int		counter;
 	int		x;
-	int		y_aux[] = {0, 0, 0, 0, 0, 0};
+	//int		y_aux[] = {0, 0, 0, 0, 0, 0};
+	int		*y_aux;
 	int		z;
 	int		f;
 	int		e;
@@ -2245,11 +2249,12 @@ void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, in
 	printf("Valor de argc: %d\n", argc);
 	printf("Valor de z: %d\n", z);
 	printf("Valor de i: %d\n", i);
-	//y_aux = make_aux_array(argc);
-	// auxaux = *y_aux;
-	// printf("Valor de auxaux: %d\n", auxaux);
-    // if (y_aux == NULL)
-	// 	exit (1); // NO SE RICK ------------------------------------------
+	y_aux = make_aux_array(argc);
+	//auxaux = *y_aux;
+	//printf("Valor de auxaux: %d\n", auxaux);
+    if (y_aux == NULL)
+		exit (1); // NO SE RICK ------------------------------------------
+	//y_aux = ft_floatcalloc((argc - 1), sizeof(float));
 	while (i < argc - 1)
 	{
 		y_aux[i] = 0;
@@ -2257,7 +2262,7 @@ void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, in
 	}
 	i = 0;
 	aux = ft_floatcalloc((argc - 1), sizeof(float));
-	//y_aux = ft_floatcalloc((argc - 1), sizeof(float));
+	
 	while (i < argc - 1) //función de copia
 	{
 		aux[i] = (*originalarr)[i];
@@ -2327,13 +2332,14 @@ void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, in
 			if (x > argc - 2)
 				x -= (argc - 1);
 			//printf("(*originalarr)[x]: %.1f\n", (*originalarr)[x]);
-			(*originalarr)[x] += 0.5;
+			if ((*originalarr)[x] != (*sortedarr)[argc - 2])
+			    (*originalarr)[x] += 0.5;
 			y++;
 		}
 		i++;
 	}
 	free (aux);
-	//free (y_aux);
+	free (y_aux);
 }
 
 void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int argc)
@@ -2352,7 +2358,6 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	int		j;
 	int		flag;
 	int		zero_check;
-	float	*copia_oroginalarr;
 
 	flag = 0;
 	j = 0;
@@ -2364,12 +2369,6 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	// sorted_index_arr = make_index(arr_a, originalarr, argc - 1);
 	arr_c = ft_floatcalloc((argc - 1), sizeof(float));
 	arr_d = ft_floatcalloc(2, sizeof(float));
-	copia_oroginalarr = ft_floatcalloc(2, sizeof(float));
-	while (i < argc - 1) // BORRARRRR
-	{
-		copia_oroginalarr[i] = (*originalarr)[i];
-		i++;
-	}
 	find_extremes(&arr_d, originalarr, argc);
 	i = 0;
 ///-------------------------------------------------///
@@ -2496,9 +2495,12 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 				{
 					printf("moves_to_deposit <= 0\n");
 					moves_to_deposit *= -1;
+					printf("arr_c[0]: %.1f\n", arr_c[0]);
+					printf("arr_c[moves_to_deposit + 1]: %.1f\n", arr_c[moves_to_deposit + 1]);
 					arr_c[0] = arr_c[moves_to_deposit + 1];
+					printf("arr_c[0]: %.1f\n", arr_c[0]);
 				}
-				if (moves_to_deposit == 0 && (*originalarr)[0] != arr_d[1])
+				else if (moves_to_deposit == 0 && (*originalarr)[0] != arr_d[1]) //antes solo era if y lo siguiente else solo
 					arr_c[0] = arr_c[1];
 				else
 				{
@@ -2561,14 +2563,6 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 			}
 			//}
 		}
-	// --------------------------- BORRAR ------------------------------//
-	// printf("COPIA DE ORIGINALARR:\n");
-	// 	i = 0;
-	// 	while (i < argc - 1)
-	// 	{
-	// 		printf("%.1f\n", copia_oroginalarr[i]);
-	// 		i++;
-	// 	}
 		y++;
 	}
 	printf("Moves till good order: %d\n", moves_to_good_order = good_order(originalarr, arr_b, argc));
@@ -2583,7 +2577,6 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	printf("Número de movimientos realizados: %d\n", instructions);
 	free (arr_c);
 	free (arr_d);
-	free (copia_oroginalarr);
 }
 
 

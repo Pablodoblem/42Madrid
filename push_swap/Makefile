@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/12/08 23:55:23 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/12/09 13:51:34 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ fclean: clean
 re: fclean all
 
 # Variable para definir cuántos números generar, por defecto 6
-NUMS ?= 6
+NUMS ?= 5
 
 # Variable para definir el rango superior de los números aleatorios, por defecto 100
 RANGE ?= 100
