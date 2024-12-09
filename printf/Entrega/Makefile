@@ -6,13 +6,13 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 13:18:00 by pamarti2          #+#    #+#              #
-#    Updated: 2024/10/11 12:35:37 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/10/11 13:13:33 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-CC = gcc
+CC = cc
 CCFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -36,11 +36,8 @@ $(NAME) : $(OBJS)
 
 all: $(NAME)
 
-# %.o : %.c
-# 	@$(CC) $(CCFLAGS) -c -o $@ $<
-
 %.o : %.c
-	@$(CC) -c -o $@ $<
+	@$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
 	@$(RM) $(OBJS)

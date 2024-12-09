@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:53:30 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/11 12:36:22 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:52:06 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,40 +93,4 @@ int	ft_printf(char const *typo, ...)
 	}
 	va_end(args);
 	return (counter);
-}
-
-// #include <stdio.h>
-// #include <limits.h>
-
-// int	main(void)
-// {
-// 	printf("O: %d\n", printf(" %X ", 0));
-// 	printf("C: %d\n", ft_printf(" %X ", 0));
-// 	return (0);
-// }
-
-int main(void)
-{
-	char *s2 = "Mussum Ipsum, cacilds vidis litro abertis. ...";
-	printf("O: %d\n", printf(" %% %% %% "));
-	printf("C: %d\n", ft_printf(" %% %% %% "));
-	printf("O: %d\n", printf(" %d ", -1));
-	printf("C: %d\n", ft_printf(" %d ", -1));
-	printf("O: %d\n", printf("%c", '0' + 256));
-	printf("C: %d\n", ft_printf("%c", '0' + 256));
-	printf("O: %d\n", printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
-	printf("C: %d\n", ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
-	printf("O: %d\n", printf(" %u ", -2));
-	printf("C: %d\n", ft_printf(" %u ", -2));
-	printf("O: %d\n", printf(" %X ", INT_MAX));
-	printf("C: %d\n", ft_printf(" %X ", INT_MAX));
-	printf("O: %d\n", printf(" %x ", INT_MAX));
-	printf("C: %d\n", ft_printf(" %x ", INT_MAX));
-	printf("O: %d\n", printf(" %p ", 4294967295));
-	printf("C: %d\n", ft_printf(" %p ", 4294967295));
-	// printf("SE PUTO VIENE\n");
-	// printf("O: %d\n", printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%...));
-	// printf("AQUÍ VIENE LA CHUFA\n");
-	// printf("C: %d\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%...));
-    return (0);
 }
