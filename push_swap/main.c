@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/09 17:22:46 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:27:15 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1260,12 +1260,122 @@ void	block_ordered_num(float **originalarr, float **arr_b, float **sortedarr, in
 	free (y_aux);
 }
 
+int	manage_stackb_n_tracker(float **originalarr, float **arr_b, int argc)
+{
+	//int	i;
+	int		num;
+	//float	last_num;
+
+	num = 0;
+	//last_num = 0.0;
+	//i = 0;
+	while(num < argc - 1)
+	{
+		if ((*arr_b)[num] == 0.5)
+			break ;
+		//last_num = (*originalarr)[num];
+		num++;
+	}
+	// if (num == 0)
+	// 	return (0);
+	if ((*arr_b)[0] == 0.5)
+			return (0);
+	else if (num == 1) 
+	{
+		// if
+		// {
+			if ((*originalarr)[0] > (*arr_b)[0])
+				return (-1);
+			else
+				return (1);
+		// }
+	}
+	// else if (num > 1)
+	// {
+
+	// }
+	return (0);
+	// while ((*arr_b)[i] - (*arr_b)[i + 1] < 0)
+}
+
+int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc)
+{
+	int		i;
+	int		aux_moves;
+	// float	aux_float;
+	int		flag;
+	int		flag2;
+	int		instructions;
+	int		aux_max_num;
+
+	aux_max_num = 0;
+	instructions = 0;
+	i = 0;
+	flag = 0;
+	flag2 = 0;
+	while (i < argc - 1 && (*arr_c)[i] != 0.5) //Trata de encontrar valores = move_to_deposit
+	{
+		if ((*arr_c)[i] == moves_to_deposit)
+		{
+			flag = 1;
+			break ;
+		}
+		i++;
+	}
+	//instructions = i; 
+	i = 0;
+	while (i < argc - 1 && flag == 0) //En caso de no haber encontrado el mismo numero moves_to_deposit se busca el número más alto
+	{
+		if ((*arr_c)[0] == 0.5) //si arr_b está vacío break
+			break ;
+		if ((*arr_c)[i] >= aux_max_num)
+		{
+			flag2 = 1;
+			aux_max_num = (*arr_c)[i];
+		}
+		i++;
+	}
+	i = 0;
+	while (i < argc - 1)
+	{
+		if ((*arr_c)[i] == aux_max_num)
+		{
+			// while ((*arr_c)[i + 1] == aux_max_num)
+			// 	i++;
+			break ;
+		}
+		i++;
+	}
+
+	printf("Moves to deposit: %d\n", moves_to_deposit);
+	aux_moves = moves_to_deposit;
+	while (aux_moves > 0 && flag == 1)
+	{
+		rx_to_stack(arr_c, arr_b, 'a', argc);
+		rx_to_stack(arr_c, arr_b, 'b', argc);
+		aux_moves--;
+		instructions++;
+	}
+	while (i > 0 && flag2 == 1 && flag == 0)
+	{
+		rx_to_stack(arr_c, arr_b, 'a', argc);
+		rx_to_stack(arr_c, arr_b, 'b', argc);
+		instructions++;
+		i--;
+	}
+	// if (flag2 == 1)
+	// {
+	// 	while ((*arr_b)[0] < )
+	// }
+	return  (instructions);
+}
+
 void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int argc)
 {
 	float	*arr_c;
 	float	*arr_d;
 	int		i;
-	int		moves_to_good_order;
+	int		moves_to_good_order;	
 	int		moves_to_deposit;
 	//float	*sorted_index_arr;
 	int		instructions;
@@ -1405,6 +1515,17 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 
 
 				zero_check = find_zero(&arr_c, argc, 1);
+				instructions += order_stack_arr_c(arr_b, &arr_c, moves_to_deposit, argc);
+				// if ((*arr_b)[0] < (*originalarr)[0])
+				// {
+				// 	while ((*arr_b)[0] < (*originalarr)[0] && arr_c[0] == moves_to_deposit)
+				// 	{
+				// 		printf("HOLA!\n");
+				// 		rx_to_stack(originalarr, arr_b, 'b', argc);
+				// 		rx_to_stack(&arr_c, arr_b, 'a', argc);
+				// 	}
+				// }
+				 
 				if (zero_check != -1)
 						i = ((j = zero_check), (j - 1));
 				while (j >= 0 || i >= 0)
@@ -1439,8 +1560,21 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 						
 					// }
 				}
-
 				px_to_stack(originalarr, arr_b, 'b', argc);
+				// if (order_stack_arr_c(arr_b, &arr_c, moves_to_deposit, argc) == 1 && moves_to_deposit > arr_c[0]) // ya llegará
+				// {
+				// 	wx_to_stack(&arr_c, arr_b, 'a');
+				// 	wx_to_stack(&arr_c, arr_b, 'b');
+				// }
+				printf("MANAGER: %d\n", manage_stackb_n_tracker(originalarr, arr_b, argc));
+				// if (manage_stackb_n_tracker(originalarr, arr_b, argc) == -1)
+				// {
+				// 	// px_to_stack(originalarr, arr_b, 'b', argc);
+				// 	wx_to_stack(originalarr, arr_b, 'b');
+				// 	wx_to_stack(originalarr, &arr_c, 'b');
+				// }
+				// else
+				// 	px_to_stack(originalarr, arr_b, 'b', argc);
 				//cargo++;
 				instructions++;
 				printf("Originalarr:\n");
