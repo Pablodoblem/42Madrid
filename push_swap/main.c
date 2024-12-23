@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/22 20:58:32 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:56:35 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ int	manage_stackb_n_tracker(float **originalarr, float **arr_b, int argc)
 		num++;
 	}
 	if ((*arr_b)[0] == 0.5)
-			return (0);
+		return (0);
 	else if (num == 1) 
 	{
-			if ((*originalarr)[0] > (*arr_b)[0])
-				return (-1);
-			else
-				return (1);
+		if ((*originalarr)[0] > (*arr_b)[0])
+			return (-1);
+		else
+			return (1);
 	}
 	return (0);
 }
@@ -87,6 +87,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 {
 	float	*arr_c;
 	float	*arr_d;
+	float	*copy;
 	int		i;
 	int		moves_to_good_order;	
 	int		moves_to_deposit;
@@ -105,8 +106,15 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	printf("ARR_A ORIGINAL SIN PROCESAR:\n");
 	print_stacks(*originalarr, *arr_b, argc);
 	arr_c = ft_floatcalloc((argc - 1), sizeof(float));
+	copy = ft_floatcalloc((argc - 1), sizeof(float));
 	arr_d = ft_floatcalloc(2, sizeof(float));
 	find_extremes(&arr_d, originalarr, argc);
+	i = 0;
+	while (i < argc - 1)
+	{
+		copy[i] = (*originalarr)[i];
+		i++;
+	}
 	i = 0;
 ///-------------------------------------------------///
 	while (i < 2)
@@ -122,6 +130,13 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	print_stacks(*originalarr, *arr_b, argc);
 	while (1)
 	{
+		printf("COPIA ORIGINAL:\n");
+		i = 0;
+		while(i < argc - 1)
+		{
+			printf("%.1f\n", copy[i]);
+			i++;
+		}
 		if (good_order(originalarr, arr_b, argc) != -1)
 			break ;
 		printf("arr:d[0]: %.1f\n", arr_d[0]);
@@ -211,7 +226,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 				instructions += order_stack_arr_c(arr_b, &arr_c, moves_to_deposit, argc);
 				 
 				if (zero_check != -1)
-						i = ((j = zero_check), (j - 1));
+					i = ((j = zero_check), (j - 1));
 				while (j >= 0 || i >= 0)
 					arr_c[j--] = arr_c[i--];
 				if (moves_to_deposit < 0)
@@ -230,6 +245,27 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 					arr_c[0] = moves_to_deposit;
 				}
 				px_to_stack(originalarr, arr_b, 'b', argc);
+				if ((*arr_b)[1] != 0.5)
+				{
+					if ((*arr_b)[0] > (*arr_b)[1])
+					{
+						wx_to_stack(originalarr, arr_b, 'b');
+						wx_to_stack(originalarr, &arr_c, 'b');
+					}
+				}
+				// if ((*arr_b)[0] > (*arr_b)[1] && (*arr_b)[1] != 0.5)
+				// {
+				// 	if ((arr_b)[2] != 0.5 && (*arr_b)[0])
+				// 	{
+
+				// 	}
+				// 	wx_to_stack(originalarr, arr_b, 'b');
+				// 	instructions++;
+				// }
+				// else if ((*arr_b)[0] > (*arr_b)[1] && (*arr_b)[2] != 0.5)
+				// {
+
+				// }
 				printf("MANAGER: %d\n", manage_stackb_n_tracker(originalarr, arr_b, argc));
 				instructions++;
 				printf("Originalarr:\n");

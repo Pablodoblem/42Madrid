@@ -6,12 +6,13 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:25:41 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/22 20:47:03 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:46:21 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	check_stack_order(float **arr_a, int argc, int flag)
 {
@@ -93,72 +94,75 @@ int good_order(float **arr, float **arr_b, int argc)
 
 int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc)
 {
-	int		i;
-	int		aux_moves;
-	// float	aux_float;
-	int		flag;
-	int		flag2;
-	int		instructions;
-	int		aux_max_num;
+    int		i;
+    //int		aux_moves;
+    int		flag;
+    int		flag2;
+    int		instructions;
+    int		aux_max_num;
 
-	aux_max_num = 0;
-	instructions = 0;
-	i = 0;
-	flag = 0;
-	flag2 = 0;
-	while (i < argc - 1 && (*arr_c)[i] != 0.5) //Trata de encontrar valores = move_to_deposit
-	{
-		if ((*arr_c)[i] == moves_to_deposit)
-		{
-			flag = 1;
-			break ;
-		}
-		i++;
-	}
-	//instructions = i; 
-	i = 0;
-	while (i < argc - 1 && flag == 0) //En caso de no haber encontrado el mismo numero moves_to_deposit se busca el número más alto
-	{
-		if ((*arr_c)[0] == 0.5) //si arr_b está vacío break
-			break ;
-		if ((*arr_c)[i] >= aux_max_num)
-		{
-			flag2 = 1;
-			aux_max_num = (*arr_c)[i];
-		}
-		i++;
-	}
-	i = 0;
-	while (i < argc - 1)
-	{
-		if ((*arr_c)[i] == aux_max_num)
-		{
-			// while ((*arr_c)[i + 1] == aux_max_num)
-			// 	i++;
-			break ;
-		}
-		i++;
-	}
+    aux_max_num = INT_MAX;
+    instructions = 0;
+    i = 0;
+    flag = 0;
+    flag2 = 0;
 
-	printf("Moves to deposit: %d\n", moves_to_deposit);
-	aux_moves = moves_to_deposit;
-	while (aux_moves > 0 && flag == 1)
-	{
-		rx_to_stack(arr_c, arr_b, 'a', argc);
-		rx_to_stack(arr_c, arr_b, 'b', argc);
-		aux_moves--;
-		instructions++;
-	}
-	while (i > 0 && flag2 == 1 && flag == 0)
-	{
-		rx_to_stack(arr_c, arr_b, 'a', argc);
-		rx_to_stack(arr_c, arr_b, 'b', argc);
-		instructions++;
-		i--;
-	}
-	// if (flag2 == 1)
-	// {
-	// 	while ((*arr_b)[0] < )
-	// }
+    // Busca moves_to_deposit en arr_c
+    while (i < argc - 1 && (*arr_c)[i] != 0.5)
+    {
+        if ((*arr_c)[i] == moves_to_deposit)
+        {
+            flag = 1;
+            break ;
+        }
+        i++;
+    }
+
+    i = 0;
+    // Si no se encuentra moves_to_deposit, busca el valor inmediatamente superior en arr_c
+    while (i < argc - 1 && flag == 0)
+    {
+        if ((*arr_c)[0] == 0.5)
+            break ;
+        if ((*arr_c)[i] > moves_to_deposit && (*arr_c)[i] < aux_max_num)
+        {
+            flag2 = 1;
+            aux_max_num = (*arr_c)[i];
+        }
+        i++;
+    }
+
+    i = 0;
+    // Encuentra la posición del valor máximo inmediatamente superior en arr_c
+    while (i < argc - 1)
+    {
+        if ((*arr_c)[i] == aux_max_num)
+        {
+            break ;
+        }
+        i++;
+    }
+
+   // printf("Moves to deposit: %d\n", moves_to_deposit);
+    //aux_moves = moves_to_deposit;
+
+	// Realiza movimientos si se encontró el valor máximo y no moves_to_deposit
+    while (i < argc - 1 && flag2 == 1 && flag == 0 && (*arr_b)[0] != aux_max_num)
+    {
+        rx_to_stack(arr_c, arr_b, 'a', argc);
+        rx_to_stack(arr_c, arr_b, 'b', argc);
+        instructions++;
+        i++;
+    }
+
+    // Realiza movimientos si se encontró 
+	i = 0;
+    while (i < argc - 1 && flag == 1 && (*arr_b)[0] != moves_to_deposit)
+    {
+        rx_to_stack(arr_c, arr_b, 'a', argc);
+        rx_to_stack(arr_c, arr_b, 'b', argc);
+        i++;
+        instructions++;
+    }
 	return  (instructions);
 }
