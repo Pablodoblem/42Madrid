@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:54:18 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/10/08 23:59:36 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/22 20:45:49 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,3 @@ int	ft_atoi(char *str)
 	}
 	return (spaces_sign_and_createnumber(str_char, i, number, sign));
 }
-
-// int	main(void)
-// {
-// 	const char	*str = "54";
-
-// 	printf("%d\n", ft_atoi(str));
-// 	printf("%d", atoi(str));
-// 	return (0);
-// }

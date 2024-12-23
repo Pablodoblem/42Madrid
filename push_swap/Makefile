@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/12/11 13:49:27 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/12/22 20:51:57 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,14 @@ MY_SOURCES = main.c \
              ft_atoi.c \
              ft_strlen.c \
              ft_isdigitmod.c \
-             ft_calloc.c
+             ft_calloc.c \
+			 movements_utils.c \
+			 zero_mng_utils.c \
+			 order_utils.c \
+			 logistic_utils.c \
+			 array_utils.c \
+			 print_utils.c \
+			 bubble_sort_utils.c
 
 OBJS = $(MY_SOURCES:.c=.o)
 
