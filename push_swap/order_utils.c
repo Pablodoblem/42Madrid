@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:25:41 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/23 18:46:21 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:50:19 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int good_order(float **arr, float **arr_b, int argc)
 	return (-1);
 }
 
-int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc)
+int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc, char **talkback)
 {
     int		i;
     //int		aux_moves;
@@ -151,6 +151,7 @@ int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int ar
     {
         rx_to_stack(arr_c, arr_b, 'a', argc);
         rx_to_stack(arr_c, arr_b, 'b', argc);
+		ft_strjoin(*talkback, "rb ");
         instructions++;
         i++;
     }
@@ -162,6 +163,7 @@ int	order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int ar
         rx_to_stack(arr_c, arr_b, 'a', argc);
         rx_to_stack(arr_c, arr_b, 'b', argc);
         i++;
+		ft_strjoin(*talkback, "rb ");
         instructions++;
     }
 	return  (instructions);

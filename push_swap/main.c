@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:54 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/23 18:56:35 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/28 19:13:25 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	int		j;
 	int		flag;
 	int		zero_check;
+	char	*talkback;
 
+	talkback = "";
 	flag = 0;
 	j = 0;
 	i = 0;
@@ -153,6 +155,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 				px_to_stack(originalarr, arr_b, 'a', argc);
 				move_the_row(&arr_c, argc, 2);
 				(*originalarr)[0] += 0.5;
+				talkback = ft_strjoin(talkback, "pa ");
 				instructions++;
 			}
 			else if (zero > 0)
@@ -163,6 +166,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 					rx_to_stack(originalarr, arr_b, 'b', argc);
 					printf("rotate stack c\n");
 					rx_to_stack(&arr_c, arr_b, 'a', argc);
+					talkback = ft_strjoin(talkback, "rb ");
 					instructions++;
 					zero--;
 				}
@@ -173,6 +177,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 			printf("rotate stack a\n");
 			rx_to_stack(originalarr, arr_b, 'a', argc);
 			printf("decreasing numbers stack c\n");
+			talkback = ft_strjoin(talkback, "ra ");
 			instructions++;
 			print_stacks(*originalarr, *arr_b, argc);
 			zero = check_zero(&arr_c, arr_b, argc, 1);
@@ -193,6 +198,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 			printf("Hubo (*originalarr)[0] == arr_d[0].\n");
 			(*originalarr)[0] += 0.5;
 			rx_to_stack(originalarr, arr_b, 'a', argc);
+			talkback = ft_strjoin(talkback, "ra ");
 			instructions++;
 			printf("Originalarr:\n");
 			print_stacks(*originalarr, *arr_b, argc);
@@ -223,12 +229,15 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 				}
 				printf("moves_to_deposit: %d\n", moves_to_deposit);
 				zero_check = find_zero(&arr_c, argc, 1);
-				instructions += order_stack_arr_c(arr_b, &arr_c, moves_to_deposit, argc);
+				printf("zero_check: %d\n", zero_check);
+				instructions += order_stack_arr_c(arr_b, &arr_c, moves_to_deposit, argc, &talkback);
 				 
-				if (zero_check != -1)
+				if (zero_check > 0)
+				{
 					i = ((j = zero_check), (j - 1));
-				while (j >= 0 || i >= 0)
-					arr_c[j--] = arr_c[i--];
+					while (j >= 0 && i >= 0)
+						arr_c[j--] = arr_c[i--];
+				}
 				if (moves_to_deposit < 0)
 				{
 					printf("moves_to_deposit <= 0\n");
@@ -250,23 +259,13 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 					if ((*arr_b)[0] > (*arr_b)[1])
 					{
 						wx_to_stack(originalarr, arr_b, 'b');
+						talkback = ft_strjoin(talkback, "sb ");
+						instructions++;
 						wx_to_stack(originalarr, &arr_c, 'b');
 					}
 				}
-				// if ((*arr_b)[0] > (*arr_b)[1] && (*arr_b)[1] != 0.5)
-				// {
-				// 	if ((arr_b)[2] != 0.5 && (*arr_b)[0])
-				// 	{
-
-				// 	}
-				// 	wx_to_stack(originalarr, arr_b, 'b');
-				// 	instructions++;
-				// }
-				// else if ((*arr_b)[0] > (*arr_b)[1] && (*arr_b)[2] != 0.5)
-				// {
-
-				// }
 				printf("MANAGER: %d\n", manage_stackb_n_tracker(originalarr, arr_b, argc));
+				talkback = ft_strjoin(talkback, "pb ");
 				instructions++;
 				printf("Originalarr:\n");
 				print_stacks(*originalarr, *arr_b, argc);
@@ -291,6 +290,7 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 		{
 			printf("Hubo número con 0.5\n");
 			rx_to_stack(originalarr, arr_b, 'a', argc);
+			talkback = ft_strjoin(talkback, "ra ");
 			instructions++;
 			printf("Originalarr:\n");
 			print_stacks(*originalarr, *arr_b, argc);
@@ -310,19 +310,21 @@ void	last_chance(float **originalarr, float **sortedarr_a, float **arr_b, int ar
 	{
 		rx_to_stack(originalarr, arr_b, 'a', argc);
 		moves_to_good_order--;
+		talkback = ft_strjoin(talkback, "ra ");
 		instructions++;
 	}
 	printf("Stacks Ordenados:\n");
 	print_stacks(*originalarr, *arr_b, argc);
 	printf("Número de movimientos realizados: %d\n", instructions);
+	printf("Talkback: %s\n", talkback);
+	//free (talkback);
 	free (arr_c);
 	free (arr_d);
 }
 
 int main(int argc, char **argv) //hacer check para valores numéricos int repetidos en argumentos
 {
-	int		i;
-	//char	*operations[] = {"pb", "pb", "sa", "pa", "pa", "sa"};
+	int			i;
 	float		*arr_a;
 	float		*arr_b;
 	int			vueltas = 1;

@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:13:36 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/23 00:04:37 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:34:08 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 # include <limits.h>
 
 int				ft_write(const char *str);
-int				ft_strlen(const char *str);
+int				ft_strlen(char *str);
 int				ft_atoi(char *str);
 int             ft_isdigitmod(char *arg);
 void			*ft_floatcalloc(size_t n, size_t size_of_element);
+char	        *ft_strjoin(char const *s1, char const *s2);
 
 void	        print_stacks(float *numarr_a, float *numarr_b, int argc);
 
@@ -48,7 +49,7 @@ int	            check_zero(float **arr_c, float **arr_b, int argc, int flag);
 
 int	            check_stack_order(float **arr_a, int argc, int flag);
 int             good_order(float **arr, float **arr_b, int argc);
-int	            order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc);
+int	            order_stack_arr_c(float **arr_b, float **arr_c, int moves_to_deposit, int argc, char **talkback);
 
 //logistic utils//
 

@@ -6,7 +6,7 @@
 /*   By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:21:28 by pamarti2          #+#    #+#             */
-/*   Updated: 2024/12/22 20:43:48 by pamarti2         ###   ########.fr       */
+/*   Updated: 2024/12/28 18:04:32 by pamarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ void	move_the_row(float **arr, int argc, int flag)
 	i = 0; // 0
 	j = i + 1;  // 1
 	
-	while (j < argc - 1 || i < argc - 1)
-		(*arr)[i++] = (*arr)[j++];
+	while (j < argc - 1 && i < argc - 1)
+	{
+		(*arr)[i] = (*arr)[j];
+		i++;
+		j++;
+	}
 	(*arr)[argc - 2] = 0.5;
 	//printf("HELLO\n");
 	if (flag == 1)
@@ -62,11 +66,13 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	if (stack == 'a')
 	{
 		zero_check = find_zero(arr_a, argc, 1);
-		//printf("Return de find_zero: %d\n", zero_check);
-		if (zero_check != -1)
-				i = ((j = zero_check), (j - 1));
-		while (j >= 0 || i >= 0)
-			(*arr_a)[j--] = (*arr_a)[i--];
+		printf("zero_check stack a: %d\n", zero_check);
+		if (zero_check > 0)
+		{
+			i = ((j = zero_check), (j - 1));
+			while (j >= 0 && i >= 0)
+				(*arr_a)[j--] = (*arr_a)[i--];
+		}
 		(*arr_a)[0] = (*arr_b)[0];
 		move_the_row(arr_b, argc, 1);
 		//print_stacks(*arr_a, *arr_b, argc);
@@ -74,10 +80,13 @@ void	px_to_stack(float **arr_a, float **arr_b, char stack, int argc)
 	if (stack == 'b')
 	{
 		zero_check = find_zero(arr_b, argc, 1);
-		if (zero_check != -1)
-				i = ((j = zero_check), (j - 1));
-		while (j >= 0 || i >= 0)
-			(*arr_b)[j--] = (*arr_b)[i--];
+		printf("zero_check stack b: %d\n", zero_check);
+		if (zero_check > 0)
+		{
+			i = ((j = zero_check), (j - 1));
+			while (j >= 0 && i >= 0)
+				(*arr_b)[j--] = (*arr_b)[i--];
+		}
 		(*arr_b)[0] = (*arr_a)[0];
 		move_the_row(arr_a, argc, 1);
 	}

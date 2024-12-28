@@ -6,7 +6,7 @@
 #    By: pamarti2 <pamarti2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/20 18:14:27 by pamarti2          #+#    #+#              #
-#    Updated: 2024/12/22 20:51:57 by pamarti2         ###   ########.fr        #
+#    Updated: 2024/12/28 18:05:41 by pamarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ MY_SOURCES = main.c \
 			 logistic_utils.c \
 			 array_utils.c \
 			 print_utils.c \
-			 bubble_sort_utils.c
+			 bubble_sort_utils.c \
+			 ft_strjoin.c
 
 OBJS = $(MY_SOURCES:.c=.o)
 
